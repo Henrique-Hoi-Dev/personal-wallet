@@ -22,8 +22,8 @@ routes.put('/users', UserController.update);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
-routes.put('/account/:id', AccountController.updateAccount);
 routes.post('/account/new', AccountController.store);
+routes.put('/account/:id', AccountController.updateAccount);
 routes.get('/account', AccountController.getAll);
 routes.get('/accounts/:id', AccountController.getById);
 routes.delete('/account/:id', AccountController.deleteAccount);

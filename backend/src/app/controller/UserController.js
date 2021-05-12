@@ -8,13 +8,10 @@ class UserController {
       name: Yup.string().required(),
       email: Yup.string().email().required(),
       password: Yup.string().required().min(6),
-      cpf: Yup.string(),
-      data_nacimento: Yup.string(),
-      cargo: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Falha na validação' });
+      return res.status(400).json({ error: 'Validation failed' });
     }
     // fazendo verificação email
     const userExist = await User.findOne({ where: { email: req.body.email } });
@@ -22,27 +19,19 @@ class UserController {
     if (userExist) {
       return res
         .status(400)
-        .json({ error: 'Esse email de usuário já existe.' });
+        .json({ error: 'This user email already exists' });
     }
 
     const {
       id,
       name,
       email,
-      provider,
-      cpf,
-      cargo,
-      data_nacimento,
     } = await User.create(req.body);
 
     return res.json({
       id,
       name,
       email,
-      provider,
-      cpf,
-      cargo,
-      data_nacimento,
     });
   }
 
@@ -62,7 +51,7 @@ class UserController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Falha na validação' });
+      return res.status(400).json({ error: 'Validation failed' });
     }
 
     const { email, oldPassword } = req.body;
@@ -75,12 +64,12 @@ class UserController {
       if (userExist) {
         return res
           .status(400)
-          .json({ error: 'Esse email de usuário já existe.' });
+          .json({ error: 'This user email already exists' });
       }
     }
 
     if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Senha não corresponde' });
+      return res.status(401).json({ error: 'Password does not match' });
     }
 
     await user.update(req.body);
@@ -88,17 +77,6 @@ class UserController {
       id,
       name,
       avatar,
-      endereco,
-      cargo,
-      data_nacimento,
-      cpf,
-      cep,
-      logradouro,
-      complemento,
-      numero,
-      bairro,
-      cidade,
-      uf,
     } = await User.findByPk(req.userId, {
       include: [
         {
@@ -114,17 +92,6 @@ class UserController {
       name,
       email,
       avatar,
-      endereco,
-      cargo,
-      data_nacimento,
-      cpf,
-      cep,
-      logradouro,
-      complemento,
-      numero,
-      bairro,
-      cidade,
-      uf,
     });
   }
 }

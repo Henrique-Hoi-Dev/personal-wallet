@@ -4,31 +4,31 @@ import Account from '../models/Account';
 class AccountController {
   async store(req, res) {
     const schema = Yup.object().shape({
-      name: Yup.string().required().max(100),
+      name: Yup.string().required(),
     });
 
-    if (!(await schema.isValid(req.body.values))) {
-      return res.status(400).json({ error: 'Erro de codigo de barra' });
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Name is required' });
     }
 
-    const AccountExist = await Account.findOne({
-      where: { name: req.body.values.name },
-    });
+    const AccountExist = await Account.findOne({ where: { name: req.body.name }});
     if (AccountExist) {
-      return res.status(400).json({ error: 'Esse Produto já existe.' });
+      return res.status(400).json({ error: 'That account name already exists.' });
     }
-    const account = await Account.create(req.body.values);
+    const accounts = await Account.create(req.body);
 
-    return res.json(account);
+    return res.json(accounts);
   }
 
   async getAll(req, res) {
+  try { 
     const account = await Account.findAll();
     return res.status(200).json(account);
-  }
-  catch(error) {
+
+  }catch(error) {
     return res.status(400).json(error);
   }
+}  
 
   async getById(req, res) {
     try {
@@ -44,7 +44,6 @@ class AccountController {
   async deleteAccount(req, res) {
     try {
       const { id } = req.params;
-
       const account = await Account.destroy({
         where: {
           id: id,
