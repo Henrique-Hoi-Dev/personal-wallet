@@ -9,5 +9,5 @@
 html, body, #root {
   height: 100%;
   overflow-x: initial;
-  background: #404040;
+  background: #404040!important;
 }
