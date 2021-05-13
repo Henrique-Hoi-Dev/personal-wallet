@@ -7,6 +7,7 @@ class Account extends Model {
         name: Sequelize.STRING,
         valor: Sequelize.STRING,
         parcelas: Sequelize.STRING,
+        data: Sequelize.STRING,
       },
       {
         sequelize,
