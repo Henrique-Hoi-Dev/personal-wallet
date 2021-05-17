@@ -5,8 +5,8 @@ import store from './store';
 
 import './registerServiceWorker';
 import './style/global.css';
-import './plugins/bootstrap-vue';
 import './plugins/axios';
+import './plugins/bootstrap';
 
 Vue.config.productionTip = false;
 

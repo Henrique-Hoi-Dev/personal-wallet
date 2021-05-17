@@ -14,7 +14,7 @@ const routes = new Router();
 const upload = multer(multerConfig);
 
 routes.get('/account', AccountController.getAll);
-
+routes.post('/account/new', AccountController.store);
 routes.post('/users/register', UserController.store);
 routes.post('/users/authenticate', SessionController.store);
 
@@ -24,7 +24,7 @@ routes.put('/users', UserController.update);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
-routes.post('/account/new', AccountController.store);
+
 routes.put('/account/:id', AccountController.updateAccount);
 routes.get('/accounts/:id', AccountController.getById);
 routes.delete('/account/:id', AccountController.deleteAccount);

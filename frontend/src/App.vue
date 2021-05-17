@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <Menu id="menu"/>
+        <Menu id="menu"/>
       <main>
         <Header id="header"/>
         <router-view/> 
@@ -14,10 +14,9 @@ import Header from '@/components/Header.vue';
 import Menu from '@/components/Menu.vue';
 
 export default {
-  components: { Header, Menu }
+  components: { Header, Menu,  }
 }
 </script>
-
 
 <style lang="scss">
 #app {
@@ -38,19 +37,19 @@ export default {
 
 #menu {
   position: fixed;
-  top: 10rem;
-  height: 18rem;
-  width: 7rem;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  top: 14rem;
+  width: 8rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 #header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 5rem;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  height: 10rem;
+  z-index: 1;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 </style>

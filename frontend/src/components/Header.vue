@@ -1,13 +1,14 @@
 <template>
   <div class="menu">
-    <h2>Header</h2>
+    <InfoCard/>
   </div>
-
 </template>
 
 <script>
-export default {
+import InfoCard from '@/components/template/InfoCard.vue'
 
+export default {
+  components: { InfoCard } 
 }
 </script>
 
@@ -16,5 +17,4 @@ export default {
   color: #d2d2d2;
   background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
 }
-
 </style>

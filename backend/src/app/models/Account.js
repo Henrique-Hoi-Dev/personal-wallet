@@ -8,6 +8,7 @@ class Account extends Model {
         valor: Sequelize.STRING,
         parcelas: Sequelize.STRING,
         data: Sequelize.STRING,
+        pago: Sequelize.BOOLEAN,
       },
       {
         sequelize,

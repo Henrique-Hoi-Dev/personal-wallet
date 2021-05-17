@@ -1,6 +1,6 @@
 <template>
-  <div class="registration">
-    <h2>cadastro</h2>
+  <div class="paid">
+    <h2>Pagar</h2>
   </div>
 </template>
 
@@ -11,8 +11,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.registration {
-  margin-top: 10rem;
+.paid {
+  margin-top: 14rem;
 
   h2 {
     color: #d2d2d2
