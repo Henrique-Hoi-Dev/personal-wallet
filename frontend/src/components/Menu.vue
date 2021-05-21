@@ -12,24 +12,115 @@
     <router-link to="/vanquished">
       <b-button variant="dark">Vanquished</b-button>
     </router-link> 
-      <b-button variant="dark" v-b-modal.modal-center>Register</b-button>
-
+      <!-- Modal que sera feito o cadastro da novas contas -->
       <div>
-        <b-modal id="modal-center" centered title="BootstrapVue">
-          <p class="my-4">Vertically centered modal!</p>
-        </b-modal>
-      </div>
+      <b-button variant="dark" v-b-modal.modal-prevent-closing>Register</b-button>
+
+      <!-- <div class="mt-3">
+        Submitted Names:
+        <div v-if="submittedNames.length === 0">--</div>
+        <ul v-else class="mb-0 pl-3">
+          <li v-for="name in submittedNames" :key="name.id">{{ name }}</li>
+        </ul>
+      </div> -->
+
+      <b-modal
+        id="modal-prevent-closing"
+        ref="modal"
+        title="New account registration"
+      >
+        <form ref="form" >
+          <b-form-group
+            label="Name"
+            label-for="name-input"
+            invalid-feedback="Name is required"
+          >
+            <b-form-input
+              id="name-input"
+              v-model="account.name"
+              required
+              max="30">
+            </b-form-input>
+            Valor
+            <b-form-input
+              id="email-input"
+              v-model="account.valor"
+              required
+              v-mask="'###,###,##'">
+            </b-form-input>
+            Data
+            <b-form-input 
+              id="email-input"
+              v-model="account.data"
+              type="date"
+              required>
+            </b-form-input>
+            Numero de parcelas
+            <b-form-select 
+              v-model="account.parcelas" 
+              :options="options">
+            </b-form-select>
+          </b-form-group>
+        </form>
+        <b-button variant="success" @click="saves()">Save</b-button> 
+      </b-modal>
+    </div>
   </div>
-  
 </template>
 
 <script>
-export default {
+import { showError } from '@/global'
 
+export default {
+  data() {
+      return {
+        account: {
+          name: '',
+          valor: '',
+          data: '',
+          parcelas: '',
+        },
+        options: [
+          { value: '0x', text: '0 Parcelas' },
+          { value: '1x', text: '1 Parcelas' },
+          { value: '2x', text: '2 Parcelas' },
+          { value: '3x', text: '3 Parcelas' },
+          { value: '4x', text: '4 Parcelas' },
+          { value: '5x', text: '5 Parcelas' },
+          { value: '6x', text: '6 Parcelas' },
+          { value: '7x', text: '7 Parcelas' },
+          { value: '8x', text: '8 Parcelas' },
+          { value: '9x', text: '9 Parcelas' },
+          { value: '10x', text: '10 Parcelas' },
+          { value: '11x', text: '11 Parcelas' },
+          { value: '12x', text: '12 Parcelas' },
+        ]
+      }
+    },
+    methods: {
+      /*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
+      clean() {
+        this.account.name = ''
+        this.account.valor = ''
+        this.account.data = ''
+        this.account.parcelas = ''
+		  },
+      saves() { 
+        this.$http.post('/account/new', this.account)
+				.then(() => {
+          this.clean(),
+          this.account.name = ''
+          this.account.valor = ''
+          this.account.data = ''
+          this.account.parcelas = ''
+          this.$toasted.global.defaultSuccess()
+        }).catch(showError)
+      }
+    }
 }
 </script>
 
-<style scoped>
+<style >
 .menu {
   display: flex;
   flex-direction: column;
@@ -43,5 +134,25 @@ a {
 .btn {
   width: 7rem;
   margin: 0.5rem;
+}
+.modal-header {
+  background: #292929!important;
+  color: #d2d2d2;
+}
+.modal-body {
+  background: #292929!important;
+  color: #d2d2d2;
+}
+.modal-footer {
+  display: none!important;
+}
+.form-control {
+  font-weight: 700!important;
+}
+.modal-header .close {
+  color: #d2d2d2;
+}
+.custom-control-label::before, .custom-file-label, .custom-select {
+  font-weight: 700!important;
 }
 </style>

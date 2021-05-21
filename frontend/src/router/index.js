@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Owing from '../views/Owing.vue';
 import Vanquished from '../views/Vanquished.vue';
+import Edit from '../views/Edit.vue';
+import Paid from '../views/Paid.vue';
 
 Vue.use(VueRouter);
 
@@ -25,10 +27,13 @@ const routes = [
   {
     path: '/paid',
     name: 'paid',
-    // route level code-splitting
-    // this generates a separate chunk (infoPaid.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "infoPaid" */ '../views/Paid.vue'),
+    component: Paid,
+  },
+  {
+    path: '/edit/:id',
+    name: 'edit',
+    props: true,
+    component: Edit,
   },
 ];
 

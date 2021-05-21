@@ -8,6 +8,7 @@
 }
 html, body, #root {
   height: 100%;
-  overflow-x: initial;
+  overflow-x: hidden;
+  overflow-y: initial;
   background: #404040!important;
 }

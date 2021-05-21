@@ -1,53 +1,72 @@
 <template>
-  <div class="home">
-       <h2>Contas Pagas</h2>
-    <div v-for="account in accounts" :key="account.id" >
-      <table class="table-conta">
-        <thead>
-          <tr>
-            <th>Nome</th>    
-            <th>Valor</th>        
-            <th>Data</th>        
-            <th>Pago/Devendo</th>        
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ account.name }}</td>
-            <td>{{ account.valor }}</td>
-            <td>{{ account.data }}</td>
-            <td class="pago-devendo">Pago</td>
-          </tr>            
-        </tbody>
-          <div class="buttons">
-            <button class="pagar" type="button">Pagar</button>        
-            <button class="editar" type="button">Editar</button>    
-            <button class="remover" type="button">Remover</button>  
-          </div>    
-      </table>   
-    </div>
-  </div>
+  <div class="home" >
+    <h2>Paid bills</h2>
+      <div v-for="cont in account" :key="cont.id">
+        <table class="table-conta">
+          <thead>
+            <tr>
+              <th>Name</th>    
+              <th>Value</th>        
+              <th>Date</th>        
+              <th>Paid/Owing</th>        
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ cont.name }}</td>
+              <td>{{ cont.valor }}</td>
+              <td>{{ cont.data }}</td>
+              <td class="pago-devendo">Paid</td>
+            </tr>            
+          </tbody>
+            <div class="buttons">
+              <button class="pagar" type="button">Pay</button>  
+                <router-link :to="`/edit/${cont.id}`">
+                  <button class="editar" @click="loadUser()">To edit</button>               
+                </router-link>      
+              <button class="remover" type="button" @click="remove()">Remove</button>  
+            </div> 
+        </table>   
+      </div>
+    </div>  
 </template>
 
 <script>
 import axios from 'axios';
+import { baseApiUrl, showError } from '@/global'
 
 export default {
   data() {
     return {
-      accounts: [],
-      baseUrl: process.env.BASE_URL,      
+      account: {},
     }
   },
   beforeMount() {
     this.getContas();
   },
-  methods: { 
+  methods: {
+    reset() {
+      this.account = {}
+      this.getContas()
+    },
     getContas() {
-      const url = 'http://localhost:3333/account'
-      axios.get(url).then(res => {
-        this.accounts = res.data
+      const url = `${baseApiUrl}/account`
+        axios.get(url).then(res => {
+        this.account = res.data
       })
+    },
+    loadUser(account) {
+      this.account[account] = { ...account }
+      // console.log(this.account[0])
+    },
+    remove() {
+      const id = this.account[0].id
+        axios.delete(`${baseApiUrl}/account/${id}`)
+          .then(() => {
+            this.$toasted.global.defaultSuccess()
+            this.reset()
+      })
+      .catch(showError)
     },
   },
 };
@@ -55,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  margin-top: 16rem;
+  margin-top: 14rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -75,6 +94,7 @@ export default {
   background: #80b918; 
 }
 .remover {
+  margin-left: 4.5rem;
   background: #bf0603; 
 }
 h2 {
@@ -83,7 +103,7 @@ h2 {
 }
 button {
   width: 5rem;
-  height: 1.5rem;
+  height: 1.8rem;
   color: #d2d2d2;
 
   border-radius: 0.2rem;
@@ -112,6 +132,7 @@ table tr {
   border-bottom: 0.1rem solid #e8e8e8;
 }
 table td {
+  min-width: 10rem;
   border-top: 0.1rem solid #e8e8e8;
   border-bottom: 0.1rem solid #e8e8e8;
   border-radius: 0.5rem;

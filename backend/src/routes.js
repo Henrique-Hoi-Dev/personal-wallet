@@ -17,16 +17,17 @@ routes.get('/account', AccountController.getAll);
 routes.post('/account/new', AccountController.store);
 routes.post('/users/register', UserController.store);
 routes.post('/users/authenticate', SessionController.store);
+routes.put('/account/:id', AccountController.updateAccount);
+routes.get('/account/:id', AccountController.getById);
 
-routes.use(authMiddleware);
+// routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
 
-routes.put('/account/:id', AccountController.updateAccount);
-routes.get('/accounts/:id', AccountController.getById);
+
 routes.delete('/account/:id', AccountController.deleteAccount);
 
 export default routes;
