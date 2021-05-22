@@ -1,12 +1,14 @@
 <template>
   <div class="paid">
-    <h2>Pagar</h2>
+    <InfoAccountTrue />
   </div>
 </template>
 
 <script>
-export default {
+import InfoAccountTrue from '@/components/template/InfoAccountTrue.vue';
 
+export default {
+  components: { InfoAccountTrue }
 }
 </script>
 

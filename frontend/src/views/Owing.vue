@@ -1,12 +1,14 @@
 <template>
   <div class="owing">
-    <h2>devendo</h2>
+    <InfoAccountFalse />
   </div>
 </template>
 
 <script>
-export default {
+import InfoAccountFalse from '@/components/template/InfoAccountFalse.vue';
 
+export default {
+  components: { InfoAccountFalse }
 }
 </script>
 
