@@ -30,7 +30,7 @@ const routes = [
     component: Paid,
   },
   {
-    path: '/edit/:id',
+    path: '/edit/:id/:prop',
     name: 'edit',
     props: true,
     component: Edit,

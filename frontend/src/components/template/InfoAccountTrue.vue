@@ -1,8 +1,8 @@
 <template>
   <div class="home" >
-    <h2>All account</h2>
+    <h2>Paid</h2>
       <div v-for="cont in account" :key="cont.id">
-        <table class="table-conta" >
+        <table class="table-conta" v-if="cont.pago == true">
           <thead>
             <tr>
               <th>Name</th>    
@@ -16,12 +16,10 @@
               <td>{{ cont.name }}</td>
               <td>{{ cont.valor }}</td>
               <td>{{ cont.data }}</td>
-              <td v-if="cont.pago == true" class="paid">Paid</td>
-              <td v-if="cont.pago == false" class="owing">Owing</td>
+              <td class="paid" v-if="cont.pago == true" >Paid</td>
             </tr>            
           </tbody>
             <div class="buttons">
-              <button class="pagar" type="button">Pay</button>  
                 <router-link :to="`/edit/${cont.id}/${cont.name}`">
                   <button class="editar">To edit</button>               
                 </router-link>      
@@ -84,13 +82,7 @@ export default {
 .editar {
   background: #1780a1;
 }
-.owing {
-  background: #bf0603; 
-}
 .paid {
-  background: #80b918; 
-}
-.pagar {
   background: #80b918; 
 }
 .remover {

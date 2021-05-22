@@ -1,8 +1,8 @@
 <template>
   <div class="home" >
-    <h2>All account</h2>
+    <h2>Owing</h2>
       <div v-for="cont in account" :key="cont.id">
-        <table class="table-conta" >
+        <table class="table-conta" v-if="cont.pago == false">
           <thead>
             <tr>
               <th>Name</th>    
@@ -16,12 +16,11 @@
               <td>{{ cont.name }}</td>
               <td>{{ cont.valor }}</td>
               <td>{{ cont.data }}</td>
-              <td v-if="cont.pago == true" class="paid">Paid</td>
-              <td v-if="cont.pago == false" class="owing">Owing</td>
+              <td class="owing" v-if="cont.pago == false">Owing</td>
             </tr>            
           </tbody>
             <div class="buttons">
-              <button class="pagar" type="button">Pay</button>  
+              <button class="pagar" type="button" @click="paidAccount(true)">Pay</button>  
                 <router-link :to="`/edit/${cont.id}/${cont.name}`">
                   <button class="editar">To edit</button>               
                 </router-link>      
@@ -49,6 +48,18 @@ export default {
     reset() {
       this.account = {}
       this.getAccount()
+    },
+    paidAccount() {
+      const id = this.account[0].id
+
+        axios.put(`${baseApiUrl}/account/${id}`)
+          .then(() => {
+            this.account.pago 
+            this.$toasted.global.defaultSuccess()
+            this.reset()
+            console.log('teste', this.account.pago, id )
+      })
+      .catch(showError)
     },
     getAccount() {
       const url = `${baseApiUrl}/account` 
@@ -84,14 +95,11 @@ export default {
 .editar {
   background: #1780a1;
 }
-.owing {
-  background: #bf0603; 
-}
-.paid {
-  background: #80b918; 
-}
 .pagar {
   background: #80b918; 
+}
+.owing {
+  background: #bf0603; 
 }
 .remover {
   margin-left: 4.5rem;
