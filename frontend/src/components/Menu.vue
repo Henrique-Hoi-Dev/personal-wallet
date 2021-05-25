@@ -30,7 +30,7 @@
             <b-form-input
               id="name-input"
               v-model="account.name"
-              placeholder="Full name"
+              placeholder="Name account"
               required
               max="30">
             </b-form-input>

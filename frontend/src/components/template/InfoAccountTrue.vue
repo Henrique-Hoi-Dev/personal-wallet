@@ -23,7 +23,6 @@
                 <router-link :to="`/edit/${cont.id}/${cont.name}`">
                   <button class="editar">To edit</button>               
                 </router-link>      
-              <button class="remover" type="button" @click="remove()">Remove</button>  
             </div> 
         </table>   
       </div>
@@ -32,7 +31,7 @@
 
 <script>
 import axios from 'axios';
-import { baseApiUrl, showError } from '@/global'
+import { baseApiUrl } from '@/global'
 
 export default {
   data() {
@@ -53,15 +52,6 @@ export default {
         axios.get(url).then(res => {
         this.account = res.data
       })
-    },
-    remove() {
-      const id = this.account[0].id
-        axios.delete(`${baseApiUrl}/account/${id}`)
-          .then(() => {
-            this.$toasted.global.defaultSuccess()
-            this.reset()
-      })
-      .catch(showError)
     },
   },
 };

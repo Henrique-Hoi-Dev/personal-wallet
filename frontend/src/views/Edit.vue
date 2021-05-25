@@ -19,12 +19,16 @@
           Pay / Owing
         </b-form-checkbox>
     </div>
+      <div class="buttons">
+        <b-button variant="success" @click="save()">Save</b-button>
+        <b-button variant="danger" @click="deleteAccount()">Delete</b-button>       
+      </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import { baseApiUrl } from '@/global';
+import { baseApiUrl, showError } from '@/global';
 
 export default {
   data() {
@@ -60,6 +64,28 @@ export default {
     }
   },
   methods: {
+    reset() {
+      this.account = {}
+    },
+    save() {
+      const id = this.$route.params.id
+
+        axios.put(`${baseApiUrl}/account/${id}`, this.account)
+          .then(() => {
+            this.$toasted.global.defaultSuccess()
+            this.reset()
+      })
+      .catch(showError)
+    },
+    deleteAccount() {
+      const id = this.$route.params.id
+        axios.delete(`${baseApiUrl}/account/${id}`)
+          .then(() => {
+            this.$toasted.global.defaultSuccess()
+            this.reset()
+      })
+      .catch(showError)
+    },
     getUrl() {
       const id = this.$route.params.id;
 
@@ -75,7 +101,9 @@ export default {
 <style scoped lang="scss">
 .edit {
   display:  flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
 
   margin-top: 15rem;
   color: #d2d2d2;
@@ -89,7 +117,6 @@ export default {
       height: 3rem;
       border-radius: 0.5rem;
   }
-
 }
 .table-edit {
   width: 30rem;
@@ -98,5 +125,10 @@ export default {
   padding: 1.5rem;
   border-radius: 1rem;
   background: #292929;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 </style>
