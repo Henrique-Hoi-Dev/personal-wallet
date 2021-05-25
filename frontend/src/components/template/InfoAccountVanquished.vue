@@ -1,8 +1,11 @@
 <template>
   <div class="home" >
-    <h2>All account</h2>
-      <div v-for="cont in account" :key="cont.id">
-        <table class="table-conta" >
+    <h2>Vanquished</h2>
+      <div v-for="cont in account" :key="cont.id" >
+        <div >
+ 
+        </div>
+        <table class="table-conta" v-if="dateAtual >= cont.data_vencimento">
           <thead>
             <tr>
               <th>Name</th>    
@@ -16,8 +19,7 @@
               <td>{{ cont.name }}</td>
               <td>{{ cont.valor }}</td>
               <td>{{ cont.data_vencimento }}</td>
-              <td v-if="cont.pago == true" class="paid">Paid</td>
-              <td v-if="cont.pago == false" class="owing">Owing</td>
+              <td class="vanquished">Vanquished</td>
             </tr>            
           </tbody>
             <div class="buttons">
@@ -33,12 +35,13 @@
 
 <script>
 import axios from 'axios';
-import { baseApiUrl, showError } from '@/global'
+import { baseApiUrl, showError } from '@/global';
 
 export default {
   data() {
     return {
       account: {},
+      dateAtual: new Date().toLocaleString('pt-BR') 
     }
   },
   beforeMount() {
@@ -83,14 +86,8 @@ export default {
 .editar {
   background: #1780a1;
 }
-.owing {
-  background: #bf0603; 
-}
-.paid {
-  background: #80b918; 
-}
-.pagar {
-  background: #80b918; 
+.vanquished {
+  background: #6C757D; 
 }
 .remover {
   margin-left: 4.5rem;

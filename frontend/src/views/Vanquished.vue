@@ -1,12 +1,13 @@
 <template>
   <div class="vanquished">
-    <h2>Vencido</h2>
+    <InfoAccountVanquished />
   </div>
 </template>
 
 <script>
+import InfoAccountVanquished from '@/components/template/InfoAccountVanquished.vue'
 export default {
-
+  components: { InfoAccountVanquished }
 }
 </script>
 

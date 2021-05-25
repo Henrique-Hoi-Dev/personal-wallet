@@ -3,15 +3,15 @@
     <div>
       <b-card-group deck>
         <b-card header-tag="header">
-          <b-card-text>Header and footers using props.</b-card-text>
+          <b-card-text>000.000,000</b-card-text>
         </b-card>
 
         <b-card header-tag="header">
-          <b-card-text>Header and footers using slots.</b-card-text>
+          <b-card-text>000.000,000</b-card-text>
         </b-card>
 
         <b-card header-tag="header">
-          <b-card-text>Header and footers using slots.</b-card-text>
+          <b-card-text>000.000,000</b-card-text>
         </b-card>
       </b-card-group>
     </div>

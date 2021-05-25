@@ -1,17 +1,23 @@
 <template>
   <div class="edit">
-    <div >
+    <div class="table-edit">
       <h2>Name</h2>
-      <input type="text" v-model="account.name" >
+      <b-form-input type="text" v-model="account.name" />
       <h2>Value</h2>
-      <input type="text" v-model="account.valor" >
+      <b-form-input type="text" v-model="account.valor" />
       <h2>Date</h2>
-      <input type="text" v-model="account.data" >
+      <b-form-input type="text" v-model="account.data_vencimento" />
       <h2>Number of installments</h2>
-      <input type="text" v-model="account.parcelas" >
-      <div  :style="stylePago" >
-        <h2>{{ account.pago }}</h2>
-      </div>
+      <b-form-select type="text" v-model="account.parcelas" :options="options" />
+      <h2>Pay the bill</h2>   
+        <b-form-checkbox
+          :style="stylePago"
+          id="checkbox-1"
+          class="checkbox"
+          v-model="account.pago"
+          name="checkbox-1">
+          Pay / Owing
+        </b-form-checkbox>
     </div>
   </div>
 </template>
@@ -23,7 +29,22 @@ import { baseApiUrl } from '@/global';
 export default {
   data() {
     return {
-      account: {}
+      account: {},
+       options: [
+          { value: '0x', text: '0 Parcelas' },
+          { value: '1x', text: '1 Parcelas' },
+          { value: '2x', text: '2 Parcelas' },
+          { value: '3x', text: '3 Parcelas' },
+          { value: '4x', text: '4 Parcelas' },
+          { value: '5x', text: '5 Parcelas' },
+          { value: '6x', text: '6 Parcelas' },
+          { value: '7x', text: '7 Parcelas' },
+          { value: '8x', text: '8 Parcelas' },
+          { value: '9x', text: '9 Parcelas' },
+          { value: '10x', text: '10 Parcelas' },
+          { value: '11x', text: '11 Parcelas' },
+          { value: '12x', text: '12 Parcelas' },
+        ],
     }
   },
   beforeMount() {
@@ -51,9 +72,31 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .edit {
-  margin-top: 14rem;
-  color: aliceblue;
+  display:  flex;
+  justify-content: center;
+
+  margin-top: 15rem;
+  color: #d2d2d2;
+
+    .checkbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 3rem;
+      border-radius: 0.5rem;
+  }
+
+}
+.table-edit {
+  width: 30rem;
+  height: 30rem;
+
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #292929;
 }
 </style>

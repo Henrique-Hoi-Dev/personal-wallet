@@ -16,14 +16,6 @@
       <div>
       <b-button variant="dark" v-b-modal.modal-prevent-closing>Register</b-button>
 
-      <!-- <div class="mt-3">
-        Submitted Names:
-        <div v-if="submittedNames.length === 0">--</div>
-        <ul v-else class="mb-0 pl-3">
-          <li v-for="name in submittedNames" :key="name.id">{{ name }}</li>
-        </ul>
-      </div> -->
-
       <b-modal
         id="modal-prevent-closing"
         ref="modal"
@@ -38,24 +30,29 @@
             <b-form-input
               id="name-input"
               v-model="account.name"
+              placeholder="Full name"
               required
               max="30">
             </b-form-input>
-            Valor
+            Value
             <b-form-input
-              id="email-input"
+              id="valor-input"
               v-model="account.valor"
+              placeholder="000.000,00"
               required
-              v-mask="'###,###,##'">
+              >
             </b-form-input>
-            Data
+            Date vanquished
             <b-form-input 
-              id="email-input"
-              v-model="account.data"
-              type="date"
-              required>
-            </b-form-input>
-            Numero de parcelas
+              id="data-input"
+              v-model="account.data_vencimento"
+              type="text"
+              required
+              max="10"
+              placeholder="99/99/9999"
+              v-mask="'##/##/####'">>
+            </b-form-input>          
+            Number of installments
             <b-form-select 
               v-model="account.parcelas" 
               :options="options">
@@ -77,7 +74,7 @@ export default {
         account: {
           name: '',
           valor: '',
-          data: '',
+          data_vencimento: '',
           parcelas: '',
         },
         options: [
@@ -94,15 +91,15 @@ export default {
           { value: '10x', text: '10 Parcelas' },
           { value: '11x', text: '11 Parcelas' },
           { value: '12x', text: '12 Parcelas' },
-        ]
+        ],
       }
     },
-    methods: {
+    methods: { 
       /*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
       clean() {
         this.account.name = ''
         this.account.valor = ''
-        this.account.data = ''
+        this.account.data_vencimento = ''
         this.account.parcelas = ''
 		  },
       saves() { 
@@ -111,7 +108,7 @@ export default {
           this.clean(),
           this.account.name = ''
           this.account.valor = ''
-          this.account.data = ''
+          this.account.data_vencimento = ''
           this.account.parcelas = ''
           this.$toasted.global.defaultSuccess()
         }).catch(showError)

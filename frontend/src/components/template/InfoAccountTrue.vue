@@ -15,7 +15,7 @@
             <tr>
               <td>{{ cont.name }}</td>
               <td>{{ cont.valor }}</td>
-              <td>{{ cont.data }}</td>
+              <td>{{ cont.data_vencimento }}</td>
               <td class="paid" v-if="cont.pago == true" >Paid</td>
             </tr>            
           </tbody>
