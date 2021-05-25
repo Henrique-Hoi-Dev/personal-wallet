@@ -15,12 +15,11 @@
             <tr>
               <td>{{ cont.name }}</td>
               <td>{{ cont.valor }}</td>
-              <td>{{ cont.data }}</td>
+              <td>{{ cont.data_vencimento }}</td>
               <td class="owing" v-if="cont.pago == false">Owing</td>
             </tr>            
           </tbody>
             <div class="buttons">
-              <button class="pagar" type="button" @click="paidAccount(true)">Pay</button>  
                 <router-link :to="`/edit/${cont.id}/${cont.name}`">
                   <button class="editar">To edit</button>               
                 </router-link>      
@@ -38,7 +37,9 @@ import { baseApiUrl, showError } from '@/global'
 export default {
   data() {
     return {
-      account: {},
+      account: {
+        pago: true
+      },
     }
   },
   beforeMount() {
@@ -49,18 +50,6 @@ export default {
       this.account = {}
       this.getAccount()
     },
-    paidAccount() {
-      const id = this.account[0].id
-
-        axios.put(`${baseApiUrl}/account/${id}`)
-          .then(() => {
-            this.account.pago 
-            this.$toasted.global.defaultSuccess()
-            this.reset()
-            console.log('teste', this.account.pago, id )
-      })
-      .catch(showError)
-    },
     getAccount() {
       const url = `${baseApiUrl}/account` 
         axios.get(url).then(res => {
@@ -69,6 +58,7 @@ export default {
     },
     remove() {
       const id = this.account[0].id
+
         axios.delete(`${baseApiUrl}/account/${id}`)
           .then(() => {
             this.$toasted.global.defaultSuccess()
@@ -91,6 +81,9 @@ export default {
 .buttons {
   display: flex;
   flex-direction: row;
+}
+#checkbox-1 {
+  display: none;
 }
 .editar {
   background: #1780a1;

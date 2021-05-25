@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      data: {
+      data_vencimento: {
         type: Sequelize.STRING,
         allowNull: false,
       },
