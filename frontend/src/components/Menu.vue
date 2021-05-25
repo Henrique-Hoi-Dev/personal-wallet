@@ -14,7 +14,7 @@
     </router-link> 
       <!-- Modal que sera feito o cadastro da novas contas -->
       <div>
-      <b-button variant="dark" v-b-modal.modal-prevent-closing>Register</b-button>
+      <b-button variant="warning" v-b-modal.modal-prevent-closing>Register</b-button>
 
       <b-modal
         id="modal-prevent-closing"
