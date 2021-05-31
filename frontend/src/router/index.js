@@ -5,42 +5,53 @@ import Owing from '../views/Owing.vue';
 import Vanquished from '../views/Vanquished.vue';
 import Edit from '../views/Edit.vue';
 import Paid from '../views/Paid.vue';
+import Auth from '@/auth/Auth.vue';
+
+// import { userKey } from '@/global'
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{ 
     path: '/',
     name: 'Home',
     component: Home,
-  },
-  {
+  },{
     path: '/owing',
     name: 'Owing',
     component: Owing,
-  },
-  {
+  },{
     path: '/vanquished',
     name: 'Vanquished',
     component: Vanquished,
-  },
-  {
+  },{
     path: '/paid',
     name: 'paid',
     component: Paid,
-  },
-  {
+  },{
     path: '/edit/:id/:prop',
     name: 'edit',
     props: true,
     component: Edit,
-  },
-];
+  },{
+    path: '/auth',
+    name: 'auth',
+    component: Auth
+}];
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   const json = localStorage.getItem(userKey)
+
+//   if(to.matched.some(record => record.meta.requiresAdmin)) {
+//       const user = JSON.parse(json)
+//       user && user.admin ? next() : next({ path: '/' })
+//   } else {
+//       next()
+//   }
+// })
 
 export default router;

@@ -14,7 +14,7 @@
     </router-link> 
       <!-- Modal que sera feito o cadastro da novas contas -->
       <div>
-      <b-button variant="dark" v-b-modal.modal-prevent-closing>Register</b-button>
+      <b-button class="new-account" v-b-modal.modal-prevent-closing>New  Account</b-button>
 
       <b-modal
         id="modal-prevent-closing"
@@ -49,12 +49,12 @@
               type="text"
               required
               max="10"
-              placeholder="99/99/9999"
+              placeholder="DD/MM/YYYY"
               v-mask="'##/##/####'">>
             </b-form-input>          
             Number of installments
             <b-form-select 
-              v-model="account.parcelas" 
+              v-model="account.parcelas"
               :options="options">
             </b-form-select>
           </b-form-group>
@@ -66,7 +66,8 @@
 </template>
 
 <script>
-import { showError } from '@/global'
+import axios from 'axios'
+import { baseApiUrl, showError } from '@/global'
 
 export default {
   data() {
@@ -75,22 +76,22 @@ export default {
           name: '',
           valor: '',
           data_vencimento: '',
-          parcelas: '',
+          parcelas: null,
         },
         options: [
-          { value: '0x', text: '0 Parcelas' },
-          { value: '1x', text: '1 Parcelas' },
-          { value: '2x', text: '2 Parcelas' },
-          { value: '3x', text: '3 Parcelas' },
-          { value: '4x', text: '4 Parcelas' },
-          { value: '5x', text: '5 Parcelas' },
-          { value: '6x', text: '6 Parcelas' },
-          { value: '7x', text: '7 Parcelas' },
-          { value: '8x', text: '8 Parcelas' },
-          { value: '9x', text: '9 Parcelas' },
-          { value: '10x', text: '10 Parcelas' },
-          { value: '11x', text: '11 Parcelas' },
-          { value: '12x', text: '12 Parcelas' },
+          { value: null, text: 'Select number of installments' },
+          { value: '1x', text: '1x Installments' },
+          { value: '2x', text: '2x Installments' },
+          { value: '3x', text: '3x Installments' },
+          { value: '4x', text: '4x Installments' },
+          { value: '5x', text: '5x Installments' },
+          { value: '6x', text: '6x Installments' },
+          { value: '7x', text: '7x Installments' },
+          { value: '8x', text: '8x Installments' },
+          { value: '9x', text: '9x Installments' },
+          { value: '10x', text: '10x Installments' },
+          { value: '11x', text: '11x Installments' },
+          { value: '12x', text: '12x Installments' },
         ],
       }
     },
@@ -103,13 +104,9 @@ export default {
         this.account.parcelas = ''
 		  },
       saves() { 
-        this.$http.post('/account/new', this.account)
+        axios.post(`${baseApiUrl}/account/new`, this.account)
 				.then(() => {
           this.clean(),
-          this.account.name = ''
-          this.account.valor = ''
-          this.account.data_vencimento = ''
-          this.account.parcelas = ''
           this.$toasted.global.defaultSuccess()
         }).catch(showError)
       }
@@ -131,6 +128,13 @@ a {
 .btn {
   width: 7rem;
   margin: 0.5rem;
+}
+.new-account {
+  background: #ad2831!important;
+  border: none!important;
+}
+.new-account:hover {
+  opacity: 80%;
 }
 .modal-header {
   background: #292929!important;
