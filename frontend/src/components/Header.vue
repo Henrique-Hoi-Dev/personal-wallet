@@ -1,13 +1,15 @@
 <template>
   <div class="menu">
     <div class="avatar">   
-      <div class="avatar-info">
-        <b-avatar>
-        </b-avatar>
-        <h2>Henrique Hoinacki</h2>
+      <div class="avatar-info" v-for="users in user" :key="users.id">
+        <h2>{{ users.name }}</h2>
       </div>
       <div class="button-info">
-        <button type="button">Exit</button>
+        <button type="button">
+          <a href  @click="logout">
+            Exit
+          </a>  
+        </button>
         <button class="profile" type="button">Profile</button>
       </div>
     </div>
@@ -17,9 +19,19 @@
 
 <script>
 import InfoCard from '@/components/template/InfoCard.vue'
+import { userKey } from '@/global'
+import { mapState } from 'vuex'
 
 export default {
-  components: { InfoCard } 
+  components: { InfoCard },
+  computed: mapState(['user']),
+  methods: {
+    logout() {
+      localStorage.removeItem(userKey)
+      this.$store.commit('setUser', null)
+      this.$router.push({ name: 'auth' })
+  }
+}, 
 }
 </script>
 
