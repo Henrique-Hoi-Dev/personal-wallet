@@ -5,9 +5,8 @@ import Owing from '../views/Owing.vue';
 import Vanquished from '../views/Vanquished.vue';
 import Edit from '../views/Edit.vue';
 import Paid from '../views/Paid.vue';
+import Profile from '../views/Profile.vue';
 import Auth from '@/auth/Auth.vue';
-
-// import { userKey } from '@/global'
 
 Vue.use(VueRouter);
 
@@ -15,6 +14,11 @@ const routes = [{
     path: '/',
     name: 'Home',
     component: Home,
+  },{
+    path: '/profile',
+    name: 'profile',
+    props: true,
+    component: Profile,
   },{
     path: '/owing',
     name: 'Owing',
@@ -42,16 +46,5 @@ const router = new VueRouter({
   mode: 'history',
   routes,
 });
-
-// router.beforeEach((to, from, next) => {
-//   const json = localStorage.getItem(userKey)
-
-//   if(to.matched.some(record => record.meta.requiresAdmin)) {
-//       const user = JSON.parse(json)
-//       user && user.admin ? next() : next({ path: '/' })
-//   } else {
-//       next()
-//   }
-// })
 
 export default router;

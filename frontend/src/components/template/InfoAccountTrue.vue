@@ -7,15 +7,15 @@
             <tr>
               <th>Name</th>    
               <th>Value</th>        
-              <th>Date</th>        
+              <th>Date expired</th>        
               <th>Paid/Owing</th>        
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{{ cont.name }}</td>
-              <td>{{ cont.valor }}</td>
-              <td>{{ cont.data_vencimento }}</td>
+              <td>{{ cont.valor | currencyFormat }}</td>
+              <td>{{ cont.data_vencimento | dateFormat }}</td>
               <td class="paid" v-if="cont.pago == true" >Paid</td>
             </tr>            
           </tbody>
@@ -32,8 +32,10 @@
 <script>
 import axios from 'axios';
 import { baseApiUrl } from '@/global'
+import mixinFilter from '@/plugins/mixinFilter'
 
 export default {
+  mixins: [mixinFilter],
   data() {
     return {
       account: {},
