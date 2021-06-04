@@ -2,21 +2,23 @@
   <div class="menu">
     <div class="avatar">
       <b-avatar src="https://placekitten.com/300/300" size="6rem" /> 
-      <h2 v-for="users in user" :key="users.id" >{{ users.name }}</h2> 
+      <h2 v-for="users in user" :key="users.id" >{{ users.name }}</h2>
     </div>
+     <!-- <InfoCard id="card"/>  -->
+
     <div class="button-info">
       <button type="button">
         <a href  @click.prevent="logout">
           Exit...
         </a>
       </button>
-      <router-link to="#">
+      <router-link to="/profile">
         <button >Profile</button>
       </router-link>  
     </div>
       
     
-    <!-- <InfoCard id="card"/> -->
+    
   </div>
 </template>
 

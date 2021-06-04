@@ -2,23 +2,23 @@
   <div class="home" >
     <h2>Vanquished</h2>
       <div v-for="cont in account" :key="cont.id" >
-        <div >
- 
+        <div v-if="cont.createdAt <= cont.data_vencimento">
+
         </div>
-        <table class="table-conta" v-if="dateAtual >= cont.data_vencimento">
+        <table class="table-conta" v-else>
           <thead>
             <tr>
               <th>Name</th>    
               <th>Value</th>        
-              <th>Date</th>        
+              <th>Date expired</th>        
               <th>Paid/Owing</th>        
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{{ cont.name }}</td>
-              <td>{{ cont.valor }}</td>
-              <td>{{ cont.data_vencimento }}</td>
+              <td>{{ cont.valor | currencyFormat }}</td>
+              <td>{{ cont.data_vencimento | dateFormat }}</td>
               <td class="vanquished">Vanquished</td>
             </tr>            
           </tbody>
@@ -35,12 +35,13 @@
 <script>
 import axios from 'axios';
 import { baseApiUrl } from '@/global';
+import mixinFilter from '@/plugins/mixinFilter'
 
 export default {
+  mixins: [mixinFilter],
   data() {
     return {
       account: {},
-      dateAtual: new Date().toLocaleString('pt-BR') 
     }
   },
   beforeMount() {

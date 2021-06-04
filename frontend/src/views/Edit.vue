@@ -5,8 +5,9 @@
       <b-form-input type="text" v-model="account.name" />
       <h2>Value</h2>
       <b-form-input type="text" v-model="account.valor" />
-      <h2>Date</h2>
-      <b-form-input type="text" v-model="account.data_vencimento" />
+      <h2>Date expired</h2>
+      <b-form-input type="date" v-model="account.data_vencimento" />
+      <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4>
       <h2>Number of installments</h2>
       <b-form-select type="text" v-model="account.parcelas" :options="options" />
       <h2>Pay the bill</h2>   
@@ -14,8 +15,7 @@
           :style="stylePago"
           id="checkbox-1"
           class="checkbox"
-          v-model="account.pago"
-          name="checkbox-1">
+          v-model="account.pago">
           Pay / Owing
         </b-form-checkbox>
     </div>
@@ -29,8 +29,10 @@
 <script>
 import axios from 'axios';
 import { baseApiUrl, showError } from '@/global';
+import mixinFilter from '@/plugins/mixinFilter'
 
 export default {
+  mixins: [mixinFilter],
   data() {
     return {
       account: {},
@@ -103,9 +105,8 @@ export default {
   display:  flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 
-  margin-top: 15rem;
+  margin-top: 12rem;
   color: #d2d2d2;
 
     .checkbox {
@@ -116,11 +117,15 @@ export default {
       width: 100%;
       height: 3rem;
       border-radius: 0.5rem;
-  }
+    }
+    h4 {
+      font-size: 1rem;
+      color: #bf0603;
+    }
 }
 .table-edit {
   width: 30rem;
-  height: 30rem;
+  height: 35rem;
 
   padding: 1.5rem;
   border-radius: 1rem;

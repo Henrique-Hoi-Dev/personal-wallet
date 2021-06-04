@@ -46,11 +46,9 @@
             <b-form-input 
               id="data-input"
               v-model="account.data_vencimento"
-              type="text"
+              type="date"
               required
-              max="10"
-              placeholder="DD/MM/YYYY"
-              v-mask="'##/##/####'">>
+              max="10">
             </b-form-input>          
             Number of installments
             <b-form-select 
