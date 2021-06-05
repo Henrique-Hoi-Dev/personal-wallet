@@ -20,7 +20,8 @@ routes.post('/validateToken', SessionController.validateToken);
 
 routes.use(authMiddleware);
 
-routes.put('/users', UserController.update);
+routes.put('/user', UserController.update);
+routes.get('/user', UserController.getUser);
 
 routes.post('/files', upload.single('file'), FileController.store);
 

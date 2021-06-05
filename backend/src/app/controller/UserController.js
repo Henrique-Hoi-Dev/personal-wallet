@@ -94,5 +94,23 @@ class UserController {
       avatar,
     });
   }
+
+  async getUser(req, res) {
+    try {
+      let user = await User.findAll({
+        include: [
+          {
+            model: File,
+            as: 'avatar',
+            attributes: ['id', 'path', 'url'],
+          },
+        ],
+      });
+
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
 }
 export default new UserController();

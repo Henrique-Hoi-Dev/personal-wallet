@@ -1,48 +1,56 @@
 <template>
-  <div class="menu">
-    <div class="avatar">
-      <b-avatar src="https://placekitten.com/300/300" size="6rem" /> 
-      <h2 v-for="users in user" :key="users.id" >{{ users.name }}</h2>
-    </div>
-     <!-- <InfoCard id="card"/>  -->
-
-    <div class="button-info">
-      <button type="button">
-        <a href  @click.prevent="logout">
-          Exit...
-        </a>
-      </button>
-      <router-link to="/profile">
-        <button >Profile</button>
-      </router-link>  
-    </div>
-      
-    
-    
+  <div class="header">
+      <div class="avatar">
+        <b-avatar src="https://placekitten.com/300/300" size="6rem" /> 
+        <h2 v-for="use in user" :key="use.name">{{ use.name }}</h2>
+      </div>
+      <div class="button-info">
+        <button type="button">
+          <a href  @click.prevent="logout">
+            Exit...
+          </a>
+        </button>
+        <div v-for="user1 in user" :key="user1.id">
+          <router-link :to="`/profile/${user1.id}`">
+            <button class="profile-b" >Profile</button>
+          </router-link>
+        </div>
+          
+      </div>
   </div>
 </template>
 
 <script>
-// import InfoCard from '@/components/template/InfoCard.vue'
-import { userKey } from '@/global'
-import { mapState } from 'vuex'
+import { baseApiUrl, userKey } from '@/global'
+import axios from 'axios'
 
 export default {
-  // components: { InfoCard },
-  computed: mapState(['user']),
+  data() {
+    return {
+      user: {},
+    }
+  },
+   beforeMount() {
+    this.getUser();
+  },
   methods: {
     logout() {
       localStorage.removeItem(userKey)
       this.$store.commit('setUser', null)
       this.$router.push({ name: 'auth' })
-      console.log(userKey)
-    }
+    },
+    getUser() {
+      const url = `${baseApiUrl}/user` 
+        axios.get(url).then(res => {
+        this.user = res.data
+      })
+    },
   }, 
 }
 </script>
 
 <style lang="scss" scoped>
-.menu {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -93,5 +101,12 @@ export default {
         text-decoration: none;
       }
   }
+}
+.profile-b {
+  background: #2b2d42!important;
+
+    &:hover {
+      opacity: 95%!important;
+    }
 }
 </style>
