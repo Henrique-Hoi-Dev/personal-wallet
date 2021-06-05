@@ -64,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  margin-top: 14rem;
+  margin-top: 16rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
