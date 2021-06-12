@@ -13,17 +13,17 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-
 routes.post('/users/signup', UserController.store);
 routes.post('/users/signin', SessionController.store);
 routes.post('/validateToken', SessionController.validateToken);
 
 routes.use(authMiddleware);
 
-routes.put('/user', UserController.update);
-routes.get('/user', UserController.getUser);
-
 routes.post('/files', upload.single('file'), FileController.store);
+
+routes.put('/user/:id', UserController.update);
+routes.get('/user', UserController.getAllUser);
+routes.get('/user/:id', UserController.getIdUser);
 
 routes.post('/account/new', AccountController.store);
 routes.put('/account/:id', AccountController.updateAccount);

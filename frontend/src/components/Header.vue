@@ -1,52 +1,51 @@
 <template>
   <div class="header">
-      <div class="avatar">
-        <b-avatar src="https://placekitten.com/300/300" size="6rem" /> 
-        <h2 v-for="use in user" :key="use.name">{{ use.name }}</h2>
+    <div class="avatar" v-for="use in user" :key="use.name">
+      <b-avatar src="https://placekitten.com/300/300" size="6rem" />
+      <h2>{{ use.name }}</h2>
+    </div>
+    <div class="button-info">
+      <button type="button">
+        <a href @click.prevent="logout">
+          Exit...
+        </a>
+      </button>
+      <div v-for="user1 in user" :key="user1.id">
+        <router-link :to="`/profile/${user1.id}/${user1.name}`">
+          <button class="profile-b">Profile</button>
+        </router-link>
       </div>
-      <div class="button-info">
-        <button type="button">
-          <a href  @click.prevent="logout">
-            Exit...
-          </a>
-        </button>
-        <div v-for="user1 in user" :key="user1.id">
-          <router-link :to="`/profile/${user1.id}`">
-            <button class="profile-b" >Profile</button>
-          </router-link>
-        </div>
-          
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { baseApiUrl, userKey } from '@/global'
-import axios from 'axios'
+import { baseApiUrl, userKey } from "@/global";
+import axios from "axios";
 
 export default {
   data() {
     return {
-      user: {},
-    }
+      user: {}
+    };
   },
-   beforeMount() {
+  beforeMount() {
     this.getUser();
   },
   methods: {
     logout() {
-      localStorage.removeItem(userKey)
-      this.$store.commit('setUser', null)
-      this.$router.push({ name: 'auth' })
+      localStorage.removeItem(userKey);
+      this.$store.commit("setUser", null);
+      this.$router.push({ name: "auth" });
     },
     getUser() {
-      const url = `${baseApiUrl}/user` 
-        axios.get(url).then(res => {
-        this.user = res.data
-      })
-    },
-  }, 
-}
+      const url = `${baseApiUrl}/user`;
+      axios.get(url).then(res => {
+        this.user = res.data;
+      });
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -66,20 +65,20 @@ export default {
 .avatar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; 
+  justify-content: space-between;
 
-    h2 {
-      margin-left: 1rem;
-    }
+  h2 {
+    margin-left: 1rem;
+  }
 }
 .b-avatar {
-  border: 5px solid #A1FF0A!important;
+  border: 5px solid #a1ff0a !important;
 }
 .button-info {
   display: flex;
   flex-direction: column;
 
-  button  {
+  button {
     width: 5rem;
     height: 2rem;
 
@@ -91,22 +90,22 @@ export default {
 
     background: brown;
 
-      &:hover {
-        opacity: 90%;
-      }
+    &:hover {
+      opacity: 90%;
+    }
 
-      a {
-        font: 1.1rem Itim;
-        color: #d2d2d2;
-        text-decoration: none;
-      }
+    a {
+      font: 1.1rem Itim;
+      color: #d2d2d2;
+      text-decoration: none;
+    }
   }
 }
 .profile-b {
-  background: #2b2d42!important;
+  background: #2b2d42 !important;
 
-    &:hover {
-      opacity: 95%!important;
-    }
+  &:hover {
+    opacity: 95% !important;
+  }
 }
 </style>

@@ -1,67 +1,66 @@
 <template>
-  <div id="app" :class="{'hide-menu': !user}">
-      <Auth v-if="!user" />
-      <div id="nav" v-else >
-        <Menu id="menu" />
-      <main >
+  <div id="app" :class="{ 'hide-menu': !user }">
+    <Auth v-if="!user" />
+    <div id="nav" v-else>
+      <Menu id="menu" />
+      <main>
         <InfoCard id="info" />
-        <Header id="header"/>
+        <Header id="header" />
         <Loading v-if="validatingToken" />
-        <router-view v-else/> 
-      </main>  
+        <router-view v-else />
+      </main>
     </div>
   </div>
 </template>
 <script>
-import Auth from '@/auth/Auth.vue';
-import Header from '@/components/Header.vue';
-import Menu from '@/components/Menu.vue';
-import Loading from '@/components/template/Loading.vue';
-import InfoCard from '@/components/template/InfoCard.vue';
+import Auth from "@/auth/Auth.vue";
+import Header from "@/components/Header.vue";
+import Menu from "@/components/Menu.vue";
+import Loading from "@/components/template/Loading.vue";
+import InfoCard from "@/components/template/InfoCard.vue";
 
-import axios from "axios"
-import { baseApiUrl, userKey } from "@/global"
-import { mapState } from "vuex"
+import axios from "axios";
+import { baseApiUrl, userKey } from "@/global";
+import { mapState } from "vuex";
 
 export default {
   components: { Header, Menu, Loading, Auth, InfoCard },
-  computed: mapState(['user']),
+  computed: mapState(["user"]),
   data: function() {
-		return {
-			validatingToken: true
-		}
-	},
+    return {
+      validatingToken: true
+    };
+  },
   methods: {
-		async validateToken() {
-			this.validatingToken = true
+    async validateToken() {
+      this.validatingToken = true;
 
-			const json = localStorage.getItem(userKey)
-			const userData = JSON.parse(json)
-			this.$store.commit('setUser', null)
+      const json = localStorage.getItem(userKey);
+      const userData = JSON.parse(json);
+      this.$store.commit("setUser", null);
 
-			if(!userData) {
-				this.validatingToken = false
-				this.$router.push({ name: 'auth' })
-				return
-			}
+      if (!userData) {
+        this.validatingToken = false;
+        this.$router.push({ name: "auth" });
+        return;
+      }
 
-			const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
+      const res = await axios.post(`${baseApiUrl}/validateToken`, userData);
 
-			if (res.data) {
-				this.$store.commit('setUser', userData)
+      if (res.data) {
+        this.$store.commit("setUser", userData);
+      } else {
+        localStorage.removeItem(userKey);
+        this.$router.push({ name: "auth" });
+      }
 
-			} else {
-				localStorage.removeItem(userKey)
-				this.$router.push({ name: 'auth' })
-			}
-
-			this.validatingToken = false
-		}
-	},
-	created() {
-		this.validateToken()
-	}
-}
+      this.validatingToken = false;
+    }
+  },
+  created() {
+    this.validateToken();
+  }
+};
 </script>
 
 <style lang="scss">
@@ -99,5 +98,6 @@ export default {
   position: fixed;
   top: 0rem;
   width: 100%;
+  z-index: 1;
 }
 </style>
