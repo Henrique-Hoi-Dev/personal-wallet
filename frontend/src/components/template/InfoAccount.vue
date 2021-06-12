@@ -1,70 +1,69 @@
 <template>
-  <div class="home" >
+  <div class="home">
     <h2>All account</h2>
-      <div v-for="cont in account" :key="cont.id">
-        <table class="table-conta" >
-          <thead>
-            <tr>
-              <th>Name</th>    
-              <th>Value</th>        
-              <th>Date expired</th>        
-              <th>Paid/Owing</th>        
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ cont.name }}</td>
-              <td>{{ cont.valor | currencyFormat }}</td>
-              <td>{{ cont.data_vencimento | dateFormat }}</td>
-              <td v-if="cont.pago == true" class="paid">Paid</td>
-              <td v-if="cont.pago == false" class="owing">Owing</td>
-            </tr>            
-          </tbody>
-            <div class="buttons">
-                <router-link :to="`/edit/${cont.id}/${cont.name}`">
-                  <button class="editar">To edit</button>               
-                </router-link>      
-            </div> 
-        </table>   
-      </div>
-    </div>  
+    <div v-for="cont in account" :key="cont.id">
+      <table class="table-conta">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Date expired</th>
+            <th>Paid/Owing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ cont.name }}</td>
+            <td>{{ cont.valor | currencyFormat }}</td>
+            <td>{{ cont.data_vencimento | dateFormat }}</td>
+            <td v-if="cont.pago == true" class="paid">Paid</td>
+            <td v-if="cont.pago == false" class="owing">Owing</td>
+          </tr>
+        </tbody>
+        <div class="buttons">
+          <router-link :to="`/edit/${cont.id}/${cont.name}`">
+            <button class="editar">To edit</button>
+          </router-link>
+        </div>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { baseApiUrl } from '@/global'
-import mixinFilter from '@/plugins/mixinFilter'
+import axios from "axios";
+import { baseApiUrl } from "@/global";
+import mixinFilter from "@/plugins/mixinFilter";
 
 export default {
   mixins: [mixinFilter],
   data() {
     return {
-      account: {},
-    }
+      account: {}
+    };
   },
   beforeMount() {
     this.getAccount();
   },
   methods: {
     reset() {
-      this.account = {}
-      this.getAccount()
+      this.account = {};
+      this.getAccount();
     },
     getAccount() {
-      const url = `${baseApiUrl}/account` 
-        axios.get(url).then(res => {
-        this.account = res.data
-      })
-    },
-  },
+      const url = `${baseApiUrl}/account`;
+      axios.get(url).then(res => {
+        this.account = res.data;
+      });
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
-  margin-top: 16rem;
+  margin: 18rem 0 0 10rem;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
@@ -76,17 +75,17 @@ export default {
   background: #1780a1;
 }
 .owing {
-  background: #bf0603; 
+  background: #bf0603;
 }
 .paid {
-  background: #80b918; 
+  background: #80b918;
 }
 .pagar {
-  background: #80b918; 
+  background: #80b918;
 }
 .remover {
   margin-left: 4.5rem;
-  background: #bf0603; 
+  background: #bf0603;
 }
 h2 {
   color: #d2d2d2;
@@ -100,10 +99,10 @@ button {
   border-radius: 0.2rem;
   margin-top: 1rem;
   margin-left: 1rem;
-  
+
   &:hover {
     opacity: 90%;
-    border: 2px solid #d2d2d2; 
+    border: 2px solid #d2d2d2;
   }
 }
 .table-conta {
@@ -128,7 +127,8 @@ table td {
   border-bottom: 0.1rem solid #e8e8e8;
   border-radius: 0.5rem;
 }
-td,th {
+td,
+th {
   border-top: 0.1rem solid #e8e8e8;
   border-bottom: 0.1rem solid #e8e8e8;
   border-radius: 0.5rem;
@@ -136,4 +136,3 @@ td,th {
   text-align: center;
 }
 </style>
-

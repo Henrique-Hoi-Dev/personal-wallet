@@ -17,16 +17,10 @@ class UserController {
     const userExist = await User.findOne({ where: { email: req.body.email } });
 
     if (userExist) {
-      return res
-        .status(400)
-        .json({ error: 'This user email already exists' });
+      return res.status(400).json({ error: 'This user email already exists' });
     }
 
-    const {
-      id,
-      name,
-      email,
-    } = await User.create(req.body);
+    const { id, name, email } = await User.create(req.body);
 
     return res.json({
       id,
@@ -73,11 +67,7 @@ class UserController {
     }
 
     await user.update(req.body);
-    const {
-      id,
-      name,
-      avatar,
-    } = await User.findByPk(req.userId, {
+    const { id, name, avatar } = await User.findByPk(req.userId, {
       include: [
         {
           model: File,
@@ -95,7 +85,7 @@ class UserController {
     });
   }
 
-  async getUser(req, res) {
+  async getAllUser(req, res) {
     try {
       let user = await User.findAll({
         include: [
@@ -106,6 +96,17 @@ class UserController {
           },
         ],
       });
+
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+  async getIdUser(req, res) {
+    try {
+      let { id } = req.params;
+
+      let user = await User.findByPk(id);
 
       return res.status(200).json(user);
     } catch (error) {

@@ -32,21 +32,21 @@ export default {
         }
     },
     methods: {
-        signin() {
-            axios.post(`${baseApiUrl}/users/signin`, this.user)
-                .then(res => {
-                    this.$store.commit('setUser', res.data)
-                    localStorage.setItem(userKey, JSON.stringify(res.data))
-                    this.$router.push({ path: '/' })
-                })
-                .catch(showError)
-        },
         signup() {
             axios.post(`${baseApiUrl}/users/signup`, this.user)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.user = {}
                     this.showSignup = false
+                })
+                .catch(showError)
+        },
+        signin() {
+            axios.post(`${baseApiUrl}/users/signin`, this.user)
+                .then(res => {
+                    this.$store.commit('setUser', res.data)
+                    localStorage.setItem(userKey, JSON.stringify(res.data))
+                    this.$router.push({ path: '/' })
                 })
                 .catch(showError)
         }
