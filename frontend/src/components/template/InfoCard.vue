@@ -19,9 +19,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
@@ -31,11 +29,12 @@ export default {
   background: #404040;
 
   margin-top: 9.5rem;
-  margin-right: 0px!important;
-  margin-left: 0px!important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
 }
 .card-deck .card {
-  margin: 2rem; 
+  margin: 2rem;
+  margin-bottom: 15px !important;
 
   max-width: 20rem;
   color: #d2d2d2;

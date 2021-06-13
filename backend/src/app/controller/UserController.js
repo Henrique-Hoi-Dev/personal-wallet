@@ -106,9 +106,21 @@ class UserController {
     try {
       let { id } = req.params;
 
-      let user = await User.findByPk(id);
+      let { name, email, avatar } = await User.findByPk(id, {
+        include: [
+          {
+            model: File,
+            as: 'avatar',
+            attributes: ['id', 'path', 'url'],
+          },
+        ],
+      });
 
-      return res.status(200).json(user);
+      return res.status(200).json({
+        name,
+        email,
+        avatar,
+      });
     } catch (error) {
       return res.status(400).json(error);
     }

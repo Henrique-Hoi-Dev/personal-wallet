@@ -52,20 +52,20 @@ class SessionController {
     });
   }
 
-  async validateToken  (req, res)  {
-    const userData = req.body || null
+  async validateToken(req, res) {
+    const userData = req.body || null;
     try {
-        if(userData) {
-            const token = jwt.decode(userData.token, authConfig.secret)
-            if(new Date(token.exp * 1000) > new Date()) {
-                return res.send(true)
-            }
+      if (userData) {
+        const token = jwt.decode(userData.token, authConfig.secret);
+        if (new Date(token.exp * 1000) > new Date()) {
+          return res.send(true);
         }
-    } catch(e) {
-        // problema com o token
+      }
+    } catch (e) {
+      // problema com o token
     }
 
-    res.send(false)
+    res.send(false);
   }
 }
 

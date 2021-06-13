@@ -25,12 +25,12 @@
       </label>
       <hr />
       <label class="input">
-        <input class="input__field" type="password" placeholder=" " v-model="user.password" />
-        <span class="input__label">New password</span>
+        <input class="input__field" type="password" placeholder=" " v-model="user.oldPassword" />
+        <span class="input__label">Password</span>
       </label>
       <label class="input">
-        <input class="input__field" type="password" placeholder=" " v-model="user.oldPassword" />
-        <span class="input__label">Confirm new password</span>
+        <input class="input__field" type="password" placeholder=" " v-model="user.password" />
+        <span class="input__label">New password</span>
       </label>
       <hr />
       <b-button variant="success" @click="salvarUsers()">Enviar</b-button>
@@ -51,7 +51,8 @@ export default {
         email: "",
         password: "",
         oldPassword: "",
-        avatar_id: ""
+        avatar_id: "",
+        avatar: ""
       }
     };
   },
@@ -83,7 +84,10 @@ export default {
       let formData = new FormData();
       formData.append("file", event.target.files[0]);
       axios
-        .post(`${baseApiUrl}/files`, formData) // change this to post )
+        .post(`${baseApiUrl}/files`, formData)
+        .then(res => {
+          this.user.avatar_id = res.data.id;
+        })
         .catch(showError); //
     },
     /*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
@@ -95,9 +99,9 @@ export default {
         .then(() => {
           this.user.name,
             this.user.email,
-            this.user.password,
             this.user.oldPassword,
-            // (this.user.avatar_id = this.avatar[0].id);
+            this.user.password,
+            this.user.password,
             this.$toasted.global.defaultSuccess(),
             this.limparUser();
         })
@@ -193,6 +197,11 @@ export default {
   cursor: pointer;
   background-size: cover;
   background-position: center center;
+
+  img {
+    width: 120px;
+    height: 120px;
+  }
 }
 .avatar {
   display: none;
