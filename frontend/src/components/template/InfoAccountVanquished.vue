@@ -2,7 +2,7 @@
   <div class="home">
     <h2>Vanquished</h2>
     <div v-for="cont in account" :key="cont.id">
-      <div v-if="cont.createdAt <= cont.data_vencimento"></div>
+      <div v-if="currentDate <= cont.data_vencimento"></div>
       <table class="table-conta" v-else>
         <thead>
           <tr>
@@ -39,6 +39,7 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
+      currentDate: new Date().toLocaleString(),
       account: {}
     };
   },

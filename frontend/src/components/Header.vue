@@ -1,7 +1,8 @@
 <template>
   <div class="header">
     <div class="avatar" v-for="use in user" :key="use.name">
-      <b-avatar src="https://placekitten.com/300/300" size="6rem" />
+      <b-avatar variant="light" rounded="sm" :src="use.avatar.url" size="6rem" v-if="use" />
+      <b-avatar variant="light" rounded="sm" size="6rem" v-else />
       <h2>{{ use.name }}</h2>
     </div>
     <div class="button-info">
