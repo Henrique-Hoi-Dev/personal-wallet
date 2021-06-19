@@ -39,8 +39,7 @@
             <b-form-input
               id="data-input"
               v-model="account.data_vencimento"
-              type="text"
-              v-mask="'##-##-####'"
+              type="date"
               required
               max="10"
             >

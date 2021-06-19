@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
       },
       data_vencimento: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       pago: {
