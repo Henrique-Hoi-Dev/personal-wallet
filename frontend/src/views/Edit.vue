@@ -6,8 +6,8 @@
       <h2>Value</h2>
       <b-form-input type="text" v-model="account.valor" />
       <h2>Date expired</h2>
-      <b-form-input type="text" v-model="account.data_vencimento" />
-      <!-- <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4> -->
+      <b-form-input type="date" v-model="account.data_vencimento" />
+      <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4>
       <h2>Number of installments</h2>
       <b-form-select type="text" v-model="account.parcelas" :options="options" />
       <h2>Pay the bill</h2>
@@ -119,10 +119,13 @@ export default {
   h2 {
     font-size: 1.2rem;
   }
+  h4 {
+    font-size: 1rem;
+  }
 }
 .table-edit {
   width: 25rem;
-  height: 25.5rem;
+  height: 27rem;
 
   padding: 1.5rem;
   border-radius: 0.5rem;

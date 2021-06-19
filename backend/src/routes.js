@@ -30,6 +30,7 @@ routes.put('/account/:id', AccountController.updateAccount);
 
 routes.get('/account/:id', AccountController.getById);
 routes.get('/account', AccountController.getAll);
+routes.get('/account/vencido', AccountController.getDate);
 
 routes.delete('/account/:id', AccountController.deleteAccount);
 

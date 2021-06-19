@@ -11,9 +11,13 @@ class AccountController {
       return res.status(400).json({ error: 'Name is required' });
     }
 
-    const AccountExist = await Account.findOne({ where: { name: req.body.name }});
+    const AccountExist = await Account.findOne({
+      where: { name: req.body.name },
+    });
     if (AccountExist) {
-      return res.status(400).json({ error: 'That account name already exists.' });
+      return res
+        .status(400)
+        .json({ error: 'That account name already exists.' });
     }
     const accounts = await Account.create(req.body);
 
@@ -21,18 +25,18 @@ class AccountController {
   }
 
   async getAll(req, res) {
-  try { 
-    const account = await Account.findAll();
-    return res.status(200).json(account);
-
-  }catch(error) {
-    return res.status(400).json(error);
+    try {
+      const account = await Account.findAll();
+      return res.status(200).json(account);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
-}  
 
   async getById(req, res) {
     try {
       let { id } = req.params;
+
       let account = await Account.findByPk(id);
 
       return res.status(200).json(account);
@@ -40,6 +44,23 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+
+  async getDate(req, res) {
+    try {
+      const dateAtual = new Date()
+      console.log(dateAtual)
+
+      let account = await Account.findAll({
+        where: {
+          attribute: [ 'name']
+        }
+      });
+
+      return res.status(200).json(account);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+ }
 
   async deleteAccount(req, res) {
     try {
