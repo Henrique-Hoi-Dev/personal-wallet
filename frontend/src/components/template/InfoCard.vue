@@ -2,16 +2,20 @@
   <div class="info-card">
     <div>
       <b-card-group deck>
-        <b-card header-tag="header">
-          <b-card-text>000.000,000</b-card-text>
+        <b-card header-tag="header" title="Amount owed">
+          <b-card-text>{{ cardOwing | currencyFormat }}</b-card-text>
         </b-card>
 
-        <b-card header-tag="header">
-          <b-card-text>000.000,000</b-card-text>
+        <b-card header-tag="header" title="Amount paid">
+          <b-card-text>{{ cardPaid | currencyFormat }}</b-card-text>
         </b-card>
 
-        <b-card header-tag="header">
-          <b-card-text>000.000,000</b-card-text>
+        <b-card header-tag="header" title="Expiration amount">
+          <b-card-text>{{ cardOverdue | currencyFormat }}</b-card-text>
+        </b-card>
+
+        <b-card header-tag="header" title="Amount">
+          <b-card-text>{{ cardTotal | currencyFormat }}</b-card-text>
         </b-card>
       </b-card-group>
     </div>
@@ -19,7 +23,60 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import { baseApiUrl } from "@/global";
+import mixinFilter from "@/plugins/mixinFilter";
+
+export default {
+  mixins: [mixinFilter],
+  data() {
+    return {
+      cardOwing: {},
+      cardPaid: {},
+      cardOverdue: {},
+      cardTotal: {}
+    };
+  },
+  // computed: {
+  //   info() {
+  //     if (this.cardOwing == {}) {
+  //       return this.cardOwing == 0;
+  //     }
+  //   }
+  // },
+  beforeMount() {
+    this.getInfoCardOwing();
+    this.getInfoCardPaid();
+    this.getInfoCardOverdue();
+    this.getInfoCardTotal();
+  },
+  methods: {
+    getInfoCardOwing() {
+      const url = `${baseApiUrl}/infoCardOwing`;
+      axios.get(url).then(res => {
+        this.cardOwing = res.data;
+      });
+    },
+    getInfoCardPaid() {
+      const url = `${baseApiUrl}/infoCardPaid`;
+      axios.get(url).then(res => {
+        this.cardPaid = res.data;
+      });
+    },
+    getInfoCardOverdue() {
+      const url = `${baseApiUrl}/infoCardOverdue`;
+      axios.get(url).then(res => {
+        this.cardOverdue = res.data;
+      });
+    },
+    getInfoCardTotal() {
+      const url = `${baseApiUrl}/infoCardTotal`;
+      axios.get(url).then(res => {
+        this.cardTotal = res.data;
+      });
+    }
+  }
+};
 </script>
 
 <style>
@@ -28,7 +85,7 @@ export default {};
   justify-content: center;
   background: #404040;
 
-  margin-top: 9.5rem;
+  margin-top: 7.5rem;
   margin-right: 0px !important;
   margin-left: 0px !important;
 }

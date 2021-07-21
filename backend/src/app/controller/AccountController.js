@@ -45,22 +45,126 @@ class AccountController {
     }
   }
 
-  async getDate(req, res) {
+  async getCardInfoOverdue(req, res) {
     try {
-      const dateAtual = new Date()
-      console.log(dateAtual)
+      const accounts = await Account.findAll();
+      const dataAtual = new Date();
 
-      let account = await Account.findAll({
-        where: {
-          attribute: [ 'name']
+      const valid = accounts.filter(function (result) {
+        if (result.dataValues.data_vencimento <= dataAtual) {
+          return result.dataValues;
         }
       });
 
-      return res.status(200).json(account);
+      const venci = valid.map(function (result) {
+        const valor = parseInt(result.dataValues.valor);
+
+        return valor;
+      });
+
+      const total = venci.reduce((acumulado, x) => {
+        return acumulado + x;
+      });
+
+      return res.status(200).json(total);
     } catch (error) {
       return res.status(400).json(error);
     }
- }
+  }
+
+  async getCardInfoTotal(req, res) {
+    try {
+      const accounts = await Account.findAll();
+
+      const valid = accounts.filter(function (result) {
+        return result.dataValues;
+      });
+
+      const venci = valid.map(function (result) {
+        const valor = parseInt(result.dataValues.valor);
+
+        return valor;
+      });
+
+      const total = venci.reduce((acumulado, x) => {
+        return acumulado + x;
+      });
+
+      return res.status(200).json(total);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+
+  async getCardInfoPaid(req, res) {
+    try {
+      const accounts = await Account.findAll();
+
+      const valid = accounts.filter(function (result) {
+        if (result.dataValues.pago == true) {
+          return result.dataValues;
+        }
+      });
+
+      const venci = valid.map(function (result) {
+        const valor = parseInt(result.dataValues.valor);
+
+        return valor;
+      });
+
+      const total = venci.reduce((acumulado, x) => {
+        return acumulado + x;
+      });
+
+      return res.status(200).json(total);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+
+  async getCardInfoOwing(req, res) {
+    try {
+      const accounts = await Account.findAll();
+
+      const valid = accounts.filter(function (result) {
+        if (result.dataValues.pago == false) {
+          return result.dataValues;
+        }
+      });
+
+      const venci = valid.map(function (result) {
+        const valor = parseInt(result.dataValues.valor);
+
+        return valor;
+      });
+
+      const total = venci.reduce((acumulado, x) => {
+        return acumulado + x;
+      });
+
+      return res.status(200).json(total);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+
+  async getOverdueAccount(req, res) {
+    try {
+      const accounts = await Account.findAll();
+
+      const dataAtual = new Date();
+
+      const valid = accounts.filter(function (result) {
+        if (result.dataValues.data_vencimento <= dataAtual) {
+          return result.dataValues;
+        }
+      });
+
+      return res.status(200).json(valid);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
 
   async deleteAccount(req, res) {
     try {
