@@ -3,16 +3,13 @@ module.exports = {
   env: {
     node: true
   },
-  'extends': [
-    'plugin:vue/essential',
-    'eslint:recommended'
-  ],
+  extends: ["plugin:vue/essential", "eslint:recommended"],
   rules: {
-    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    "linebreak-style": [0, "error", process.platform === "win32" ? "windows" : "unix"],
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: "babel-eslint"
   }
-}
+};

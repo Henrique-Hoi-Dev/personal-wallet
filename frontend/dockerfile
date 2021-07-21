@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:node:latest
 
 # instala um servidor http simples para servir conteúdo estático
 RUN yarn -g http-server

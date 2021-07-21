@@ -33,16 +33,11 @@
               v-model="account.valor"
               placeholder="000.000,00"
               required
+              v-money="money"
             >
             </b-form-input>
             Date vanquished
-            <b-form-input
-              id="data-input"
-              v-model="account.data_vencimento"
-              type="date"
-              required
-              max="10"
-            >
+            <b-form-input id="data-input" v-model="account.data_vencimento" type="date" required>
             </b-form-input>
             Number of installments
             <b-form-select v-model="account.parcelas" :options="options"> </b-form-select>
@@ -57,6 +52,7 @@
 <script>
 import axios from "axios";
 import { baseApiUrl, showError } from "@/global";
+import { VMoney } from "v-money";
 
 export default {
   data() {
@@ -81,9 +77,18 @@ export default {
         { value: "10x", text: "10x Installments" },
         { value: "11x", text: "11x Installments" },
         { value: "12x", text: "12x Installments" }
-      ]
+      ],
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: " ",
+        suffix: " ",
+        precision: 2,
+        masked: false
+      }
     };
   },
+  directives: { money: VMoney },
   methods: {
     /*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
     clean() {

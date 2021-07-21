@@ -28,9 +28,14 @@ routes.get('/user/:id', UserController.getIdUser);
 routes.post('/account/new', AccountController.store);
 routes.put('/account/:id', AccountController.updateAccount);
 
+routes.get('/infoCardOverdue', AccountController.getCardInfoOverdue);
+routes.get('/infoCardOwing', AccountController.getCardInfoOwing);
+routes.get('/infoCardPaid', AccountController.getCardInfoPaid);
+routes.get('/infoCardTotal', AccountController.getCardInfoTotal);
+
 routes.get('/account/:id', AccountController.getById);
 routes.get('/account', AccountController.getAll);
-routes.get('/account/vencido', AccountController.getDate);
+routes.get('/vencido', AccountController.getOverdueAccount);
 
 routes.delete('/account/:id', AccountController.deleteAccount);
 

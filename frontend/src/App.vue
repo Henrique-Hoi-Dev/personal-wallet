@@ -89,7 +89,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 10rem;
+  // height: 10rem;
   z-index: 1;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;

@@ -5,7 +5,7 @@ class Account extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        valor: Sequelize.STRING,
+        valor: Sequelize.NUMBER,
         parcelas: Sequelize.STRING,
         data_vencimento: Sequelize.DATE,
         pago: Sequelize.BOOLEAN,

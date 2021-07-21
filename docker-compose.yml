@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  node:
+    image: node:14-alpine
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./:/srv/app
+    working_dir: /srv/app
+    command: ['yarn', 'serve']
+
+  postgres-wallet:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-local
+    container_name: postgres-wallet
+    image: postgres:13
+    restart: unless-stopped
+    ports:
+      - 5454:5454
+    volumes:
+      - postgres-wallet-data:/data
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    networks:
+      - app-connect

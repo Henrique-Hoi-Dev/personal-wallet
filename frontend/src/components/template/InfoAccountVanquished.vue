@@ -2,8 +2,7 @@
   <div class="home">
     <h2>Vanquished</h2>
     <div v-for="cont in account" :key="cont.id">
-      <div v-if="currentDate <= cont.data_vencimento"></div>
-      <table class="table-conta" v-else>
+      <table class="table-conta">
         <thead>
           <tr>
             <th>Name</th>
@@ -39,7 +38,7 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
-      currentDate: new Date().toLocaleString(),
+      currentDate: new Date(),
       account: {}
     };
   },
@@ -52,7 +51,7 @@ export default {
       this.getAccount();
     },
     getAccount() {
-      const url = `${baseApiUrl}/account`;
+      const url = `${baseApiUrl}/vencido`;
       axios.get(url).then(res => {
         this.account = res.data;
       });
@@ -63,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  margin: 18rem 0 0 10rem;
+  margin: 18rem 0 0 3rem;
   display: flex;
 
   flex-direction: column;

@@ -3,13 +3,17 @@
     <div class="table-edit">
       <h2>Name</h2>
       <b-form-input type="text" v-model="account.name" />
+
       <h2>Value</h2>
       <b-form-input type="text" v-model="account.valor" />
+
       <h2>Date expired</h2>
-      <b-form-input type="date" v-model="account.data_vencimento" />
       <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4>
+      <b-form-input type="date" v-model="account.data_vencimento" />
+
       <h2>Number of installments</h2>
       <b-form-select type="text" v-model="account.parcelas" :options="options" />
+
       <h2>Pay the bill</h2>
       <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="account.pago">
         Pay / Owing
@@ -17,7 +21,7 @@
     </div>
     <div class="buttons">
       <b-button variant="success" @click="save()">Save</b-button>
-      <b-button variant="danger" @click="deleteAccount()">Delete</b-button>
+      <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Delete</b-button>
     </div>
   </div>
 </template>
@@ -26,6 +30,7 @@
 import axios from "axios";
 import { baseApiUrl, showError } from "@/global";
 import mixinFilter from "@/plugins/mixinFilter";
+// import moment from "moment";
 
 export default {
   mixins: [mixinFilter],
@@ -61,7 +66,15 @@ export default {
       }
     }
   },
+
   methods: {
+    // fortDate() {
+    //   let date = this.account.data_vencimento;
+    //   this.account.data_vencimento = date.format("yyyy-MM-dd");
+
+    //   // console.log(date);
+    //   return;
+    // },
     reset() {
       this.account = {};
     },
@@ -135,5 +148,10 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  a {
+    text-decoration: none;
+    color: #d2d2d2;
+  }
 }
 </style>
