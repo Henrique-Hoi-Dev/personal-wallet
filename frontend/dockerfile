@@ -19,4 +19,6 @@ COPY . .
 RUN yarn build
 
 EXPOSE 8080
+
+# http-server by default launches it on port 8080
 CMD [ "http-server", "dist" ]
