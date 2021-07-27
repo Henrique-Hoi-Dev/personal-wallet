@@ -1,4 +1,4 @@
-## Perfect For Boostrapped Startups & Hacky Engineers :nerd_face:
+##
 
 ## The Suite :package:
 
