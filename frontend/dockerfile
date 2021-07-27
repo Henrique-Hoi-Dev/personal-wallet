@@ -1,7 +1,7 @@
-FROM node:node:latest
+FROM node:lts-alpine
 
 # instala um servidor http simples para servir conteúdo estático
-RUN yarn -g http-server
+RUN npm install -g http-server
 
 # faz da pasta 'app' o diretório atual de trabalho
 WORKDIR /app
@@ -10,15 +10,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # instala dependências do projeto
-RUN yarn
+RUN npm install
 
 # copia arquivos e pastas para o diretório atual de trabalho (pasta 'app')
 COPY . .
 
 # compila a aplicação de produção com minificação
-RUN yarn build
+RUN npm run build
 
 EXPOSE 8080
-
-# http-server by default launches it on port 8080
 CMD [ "http-server", "dist" ]
