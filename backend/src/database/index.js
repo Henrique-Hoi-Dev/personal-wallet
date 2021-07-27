@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
 import mongoose from 'mongoose';
+require('dotenv/config');
 
 import File from '../app/models/File';
 import Account from '../app/models/Account';
@@ -12,7 +13,7 @@ const models = [User, File, Account];
 class Database {
   constructor() {
     this.init();
-    // this.mongo();
+    this.mongo();
   }
 
   init() {
