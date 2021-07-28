@@ -1,42 +1,31 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
+
 <ol>
-  <p>
-  <a href="#objetivo">Objetivo</a> •
-  <a href="#roadmap">Roadmap</a> • 
-  <a href="#tecnologias">Tecnologias</a> • 
-  <a href="#contribuicao">Contribuição</a> • 
-  <a href="#licenc-a">Licença</a> • 
-  <a href="#autor">Autor</a>
-  </p>
+  <li><a href="#objetivo">Objetivo</a> •</li>
+  <li><a href="#pastas">Pastas do projeto</a> •</li>
+  <li><a href="#banco">Banco de dados</a> •</li> 
+  <li><a href="#tecnologias">Tecnologias</a> •</li> 
+  <li><a href="#contribuicao">Contribuição</a> •</li>  
+  <li><a href="#docker">Iniciando projeto com o docker</a> •</li>  
+  <li><a href="#autor">Autor</a>
 </ol>
 
-## Obejetivo
+### Obejetivo do projeto
 
   <p align="justify">Esse App e feito para ajudar você a anotar suas contas de uma maneira simples e fácil, com cards trazendo o total dos valores das suas contas pendentes, pagas, vencidas e também o valor total.</p>
 
-## The Suite :package:
+### Pastas do projeto :package:
 
-- API Server para backend aplicação
-- Web Client para aplicação
+- API Server para 'backend' aplicação
+- Web Client para 'frontend' aplicação
 
 ## Few Things Under The Hood :factory:
 
-### Built using the MEVN Stack & The Usual Suspects
+### Configurando Bancos de Dados e Serviços
 
-MongoDB, PostgreSQL, Express.js, Vue.js, Node.js, Mongoose ORM.
+O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mongodb.com)
 
-### Built for the Cloud, with developers in mind
-
-- CD/CI friendly codebase and configuration setup,
-- Docker scripts,
-
-### Granular controls
-
-- Drag-and-drop design builders for home page customizations,
-- Image Editor to edit and preview product images and thumbnails,
-- Order tracking at a line item level,
-- Tariff support for international shipments,
-- Payment accepted in multiple digital forms and currencies powered by Stripe.
+Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e serviços acima.
 
 <h1>
 <a href="https://www.docker.com/">
@@ -44,7 +33,7 @@ MongoDB, PostgreSQL, Express.js, Vue.js, Node.js, Mongoose ORM.
   </a>
 </h1>
 
-## Quickstart for Developers :electric_plug:
+## Docker início rápido para desenvolvedores :electric_plug:
 
 You can start up the entire suite of applications using `docker`. For more information, go to [Quick Start Documentation](https://documentation.veniqa.com/dockersetup/dockersetup.html).
 
