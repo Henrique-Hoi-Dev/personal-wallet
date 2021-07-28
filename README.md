@@ -1,13 +1,18 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
+<ol>
+  <p>
+  <a href="#objetivo">Objetivo</a> •
+  <a href="#roadmap">Roadmap</a> • 
+  <a href="#tecnologias">Tecnologias</a> • 
+  <a href="#contribuicao">Contribuição</a> • 
+  <a href="#licenc-a">Licença</a> • 
+  <a href="#autor">Autor</a>
+  </p>
+</ol>
 
-<p align="center">
- <a href="#objetivo">Objetivo</a> •
- <a href="#roadmap">Roadmap</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
- <a href="#autor">Autor</a>
-</p>
+## Obejetivo
+
+  <p align="justify">Esse App e feito para ajudar você a anotar suas contas de uma maneira simples e fácil, com cards trazendo o total dos valores das suas contas pendentes, pagas, vencidas e também o valor total.</p>
 
 ## The Suite :package:
 
@@ -54,5 +59,5 @@ You can start up the entire suite of applications using `docker`. For more infor
 
 Feito com ❤️ por Henrique Hoinacki 👋🏽 Entre em contato!
 
-[![Twitter Badge](https://img.shields.io/badge/-@tgmarinho-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/HenriqueHoi)](https://twitter.com/HenriqueHoi) [![Linkedin Badge](https://img.shields.io/badge/-Thiago-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/tgmarinho/)
-[![Gmail Badge](https://img.shields.io/badge/-tgmarinho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:tgmarinho@gmail.com)
+[![Twitter Badge](https://img.shields.io/badge/-@henriquehoi-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/HenriqueHoi)](https://twitter.com/HenriqueHoi) [![Linkedin Badge](https://img.shields.io/badge/-Henrique-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/henrique-hoinacki-a98b851a5/)
+[![Gmail Badge](https://img.shields.io/badge/-riqueah@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:riqueah@gmail.com)
