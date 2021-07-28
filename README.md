@@ -48,7 +48,7 @@ You can start up the entire suite of applications using `docker`. For more infor
 ---
 
 <a href="https://henrique-hoi-dev.github.io/portfolio/img/avatar.a10a14e0.jpeg">
- <img style="border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/380327?s=460&u=61b426b901b8fe02e12019b1fdb67bf0072d4f00&v=4" width="100px;" alt=""/>
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/62766753?v=4" width="100px;" alt=""/>
  <br />
  <sub><b>Henrique Hoinacki</b></sub></a> <a href="https://henrique-hoi-dev.github.io/portfolio/" title="Rocketseat">🚀</a>
 
