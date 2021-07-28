@@ -1,10 +1,10 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
 
 <ol>
-  <li><a href="#objetivo">Objetivo</a> •</li>
-  <li><a href="#pastas">Pastas do projeto</a> •</li>
-  <li><a href="#banco">Banco de dados</a> •</li> 
-  <li><a href="#tecnologias">Tecnologias</a> •</li> 
+  <li><a href="#obejetivo do projeto">Objetivo</a> •</li>
+  <li><a href="#pastas do projeto">Pastas do projeto</a> •</li>
+  <li><a href="#Tecnologia usadas">Tecnologias</a> •</li> 
+  <li><a href="#configurando Bancos de Dados e Serviços">Banco de dados</a> •</li> 
   <li><a href="#contribuicao">Contribuição</a> •</li>  
   <li><a href="#docker">Iniciando projeto com o docker</a> •</li>  
   <li><a href="#autor">Autor</a>
@@ -19,7 +19,13 @@
 - API Server para 'backend' aplicação
 - Web Client para 'frontend' aplicação
 
-## Few Things Under The Hood :factory:
+## Tecnologia usadas :alien:
+
+- [NodeJS](https://nodejs.org/en/)
+- [Expo](https://expo.io/)
+- [Vue](https://vuejs.org/)
+- [BootstrapVue](https://bootstrap-vue.org/)
+- [Sass](https://sass-lang.com/)
 
 ### Configurando Bancos de Dados e Serviços
 
@@ -28,8 +34,8 @@ O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mo
 Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e serviços acima.
 
 <h1>
-<a href="https://www.docker.com/">
-<img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png" width="200px">
+  <a href="https://www.docker.com/">
+    <img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png" width="200px">
   </a>
 </h1>
 
