@@ -3,11 +3,10 @@
 <ol>
   <li><a href="#obejetivo do projeto">Objetivo</a> •</li>
   <li><a href="#pastas do projeto">Pastas do projeto</a> •</li>
-  <li><a href="#Tecnologia usadas">Tecnologias</a> •</li> 
+  <li><a href="#Tecnologia">Tecnologias</a> •</li> 
   <li><a href="#configurando Bancos de Dados e Serviços">Banco de dados</a> •</li> 
-  <li><a href="#contribuicao">Contribuição</a> •</li>  
-  <li><a href="#docker">Iniciando projeto com o docker</a> •</li>  
-  <li><a href="#autor">Autor</a>
+  <li><a href="#como executar">Como executar</a> •</li>  
+  <li><a href="#autor">Autor</a> •</li>  
 </ol>
 
 ### Obejetivo do projeto
@@ -16,13 +15,17 @@
 
 ### Pastas do projeto :package:
 
-- API Server para 'backend' aplicação
-- Web Client para 'frontend' aplicação
+- API Server para 'backend'
+- Web Client para 'frontend'
 
-## Tecnologia usadas :alien:
+### 🧪 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [NodeJS](https://nodejs.org/en/)
-- [Expo](https://expo.io/)
+- [Express](https://expressjs.com/pt-br/)
+- [PostgresSQL](https://www.postgresql.org/)
+- [MongoDB](https://www.mongodb.com/)
 - [Vue](https://vuejs.org/)
 - [BootstrapVue](https://bootstrap-vue.org/)
 - [Sass](https://sass-lang.com/)
@@ -33,15 +36,31 @@ O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mo
 
 Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e serviços acima.
 
+### 🚀 Como executar
+
+Clone o projeto e acesse a pasta do mesmo.
+
+```bash
+$ git clone https://github.com/Henrique-Hoi-Dev/personal-wallet.git
+$ cd personal-wallet
+```
+
 <h1>
   <a href="https://www.docker.com/">
     <img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png" width="200px">
   </a>
 </h1>
 
-## Docker início rápido para desenvolvedores :electric_plug:
+### Docker início rápido para desenvolvedores :electric_plug:
 
-You can start up the entire suite of applications using `docker`. For more information, go to [Quick Start Documentation](https://documentation.veniqa.com/dockersetup/dockersetup.html).
+Você pode iniciar todo o pacote de aplicativos usando `docker-compose`.
+
+```bash
+# dentro pasta do projeto execute
+$ docker-compose up
+```
+
+O app estará disponível no seu browser pelo endereço http://localhost:8080.
 
 ### Autor
 
