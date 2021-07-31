@@ -1,11 +1,12 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
 
 <ol>
-  <li><a href="#obejetivo do projeto">Objetivo</a> •</li>
-  <li><a href="#pastas do projeto">Pastas do projeto</a> •</li>
-  <li><a href="#Tecnologia">Tecnologias</a> •</li> 
-  <li><a href="#configurando Bancos de Dados e Serviços">Banco de dados</a> •</li> 
-  <li><a href="#como executar">Como executar</a> •</li>  
+  <li><a href="#obejetivo-do-projeto">Objetivo</a> •</li>
+  <li><a href="#pastas-do-projeto">Pastas do projeto</a> •</li>
+  <li><a href="#tecnologia">Tecnologias</a> •</li> 
+  <li><a href="#configurando-bancos-de-dados-e-Serviços">Banco de dados</a> •</li> 
+  <li><a href="#como-executar">Como executar</a> •</li>  
+  <li><a href="#crie-sua-conta">Crie sua conta</a> •</li>  
   <li><a href="#autor">Autor</a> •</li>  
 </ol>
 
@@ -62,21 +63,26 @@ $ docker-compose up
 
 O app estará disponível no seu browser pelo endereço http://localhost:8080.
 
+---
+
 ### Crie sua conta
 
 Quando acessar o endereço http://localhost:8080.
 
 Cadastreu sua conta
+
 <img src="https://files.fm/thumb_show.php?i=e2mse5a6v" width="400px">
 
 ---
 
 Depois faça o login
+
 <img src="https://files.fm/thumb_show.php?i=f5q9jnwqw" width="400px">
 
 ---
 
 Essa Exemplo da página inicial com algumas conta já cadastrada
+
 <img src="https://files.fm/thumb_show.php?i=wfnb6bm4a" width="400px">
 
 ### Autor
