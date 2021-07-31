@@ -34,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mongodb.com)
 
-Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e serviços acima.
+Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e aplicação por conpleto.
 
 ### 🚀 Como executar
 
