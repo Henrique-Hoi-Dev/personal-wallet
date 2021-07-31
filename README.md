@@ -34,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mongodb.com)
 
-Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e aplicação por conpleto.
+Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e aplicação por completo.
 
 ### 🚀 Como executar
 
@@ -61,6 +61,18 @@ $ docker-compose up
 ```
 
 O app estará disponível no seu browser pelo endereço http://localhost:8080.
+
+### Crie sua conta
+
+Quando acessar o endereço http://localhost:8080.
+Cadastreu sua conta
+<img src="./src/assets/Ex1.png" width="400px"
+
+Depois faça o login
+<img src="./src/assets/Ex2.png" width="400px"
+
+Essa Exemplo da página inicial com algumas conta já cadastrada
+<img src="./src/assets/Ex3.png" width="400px"
 
 ### Autor
 
