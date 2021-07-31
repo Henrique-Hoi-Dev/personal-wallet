@@ -65,11 +65,16 @@ O app estará disponível no seu browser pelo endereço http://localhost:8080.
 ### Crie sua conta
 
 Quando acessar o endereço http://localhost:8080.
+
 Cadastreu sua conta
 <img src="https://files.fm/thumb_show.php?i=e2mse5a6v" width="400px">
 
+---
+
 Depois faça o login
 <img src="https://files.fm/thumb_show.php?i=f5q9jnwqw" width="400px">
+
+---
 
 Essa Exemplo da página inicial com algumas conta já cadastrada
 <img src="https://files.fm/thumb_show.php?i=wfnb6bm4a" width="400px">
