@@ -37,13 +37,6 @@ export default {
       cardTotal: {}
     };
   },
-  // computed: {
-  //   info() {
-  //     if (this.cardOwing == {}) {
-  //       return this.cardOwing == 0;
-  //     }
-  //   }
-  // },
   beforeMount() {
     this.getInfoCardOwing();
     this.getInfoCardPaid();
@@ -96,5 +89,17 @@ export default {
   max-width: 20rem;
   color: #d2d2d2;
   background: #292929;
+}
+.card-title {
+  font-size: 20px;
+  margin-bottom: 0 !important;
+}
+.card-body {
+  height: 80px;
+  padding: 1rem;
+  margin: 3px;
+}
+.card-text:last-child {
+  font-weight: 400;
 }
 </style>

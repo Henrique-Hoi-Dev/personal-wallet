@@ -17,7 +17,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "sequelize db:migrate && nodemon src/server.js",
+    "dev": "sequelize db:migrate && sequelize db:seed && nodemon src/server.js",
     "start": "nodemon -L src/server.js",
     "migrate": "sequelize db:migrate"
   },
