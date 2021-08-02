@@ -13,7 +13,15 @@
 
         <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
         <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
-        <input v-model="user.password" name="password" type="password" placeholder="Senha" />
+        <input
+          v-model="user.password"
+          name="password"
+          @keyup.enter="signin"
+          type="password"
+          placeholder="Senha"
+          v-if="!showSignup"
+        />
+        <input v-model="user.password" name="password" type="password" placeholder="Senha" v-else />
 
         <button v-if="showSignup" @click="signup">Registrar</button>
         <button v-else @click="signin">Login</button>
@@ -67,7 +75,7 @@ export default {
 <style lang="scss">
 .auth-content {
   height: 100%;
-  margin-top: 8rem;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
 }

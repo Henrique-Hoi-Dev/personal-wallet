@@ -19,9 +19,45 @@ module.exports = {
       avatar_id: {
         type: Sequelize.INTEGER,
       },
+      data_nascimento: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      cpf: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      cep: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      logradouro: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      complemento: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      numero: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      bairro: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      cidade: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      uf: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       created_at: {
         type: Sequelize.DATE,

@@ -101,7 +101,7 @@ export default {
       axios
         .post(`${baseApiUrl}/account/new`, this.account)
         .then(() => {
-          this.clean(), this.$toasted.global.defaultSuccess();
+          this.clean(), this.$toasted.global.defaultSuccess(), this.$router.go();
         })
         .catch(showError);
     }

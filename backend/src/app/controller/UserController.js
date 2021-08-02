@@ -8,6 +8,8 @@ class UserController {
       name: Yup.string().required(),
       email: Yup.string().email().required(),
       password: Yup.string().required().min(6),
+      cpf: Yup.string(),
+      data_nascimento: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -20,12 +22,16 @@ class UserController {
       return res.status(400).json({ error: 'This user email already exists' });
     }
 
-    const { id, name, email } = await User.create(req.body);
+    const { id, name, email, cpf, data_nascimento } = await User.create(
+      req.body
+    );
 
     return res.json({
       id,
       name,
       email,
+      cpf,
+      data_nascimento,
     });
   }
 

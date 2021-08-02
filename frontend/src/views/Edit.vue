@@ -68,13 +68,6 @@ export default {
   },
 
   methods: {
-    // fortDate() {
-    //   let date = this.account.data_vencimento;
-    //   this.account.data_vencimento = date.format("yyyy-MM-dd");
-
-    //   // console.log(date);
-    //   return;
-    // },
     reset() {
       this.account = {};
     },
@@ -86,6 +79,7 @@ export default {
         .then(() => {
           this.$toasted.global.defaultSuccess();
           this.reset();
+          this.$router.go();
         })
         .catch(showError);
     },
