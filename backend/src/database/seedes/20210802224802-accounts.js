@@ -6,7 +6,7 @@ module.exports = {
         {
           name: 'Account teste 1',
           valor: '200',
-          parcelas: 'x1',
+          parcelas: '1x',
           pago: false,
           data_vencimento: new Date(),
           created_at: new Date(),
@@ -15,7 +15,7 @@ module.exports = {
         {
           name: 'Account teste 2',
           valor: '200',
-          parcelas: 'x1',
+          parcelas: '1x',
           pago: true,
           data_vencimento: new Date(),
           created_at: new Date(),
@@ -24,7 +24,7 @@ module.exports = {
         {
           name: 'Account teste 2 vencida',
           valor: '200',
-          parcelas: 'x1',
+          parcelas: '1x',
           pago: true,
           data_vencimento: '2021-08-01 15:36:56',
           created_at: new Date(),

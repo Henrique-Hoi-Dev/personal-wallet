@@ -103,12 +103,31 @@ class UserController {
         ],
       });
 
-      return res.status(200).json(user);
+      const valid = user.filter(function (result) {
+        return result.dataValues;
+      });
+
+      const data = valid.map(function (result) {
+        const dataNascimento = result.dataValues.data_nascimento;
+        var hoje = new Date();
+
+        return Math.floor(
+          Math.ceil(
+            Math.abs(dataNascimento.getTime() - hoje.getTime()) /
+              (1000 * 3600 * 24)
+          ) / 365.25
+        );
+      });
+
+      return res.status(200).json({
+        user,
+        data,
+      });
     } catch (error) {
       return res.status(400).json(error);
     }
   }
-  async getIdUser(req, res) {
+  async getUserId(req, res) {
     try {
       let { id } = req.params;
 

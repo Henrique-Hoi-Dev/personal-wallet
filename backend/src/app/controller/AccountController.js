@@ -14,11 +14,13 @@ class AccountController {
     const AccountExist = await Account.findOne({
       where: { name: req.body.name },
     });
+
     if (AccountExist) {
       return res
         .status(400)
         .json({ error: 'That account name already exists.' });
     }
+
     const accounts = await Account.create(req.body);
 
     return res.json(accounts);

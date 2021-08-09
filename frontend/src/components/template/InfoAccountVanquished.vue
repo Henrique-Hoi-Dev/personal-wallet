@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <h2>Vanquished</h2>
+    <div class="title">
+      <h1>Vanquished</h1>
+    </div>
+
     <div v-for="cont in account" :key="cont.id">
       <table class="table-conta">
         <thead>
@@ -8,7 +11,8 @@
             <th>Name</th>
             <th>Value</th>
             <th>Date expired</th>
-            <th>Paid/Owing</th>
+            <th>Portion</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +20,7 @@
             <td>{{ cont.name }}</td>
             <td>{{ cont.valor | currencyFormat }}</td>
             <td>{{ cont.data_vencimento | dateFormat }}</td>
+            <td>{{ cont.parcelas }}</td>
             <td class="vanquished">Vanquished</td>
           </tr>
         </tbody>
@@ -64,70 +69,76 @@ export default {
 .home {
   margin: 18rem 0 0 3rem;
   display: flex;
-
   flex-direction: column;
   align-items: center;
 }
 .buttons {
   display: flex;
   flex-direction: row;
-}
-.editar {
-  background: #1780a1;
-}
-.vanquished {
-  background: #6c757d;
-}
-.remover {
-  margin-left: 4.5rem;
-  background: #bf0603;
-}
-h2 {
-  color: #d2d2d2;
-  margin-bottom: 1rem;
-}
-button {
-  width: 5rem;
-  height: 1.8rem;
-  color: #d2d2d2;
 
-  border-radius: 0.2rem;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  button {
+    width: 5rem;
+    height: 1.8rem;
 
-  &:hover {
-    opacity: 90%;
-    border: 2px solid #d2d2d2;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+
+    color: #d2d2d2;
+    background-color: #49274a;
+
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.5s;
+    }
   }
 }
+.vanquished {
+  background: #bfc0c0;
+  color: #e62e4d;
+  font-weight: bold;
+}
+.title {
+  width: 17rem;
+  text-align: center;
+
+  border-bottom: 5px solid #4717f6;
+
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+
+  margin-bottom: 3rem;
+  box-shadow: -4px 9px 4px 6px #333;
+
+  h1 {
+    color: #a5adff;
+  }
+}
+
 .table-conta {
   color: #d2d2d2;
   margin-top: 0.1rem;
   width: 32rem;
-  padding: 1rem;
-  border-radius: 0.8rem;
-  background: #292929;
-  border: 1px solid #333;
-  margin-bottom: 2rem;
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  background: #161a1d;
+  margin-bottom: 1rem;
   font: 1.1rem Itim;
   border-collapse: inherit;
-}
-table tr {
-  margin-bottom: 0.625em;
-  border-bottom: 0.1rem solid #e8e8e8;
-}
-table td {
-  min-width: 10rem;
-  border-top: 0.1rem solid #e8e8e8;
-  border-bottom: 0.1rem solid #e8e8e8;
-  border-radius: 0.5rem;
-}
-td,
-th {
-  border-top: 0.1rem solid #e8e8e8;
-  border-bottom: 0.1rem solid #e8e8e8;
-  border-radius: 0.5rem;
-  padding: 0.7rem;
-  text-align: center;
+  box-shadow: -9px 12px 12px 5px #333;
+
+  td {
+    min-width: 10rem;
+    border: 0.2rem solid #4717f6;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    text-align: center;
+  }
+  th {
+    padding: 0.8rem;
+  }
 }
 </style>

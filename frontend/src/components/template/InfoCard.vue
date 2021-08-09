@@ -2,20 +2,20 @@
   <div class="info-card">
     <div>
       <b-card-group deck>
-        <b-card header-tag="header" title="Amount owed">
-          <b-card-text>{{ cardOwing | currencyFormat }}</b-card-text>
+        <b-card header-tag="header" title="Amount Owed">
+          <label class="owed">-- {{ cardOwing | currencyFormat }}</label>
         </b-card>
 
-        <b-card header-tag="header" title="Amount paid">
-          <b-card-text>{{ cardPaid | currencyFormat }}</b-card-text>
+        <b-card header-tag="header" title="Amount Paid">
+          <label class="paidd">{{ cardPaid | currencyFormat }}</label>
         </b-card>
 
-        <b-card header-tag="header" title="Expiration amount">
-          <b-card-text>{{ cardOverdue | currencyFormat }}</b-card-text>
+        <b-card header-tag="header" title="Expiration Amount">
+          <label>{{ cardOverdue | currencyFormat }}</label>
         </b-card>
 
-        <b-card header-tag="header" title="Amount">
-          <b-card-text>{{ cardTotal | currencyFormat }}</b-card-text>
+        <b-card header-tag="header" title="Total Value Accounts">
+          <label>{{ cardTotal | currencyFormat }}</label>
         </b-card>
       </b-card-group>
     </div>
@@ -72,9 +72,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.owed {
+  color: #e62e4d;
+}
+.paidd {
+  color: #33cc95;
+}
 .card-deck {
-  display: block;
   justify-content: center;
   background: #404040;
 
@@ -83,7 +88,12 @@ export default {
   margin-left: 0px !important;
 }
 .card-deck .card {
-  margin: 2rem;
+  flex: none;
+  min-width: 14rem;
+
+  text-align: center;
+
+  margin: 1rem;
   margin-bottom: 15px !important;
 
   max-width: 20rem;

@@ -2,7 +2,7 @@
   <div id="app" :class="{ 'hide-menu': !user }">
     <Auth v-if="!user" />
     <div id="nav" v-else>
-      <Menu id="menu" />
+      <Menu />
       <main>
         <InfoCard id="info" />
         <Header id="header" />
@@ -78,26 +78,26 @@ export default {
     flex: 1;
   }
 }
-#menu {
-  position: fixed;
-  top: 17rem;
-  width: 8rem;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-}
-#header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  // height: 10rem;
-  z-index: 1;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-}
 #info {
   position: fixed;
   top: 0rem;
   width: 100%;
   z-index: 1;
+}
+
+/* Modal esta em modo global */
+.modal-footer {
+  display: none !important;
+}
+.modal-body {
+  background: #292929 !important;
+  color: #d2d2d2;
+}
+.modal-header {
+  background: #292929 !important;
+  color: #d2d2d2;
+}
+.modal-header .close {
+  color: #d2d2d2;
 }
 </style>
