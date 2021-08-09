@@ -1,14 +1,13 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
 
-<ol>
-  <li><a href="#obejetivo-do-projeto">Objetivo</a> •</li>
-  <li><a href="#pastas-do-projeto">Pastas do projeto</a> •</li>
-  <li><a href="#tecnologia">Tecnologias</a> •</li> 
-  <li><a href="#configurando-bancos-de-dados-e-Serviços">Banco de dados</a> •</li> 
-  <li><a href="#como-executar">Como executar</a> •</li>  
-  <li><a href="#crie-sua-conta">Crie sua conta</a> •</li>  
-  <li><a href="#autor">Autor</a> •</li>  
-</ol>
+- [Objetivo](#obejetivo-do-projeto)
+- [Pastas do projeto](#pastas-do-projeto-:package:)
+- [Tecnologias](#🧪-tecnologias)
+- [Banco de dados](#configurando-bancos-de-dados-e-serviços)
+- [Como executar](#🚀-como-executar)
+- [Iniciando Docker-compose](#docker-início-rápido-para-desenvolvedores-:electric_plug:)
+- [Crie sua conta](#crie-sua-conta)
+- [Autor](#autor)
 
 ### Obejetivo do projeto
 

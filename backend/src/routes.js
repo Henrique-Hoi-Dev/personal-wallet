@@ -23,7 +23,7 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 routes.put('/user/:id', UserController.update);
 routes.get('/user', UserController.getAllUser);
-routes.get('/user/:id', UserController.getIdUser);
+routes.get('/user/:id', UserController.getUserId);
 
 routes.post('/account/new', AccountController.store);
 routes.put('/account/:id', AccountController.updateAccount);

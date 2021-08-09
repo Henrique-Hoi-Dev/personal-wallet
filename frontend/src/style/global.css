@@ -4,11 +4,12 @@
   outline: 0;
   border: 0;
   box-sizing: border-box;
-
 }
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   overflow-x: hidden;
   overflow-y: initial;
-  background: #404040!important;
+  background: #404040 !important;
 }

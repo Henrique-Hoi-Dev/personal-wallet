@@ -1,9 +1,15 @@
 <template>
   <div class="header">
-    <div class="avatar" v-for="use in user" :key="use.name">
+    <div class="avatar" v-for="use in user.user" :key="use.id">
       <b-avatar variant="light" rounded="sm" :src="use.avatar.url" size="6rem" v-if="use.avatar" />
       <b-avatar variant="light" rounded="sm" size="6rem" v-else />
-      <h2>{{ use.name }}</h2>
+      <div class="infoUser">
+        <h2>{{ use.name }}</h2>
+        <h4>CPF: {{ use.cpf | vueBrazil("cpf") }}</h4>
+        <h4 v-for="data in user.data" :key="data.id">
+          Birth date: {{ use.data_nascimento | dateFormat }} = Age {{ data }}
+        </h4>
+      </div>
     </div>
     <div class="button-info">
       <button type="button">
@@ -11,7 +17,7 @@
           Exit...
         </a>
       </button>
-      <div v-for="user1 in user" :key="user1.id">
+      <div v-for="user1 in user.user" :key="user1.id">
         <router-link :to="`/profile/${user1.id}/${user1.name}`">
           <button class="profile-b">Profile</button>
         </router-link>
@@ -23,8 +29,10 @@
 <script>
 import { baseApiUrl, userKey } from "@/global";
 import axios from "axios";
+import mixinFilter from "@/plugins/mixinFilter";
 
 export default {
+  mixins: [mixinFilter],
   data() {
     return {
       user: {}
@@ -54,34 +62,46 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  max-height: 8rem;
 
   padding: 1rem;
   color: #d2d2d2;
-  background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
-}
-#card {
-  position: block;
-  margin-top: -5.5rem;
+  background: #4717f6;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 .avatar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  h2 {
-    margin-left: 1rem;
+  .infoUser {
+    h2 {
+      margin-left: 1rem;
+    }
+    h4 {
+      margin-left: 1rem;
+      font-size: 17px;
+    }
+  }
+
+  .b-avatar {
+    border: 5px solid #a1ff0a !important;
   }
 }
-.b-avatar {
-  border: 5px solid #a1ff0a !important;
-}
+
 .button-info {
   display: flex;
   flex-direction: column;
 
   button {
-    width: 5rem;
-    height: 2rem;
+    width: 7rem;
+    height: 2.5rem;
 
     color: #d2d2d2;
     font: 1.1rem Itim;
@@ -92,7 +112,8 @@ export default {
     background: brown;
 
     &:hover {
-      opacity: 90%;
+      transform: scale(1.1);
+      transition: all 0.5s;
     }
 
     a {
@@ -103,10 +124,11 @@ export default {
   }
 }
 .profile-b {
-  background: #2b2d42 !important;
+  background: #49274a !important;
 
   &:hover {
-    opacity: 95% !important;
+    transform: scale(1.1);
+    transition: all 0.5s;
   }
 }
 </style>

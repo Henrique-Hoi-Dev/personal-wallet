@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       data_nascimento: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATE,
         allowNull: true,
       },
       cpf: {

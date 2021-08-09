@@ -1,27 +1,32 @@
 <template>
   <div class="edit">
     <div class="table-edit">
-      <h2>Name</h2>
-      <b-form-input type="text" v-model="account.name" />
+      <div class="primeiros">
+        <h2>Name</h2>
+        <b-form-input type="text" v-model="account.name" />
 
-      <h2>Value</h2>
-      <b-form-input type="text" v-model="account.valor" />
+        <h2>Value</h2>
+        <b-form-input type="text" v-model="account.valor" />
+      </div>
+      <div class="segundo">
+        <h2>Number of installments</h2>
+        <b-form-select type="text" v-model="account.parcelas" :options="options" />
 
-      <h2>Date expired</h2>
-      <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4>
-      <b-form-input type="date" v-model="account.data_vencimento" />
+        <h2>Date expired</h2>
+        <b-form-input type="date" v-model="account.data_vencimento" />
+        <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4>
+      </div>
+      <div class="pago">
+        <h2>Pay the bill</h2>
+        <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="account.pago">
+          Pay / Owing
+        </b-form-checkbox>
+      </div>
 
-      <h2>Number of installments</h2>
-      <b-form-select type="text" v-model="account.parcelas" :options="options" />
-
-      <h2>Pay the bill</h2>
-      <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="account.pago">
-        Pay / Owing
-      </b-form-checkbox>
-    </div>
-    <div class="buttons">
-      <b-button variant="success" @click="save()">Save</b-button>
-      <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Delete</b-button>
+      <div class="buttons">
+        <b-button variant="success" @click="save()">Save</b-button>
+        <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Delete</b-button>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +35,6 @@
 import axios from "axios";
 import { baseApiUrl, showError } from "@/global";
 import mixinFilter from "@/plugins/mixinFilter";
-// import moment from "moment";
 
 export default {
   mixins: [mixinFilter],
@@ -108,44 +112,93 @@ export default {
 <style scoped lang="scss">
 .edit {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin-top: 15rem;
+}
 
-  margin-top: 18rem;
+.table-edit {
   color: #d2d2d2;
 
-  .checkbox {
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  background: #292929;
+
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas:
+    "primeiros segundo"
+    "primeiros  segundo"
+    "pago pago"
+    "buttons buttons";
+
+  .primeiros {
+    grid-area: primeiros;
+    padding: 1rem;
+    h2 {
+      margin-top: 4px;
+      font: 1.1rem Itim;
+    }
+  }
+
+  .segundo {
+    grid-area: segundo;
+    padding: 1rem;
+    h2 {
+      margin-top: 4px;
+      font: 1.1rem Itim;
+    }
+    h4 {
+      font: 1rem Itim;
+    }
+  }
+  .pago {
+    grid-area: pago;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    width: 100%;
-    height: 3rem;
-    border-radius: 0.5rem;
-  }
-  h2 {
-    font-size: 1.2rem;
-  }
-  h4 {
-    font-size: 1rem;
-  }
-}
-.table-edit {
-  width: 25rem;
-  height: 27rem;
+    h2 {
+      font: 1.1rem Itim;
+    }
+    .checkbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background: #292929;
-}
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+      width: 100%;
+      height: 3rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+  .buttons {
+    grid-area: buttons;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-  a {
-    text-decoration: none;
-    color: #d2d2d2;
+    button {
+      width: 10rem;
+      margin-left: 15px;
+
+      transition: 0.5s;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.5s;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #d2d2d2;
+    }
+    h2 {
+      font: 1.1rem Itim;
+    }
   }
 }
 </style>

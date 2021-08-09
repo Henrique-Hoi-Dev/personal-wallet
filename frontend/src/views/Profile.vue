@@ -45,14 +45,13 @@ import { baseApiUrl, showError } from "@/global";
 export default {
   data() {
     return {
-      avatar: null,
+      avatar: {},
       user: {
         name: "",
         email: "",
         password: "",
         oldPassword: "",
-        avatar_id: "",
-        avatar: ""
+        avatar_id: ""
       }
     };
   },
@@ -101,9 +100,9 @@ export default {
             this.user.email,
             this.user.oldPassword,
             this.user.password,
-            this.user.password,
             this.$toasted.global.defaultSuccess(),
-            this.limparUser();
+            this.$router.go();
+          this.limparUser();
         })
         .catch(showError);
     },
@@ -113,6 +112,7 @@ export default {
       const url = `${baseApiUrl}/user/${id}`;
       axios.get(url).then(res => {
         this.user = res.data;
+        console.log(this.user);
       });
     }
   }

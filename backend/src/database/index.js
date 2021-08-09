@@ -5,10 +5,11 @@ require('dotenv/config');
 import File from '../app/models/File';
 import Account from '../app/models/Account';
 import User from '../app/models/User';
+import Portion from '../app/models/Portion';
 
 import databaseConfig from '../config/database';
 
-const models = [User, File, Account];
+const models = [User, File, Account, Portion];
 
 class Database {
   constructor() {

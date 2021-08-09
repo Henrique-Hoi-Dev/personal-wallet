@@ -1,16 +1,16 @@
 <template>
   <div class="menu">
     <router-link to="/">
-      <b-button variant="dark">Home</b-button>
+      <button>Home</button>
     </router-link>
     <router-link to="/paid">
-      <b-button variant="dark">Paid</b-button>
+      <button>Paid</button>
     </router-link>
     <router-link to="/owing">
-      <b-button variant="dark">Owing</b-button>
+      <button>Owing</button>
     </router-link>
     <router-link to="/vanquished">
-      <b-button variant="dark">Vanquished</b-button>
+      <button>Vanquished</button>
     </router-link>
     <!-- Modal que sera feito o cadastro da novas contas -->
     <div>
@@ -18,7 +18,8 @@
 
       <b-modal id="modal-prevent-closing" ref="modal" title="New account registration">
         <form ref="form">
-          <b-form-group label="Name" label-for="name-input" invalid-feedback="Name is required">
+          <b-form-group label-for="name-input" invalid-feedback="Name is required">
+            <label>Name</label>
             <b-form-input
               id="name-input"
               v-model="account.name"
@@ -27,7 +28,7 @@
               max="30"
             >
             </b-form-input>
-            Value
+            <label>Value</label>
             <b-form-input
               id="valor-input"
               v-model="account.valor"
@@ -36,20 +37,22 @@
               v-money="money"
             >
             </b-form-input>
-            Date vanquished
+            <label>Date vanquished</label>
             <b-form-input id="data-input" v-model="account.data_vencimento" type="date" required>
             </b-form-input>
-            Number of installments
+            <label>Number of installments</label>
             <b-form-select v-model="account.parcelas" :options="options"> </b-form-select>
           </b-form-group>
         </form>
-        <b-button variant="success" @click="saves()">Save</b-button>
+        <button @click="saves()">Save</button>
       </b-modal>
     </div>
   </div>
 </template>
 
 <script>
+import "bootstrap/dist/css/bootstrap.css";
+
 import axios from "axios";
 import { baseApiUrl, showError } from "@/global";
 import { VMoney } from "v-money";
@@ -109,48 +112,57 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .menu {
+  position: fixed;
+  top: 17rem;
+  width: 8rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+
   display: flex;
   flex-direction: column;
 
-  color: #d2d2d2;
-  background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
+  background: #4717f6;
+}
+label {
+  margin: 0.5rem;
+  font-weight: bold;
+  font: 1.1rem Itim;
 }
 a {
   width: 2.5rem;
 }
-.btn {
+button {
   width: 7rem;
+  padding: 0.5rem;
   margin: 0.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  font-size: 15px;
+
+  color: #d2d2d2;
+  background-color: #49274a;
+
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
 }
 .new-account {
-  background: #ad2831 !important;
+  background: #33cc95 !important;
   border: none !important;
-}
-.new-account:hover {
-  opacity: 80%;
-}
-.modal-header {
-  background: #292929 !important;
-  color: #d2d2d2;
-}
-.modal-body {
-  background: #292929 !important;
-  color: #d2d2d2;
-}
-.modal-footer {
-  display: none !important;
+  color: #333 !important;
+  transition: 0.5s;
 }
 .form-control {
-  font-weight: 700 !important;
-}
-.modal-header .close {
-  color: #d2d2d2;
+  font-weight: 450 !important;
 }
 .custom-control-label::before,
 .custom-file-label,
 .custom-select {
-  font-weight: 700 !important;
+  font-weight: 450 !important;
 }
 </style>

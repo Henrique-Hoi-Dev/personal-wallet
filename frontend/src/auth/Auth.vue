@@ -9,10 +9,11 @@
         <img src="../assets/imagemLogo.png" alt="logo" />
       </div>
       <div class="register">
-        <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
+        <div class="auth-title">{{ showSignup ? "Register" : "Login" }}</div>
 
-        <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
+        <input v-if="showSignup" v-model="user.name" type="text" placeholder="Name" />
         <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
+
         <input
           v-model="user.password"
           name="password"
@@ -23,12 +24,28 @@
         />
         <input v-model="user.password" name="password" type="password" placeholder="Senha" v-else />
 
-        <button v-if="showSignup" @click="signup">Registrar</button>
+        <input
+          v-if="showSignup"
+          v-model="user.cpf"
+          v-brazilmask="{ type: 'cpf' }"
+          data-brtype="cpf"
+          type="text"
+          placeholder="CPF"
+        />
+        <h6 v-if="showSignup">Birth date</h6>
+        <input
+          v-if="showSignup"
+          v-model="user.data_nascimento"
+          type="date"
+          placeholder="Birth date"
+        />
+
+        <button v-if="showSignup" @click="signup">Registered</button>
         <button v-else @click="signin">Login</button>
 
         <a href @click.prevent="showSignup = !showSignup">
-          <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
-          <span v-else>Não tem cadastro? Registre-se aqui!</span>
+          <span v-if="showSignup">Already have registration? Access the Login !</span>
+          <span v-else>No registration? register here !</span>
         </a>
       </div>
     </div>
@@ -81,12 +98,14 @@ export default {
 }
 
 .auth-modal {
-  background: #292929;
-  color: #d2d2d2;
   padding: 35px;
+  margin-bottom: 2rem;
+
   border-radius: 0.5rem;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
+  background: #4717f6;
+  color: #d2d2d2;
+
   display: grid;
   grid-template-columns: 400px 300px;
   grid-template-rows: 1fr;
@@ -121,34 +140,34 @@ export default {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   padding: 3px 8px;
   outline: none;
 }
 
 .auth-modal button {
   align-self: stretch;
-  background-color: #2460ae;
+  background: #49274a !important;
   color: #d2d2d2;
   padding: 5px 15px;
   border-radius: 0.5rem;
-  transition: 0.5s;
-}
+  transition: 1s;
 
-.auth-modal button:hover {
-  opacity: 80%;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
 }
-
 .auth-modal a {
   margin-top: 35px;
   width: 10rem;
-  color: #d2d2d2;
-  transition: 0.5s;
+  color: #d2d2d2 !important;
+  text-decoration: none !important;
+  transition: 1s;
 
   &:hover {
-    text-decoration: none;
-    color: #d2d2d2;
-    opacity: 70%;
+    transform: scale(1.1);
+    transition: all 0.5s;
   }
 }
 
