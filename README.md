@@ -1,11 +1,11 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
 
 - [Objetivo do projeto](#obejetivo-do-projeto)
-- [Pastas do projeto](#pastas-do-projeto-:package:)
+- [Pastas do projeto](#pastas-do-projeto)
 - [Tecnologias](#tecnologias)
 - [Bancos de Dados e Serviços](#bancos-de-dados-e-serviços)
 - [Como executar](#como-executar)
-- [Docker início rápido para desenvolvedores](#docker-inicio-rapido-para-desenvolvedores)
+- [Docker início rápido para desenvolvedores](#docker-início-rápido-para-desenvolvedores)
 - [Crie sua conta](#crie-sua-conta)
 - [Autor](#autor)
 
@@ -13,7 +13,7 @@
 
   <p align="justify">Esse App e feito para ajudar você a anotar suas contas de uma maneira simples e fácil, com cards trazendo o total dos valores das suas contas pendentes, pagas, vencidas e também o valor total.</p>
 
-### Pastas do projeto :package:
+### Pastas do projeto
 
 - Cliente Web
 - Server API
@@ -76,13 +76,13 @@ Registre sua conta.
 
 Depois faça o login.
 
-<img src="https://files.fm/thumb_show.php?i=by7cc9h8m" width="400px">
+<img src="https://files.fm/thumb_show.php?i=b3zy8wrwc" width="400px">
 
 ---
 
 Essa Exemplo da página inicial com algumas contas já cadastrada.
 
-<img src="https://files.fm/thumb_show.php?i=gkmfwh5z3" width="400px">
+<img src="https://files.fm/thumb_show.php?i=jhbwv4fvh" width="400px">
 
 ### Autor
 
