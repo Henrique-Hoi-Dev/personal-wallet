@@ -3,10 +3,10 @@ version: '3.7'
 services:
   personal-wallet:
     build:
-      context: ./frontend
+      context: ./web
       dockerfile: Dockerfile-local
     volumes:
-      - './frontend:/app'
+      - './web:/app'
       - '/app/node_modules'
     ports:
       - 8080:8080
@@ -16,7 +16,7 @@ services:
   nodejs-wallet:
     container_name: nodejs-wallet
     build:
-      context: ./backend
+      context: ./server
       dockerfile: Dockerfile-local
     command: sh -c "npm run migrate && npm run seed && npm start"
     volumes:
