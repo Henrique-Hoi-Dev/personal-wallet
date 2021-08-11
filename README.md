@@ -1,11 +1,11 @@
 <h1 align="center">Personal wallet  :briefcase:</h1>
 
-- [Objetivo](#obejetivo-do-projeto)
+- [Objetivo do projeto](#obejetivo-do-projeto)
 - [Pastas do projeto](#pastas-do-projeto-:package:)
 - [Tecnologias](#tecnologias)
-- [Banco de dados](#configurando-bancos-de-dados-e-serviços)
+- [Bancos de Dados e Serviços](#bancos-de-dados-e-serviços)
 - [Como executar](#como-executar)
-- [Iniciando Docker-compose](#docker-inicio-rapido-para-desenvolvedores)
+- [Docker início rápido para desenvolvedores](#docker-inicio-rapido-para-desenvolvedores)
 - [Crie sua conta](#crie-sua-conta)
 - [Autor](#autor)
 
@@ -15,10 +15,10 @@
 
 ### Pastas do projeto :package:
 
-- API Server para 'backend'
-- Web Client para 'frontend'
+- Cliente Web
+- Server API
 
-### Tecnologias 🧪
+### Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -30,7 +30,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [BootstrapVue](https://bootstrap-vue.org/)
 - [Sass](https://sass-lang.com/)
 
-### Configurando Bancos de Dados e Serviços
+### Bancos de Dados e Serviços
 
 O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mongodb.com)
 
@@ -70,19 +70,19 @@ Quando acessar o endereço http://localhost:8080.
 
 Registre sua conta.
 
-<img src="https://files.fm/thumb_show.php?i=e2mse5a6v" width="400px">
+<img src="https://files.fm/thumb_show.php?i=srqpybbnt" width="400px">
 
 ---
 
 Depois faça o login.
 
-<img src="https://files.fm/thumb_show.php?i=f5q9jnwqw" width="400px">
+<img src="https://files.fm/thumb_show.php?i=by7cc9h8m" width="400px">
 
 ---
 
 Essa Exemplo da página inicial com algumas contas já cadastrada.
 
-<img src="https://files.fm/thumb_show.php?i=wfnb6bm4a" width="400px">
+<img src="https://files.fm/thumb_show.php?i=gkmfwh5z3" width="400px">
 
 ### Autor
 
