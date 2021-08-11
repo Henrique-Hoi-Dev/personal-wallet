@@ -2,30 +2,30 @@
   <div class="edit">
     <div class="table-edit">
       <div class="primeiros">
-        <h2>Name</h2>
+        <h2>Nome</h2>
         <b-form-input type="text" v-model="account.name" />
 
-        <h2>Value</h2>
+        <h2>Valor</h2>
         <b-form-input type="text" v-model="account.valor" />
       </div>
       <div class="segundo">
-        <h2>Number of installments</h2>
+        <h2>Número de parcelas</h2>
         <b-form-select type="text" v-model="account.parcelas" :options="options" />
 
-        <h2>Date expired</h2>
+        <h2>Data de vencimento</h2>
         <b-form-input type="date" v-model="account.data_vencimento" />
-        <h4>{{ account.data_vencimento | dateFormat }} Current due date</h4>
+        <h4>{{ account.data_vencimento | dateFormat }} Data de vencimento</h4>
       </div>
       <div class="pago">
-        <h2>Pay the bill</h2>
+        <h2>Pago ou Devedor</h2>
         <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="account.pago">
-          Pay / Owing
+          Pago / Devendo
         </b-form-checkbox>
       </div>
 
       <div class="buttons">
-        <b-button variant="success" @click="save()">Save</b-button>
-        <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Delete</b-button>
+        <b-button variant="success" @click="save()">Salvar</b-button>
+        <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Apagar</b-button>
       </div>
     </div>
   </div>

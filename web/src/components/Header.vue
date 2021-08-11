@@ -7,19 +7,19 @@
         <h2>{{ use.name }}</h2>
         <h4>CPF: {{ use.cpf | vueBrazil("cpf") }}</h4>
         <h4 v-for="data in user.data" :key="data.id">
-          Birth date: {{ use.data_nascimento | dateFormat }} = Age {{ data }}
+          Data de nascimento: {{ use.data_nascimento | dateFormat }} = Idade {{ data }}
         </h4>
       </div>
     </div>
     <div class="button-info">
       <button type="button">
         <a href @click.prevent="logout">
-          Exit...
+          Sair...
         </a>
       </button>
       <div v-for="user1 in user.user" :key="user1.id">
         <router-link :to="`/profile/${user1.id}/${user1.name}`">
-          <button class="profile-b">Profile</button>
+          <button class="profile-b">Perfil</button>
         </router-link>
       </div>
     </div>

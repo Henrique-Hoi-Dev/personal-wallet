@@ -2,19 +2,19 @@
   <div class="info-card">
     <div>
       <b-card-group deck>
-        <b-card header-tag="header" title="Amount Owed">
+        <b-card header-tag="header" title="Valor total devedor">
           <label class="owed">-- {{ cardOwing | currencyFormat }}</label>
         </b-card>
 
-        <b-card header-tag="header" title="Amount Paid">
+        <b-card header-tag="header" title="Valor total pagos">
           <label class="paidd">{{ cardPaid | currencyFormat }}</label>
         </b-card>
 
-        <b-card header-tag="header" title="Expiration Amount">
+        <b-card header-tag="header" title="Valor total vencidas">
           <label>{{ cardOverdue | currencyFormat }}</label>
         </b-card>
 
-        <b-card header-tag="header" title="Total Value Accounts">
+        <b-card header-tag="header" title="Valor total de dívidas">
           <label>{{ cardTotal | currencyFormat }}</label>
         </b-card>
       </b-card-group>

@@ -1,17 +1,17 @@
 <template>
   <div class="home">
     <div class="title">
-      <h1>Vanquished</h1>
+      <h1>Vencidas</h1>
     </div>
 
     <div v-for="cont in account" :key="cont.id">
       <table class="table-conta">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Value</th>
-            <th>Date expired</th>
-            <th>Portion</th>
+            <th>Nome</th>
+            <th>Valor total</th>
+            <th>Data de Vencimento</th>
+            <th>Número de parcelas</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -21,7 +21,7 @@
             <td>{{ cont.valor | currencyFormat }}</td>
             <td>{{ cont.data_vencimento | dateFormat }}</td>
             <td>{{ cont.parcelas }}</td>
-            <td class="vanquished">Vanquished</td>
+            <td class="vanquished">Vencida</td>
           </tr>
         </tbody>
         <div class="buttons">

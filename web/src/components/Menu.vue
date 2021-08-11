@@ -1,20 +1,20 @@
 <template>
   <div class="menu">
     <router-link to="/">
-      <button>Home</button>
+      <button>Todos</button>
     </router-link>
     <router-link to="/paid">
-      <button>Paid</button>
+      <button>Pagos</button>
     </router-link>
     <router-link to="/owing">
-      <button>Owing</button>
+      <button>Devendor</button>
     </router-link>
     <router-link to="/vanquished">
-      <button>Vanquished</button>
+      <button>Vencidas</button>
     </router-link>
     <!-- Modal que sera feito o cadastro da novas contas -->
     <div>
-      <b-button class="new-account" v-b-modal.modal-prevent-closing>New Account</b-button>
+      <b-button class="new-account" v-b-modal.modal-prevent-closing>Nova dívida</b-button>
 
       <b-modal id="modal-prevent-closing" ref="modal" title="New account registration">
         <form ref="form">

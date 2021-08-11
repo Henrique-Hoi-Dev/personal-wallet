@@ -2,10 +2,10 @@
 
 - [Objetivo](#obejetivo-do-projeto)
 - [Pastas do projeto](#pastas-do-projeto-:package:)
-- [Tecnologias](#🧪-tecnologias)
+- [Tecnologias](#tecnologias)
 - [Banco de dados](#configurando-bancos-de-dados-e-serviços)
-- [Como executar](#🚀-como-executar)
-- [Iniciando Docker-compose](#docker-início-rápido-para-desenvolvedores-:electric_plug:)
+- [Como executar](#como-executar)
+- [Iniciando Docker-compose](#docker-inicio-rapido-para-desenvolvedores)
 - [Crie sua conta](#crie-sua-conta)
 - [Autor](#autor)
 
@@ -18,7 +18,7 @@
 - API Server para 'backend'
 - Web Client para 'frontend'
 
-### 🧪 Tecnologias
+### Tecnologias 🧪
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -36,7 +36,7 @@ O projeto usa [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mo
 
 Eu recomendo usar o [Docker](https://www.docker.com) para instalar e executar os bancos de dados e aplicação por completo.
 
-### 🚀 Como executar
+### Como executar
 
 Clone o projeto e acesse a pasta do mesmo.
 
@@ -51,7 +51,7 @@ $ cd personal-wallet
   </a>
 </h1>
 
-### Docker início rápido para desenvolvedores :electric_plug:
+### Docker início rápido para desenvolvedores
 
 Você pode iniciar todo o pacote de aplicativos usando `docker-compose`.
 
