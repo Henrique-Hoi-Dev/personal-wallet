@@ -131,7 +131,19 @@ class UserController {
     try {
       let { id } = req.params;
 
-      let { name, email, avatar } = await User.findByPk(id, {
+      let {
+        name,
+        email,
+        avatar,
+        cpf,
+        cidade,
+        logradouro,
+        cep,
+        bairro,
+        uf,
+        numero,
+        complemento,
+      } = await User.findByPk(id, {
         include: [
           {
             model: File,
@@ -145,6 +157,14 @@ class UserController {
         name,
         email,
         avatar,
+        cpf,
+        cidade,
+        logradouro,
+        cep,
+        bairro,
+        uf,
+        numero,
+        complemento,
       });
     } catch (error) {
       return res.status(400).json(error);

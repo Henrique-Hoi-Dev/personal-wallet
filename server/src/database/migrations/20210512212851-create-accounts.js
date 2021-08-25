@@ -15,9 +15,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      parcelas: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      parcelas_id: {
+        type: Sequelize.INTEGER,
       },
       data_vencimento: {
         type: Sequelize.DATE,

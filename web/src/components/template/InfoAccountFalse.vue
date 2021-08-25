@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="title">
-      <h1>Devendor</h1>
+      <h1>Devedor</h1>
     </div>
 
     <div v-for="cont in account" :key="cont.id">
