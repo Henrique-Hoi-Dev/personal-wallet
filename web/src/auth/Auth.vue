@@ -2,7 +2,7 @@
   <div class="auth-content">
     <div class="auth-modal">
       <div class="nome">
-        <img src="../assets/personal.svg" alt="personal" />
+        <img src="../assets/personal.svg" alt="personal" v-if="!showSignup" />
       </div>
 
       <div class="logo">
@@ -11,7 +11,7 @@
       <div class="register">
         <div class="auth-title">{{ showSignup ? "Register" : "Login" }}</div>
 
-        <input v-if="showSignup" v-model="user.name" type="text" placeholder="Name" />
+        <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
         <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
 
         <input
@@ -32,7 +32,7 @@
           type="text"
           placeholder="CPF"
         />
-        <h6 v-if="showSignup">Birth date</h6>
+        <h6 v-if="showSignup">Data de nascimento</h6>
         <input
           v-if="showSignup"
           v-model="user.data_nascimento"
@@ -40,12 +40,12 @@
           placeholder="Birth date"
         />
 
-        <button v-if="showSignup" @click="signup">Registered</button>
+        <button v-if="showSignup" @click="signup">Registrar</button>
         <button v-else @click="signin">Login</button>
 
         <a href @click.prevent="showSignup = !showSignup">
-          <span v-if="showSignup">Already have registration? Access the Login !</span>
-          <span v-else>No registration? register here !</span>
+          <span v-if="showSignup">Já tem registro? Acesse o Login!</span>
+          <span v-else>Sem registro? Registre-se aqui !</span>
         </a>
       </div>
     </div>
@@ -89,21 +89,31 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .auth-content {
-  height: 100%;
-  margin-top: 5rem;
+  width: 100%;
+  height: 667px;
+
   display: flex;
   justify-content: center;
+
+  background-size: 100% 100%;
+  background-image: url("../assets/background.jpg");
 }
 
 .auth-modal {
   padding: 35px;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
 
-  border-radius: 0.5rem;
+  height: fit-content;
+
+  border-top-left-radius: 10rem;
+  border-top-right-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 10rem;
+
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-  background: #4717f6;
+  background: rgba(19, 52, 182, 0.892);
   color: #d2d2d2;
 
   display: grid;
@@ -120,6 +130,11 @@ export default {
 
 .logo {
   grid-area: logo;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid #fff;
+  margin-right: 35px;
 }
 
 .register {

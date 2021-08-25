@@ -6,7 +6,7 @@ class Account extends Model {
       {
         name: Sequelize.STRING,
         valor: Sequelize.NUMBER,
-        parcelas: Sequelize.STRING,
+        parcelas_id: Sequelize.INTEGER,
         data_vencimento: Sequelize.DATE,
         pago: Sequelize.BOOLEAN,
       },
@@ -18,7 +18,7 @@ class Account extends Model {
     return this;
   }
   static associate(models) {
-    this.hasMany(models.Portion, { foreignKey: 'portion_id', as: 'portion' });
+    this.hasMany(models.Portion, { foreignKey: 'parcelas_id', as: 'parcela' });
   }
 }
 

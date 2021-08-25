@@ -9,17 +9,30 @@
         <b-form-input type="text" v-model="account.valor" />
       </div>
       <div class="segundo">
-        <h2>Número de parcelas</h2>
-        <b-form-select type="text" v-model="account.parcelas" :options="options" />
-
         <h2>Data de vencimento</h2>
         <b-form-input type="date" v-model="account.data_vencimento" />
         <h4>{{ account.data_vencimento | dateFormat }} Data de vencimento</h4>
+
+        <div class="infoParcelas">
+          <b-form-input class="numeroParcela" type="number" />
+          <b-dropdown variant="info" text="Info Parcelas">
+            <b-dropdown-item>
+              <router-link to="/createParcela">
+                Criar nova parcela
+              </router-link>
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <router-link to="#">
+                Todas as parcelas
+              </router-link>
+            </b-dropdown-item>
+          </b-dropdown>
+        </div>
       </div>
       <div class="pago">
         <h2>Pago ou Devedor</h2>
         <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="account.pago">
-          Pago / Devendo
+          Pago / Devedor
         </b-form-checkbox>
       </div>
 
@@ -115,7 +128,6 @@ export default {
   justify-content: center;
   margin-top: 15rem;
 }
-
 .table-edit {
   color: #d2d2d2;
 
@@ -144,6 +156,20 @@ export default {
   .segundo {
     grid-area: segundo;
     padding: 1rem;
+
+    .numeroParcela {
+      margin-top: 5px;
+      margin-right: 13px;
+
+      width: 60px;
+    }
+    .infoParcelas {
+      display: flex;
+      flex-direction: row;
+      a:hover {
+        text-decoration: none;
+      }
+    }
     h2 {
       margin-top: 4px;
       font: 1.1rem Itim;

@@ -6,6 +6,8 @@ import Vanquished from "../views/Vanquished.vue";
 import Edit from "../views/Edit.vue";
 import Paid from "../views/Paid.vue";
 import Profile from "../views/Profile.vue";
+import CreateParcelas from "../views/dadosParcelamento/CreateParcelas.vue";
+import ListeParcelas from "../views/dadosParcelamento/ListeParcelas.vue";
 import Auth from "@/auth/Auth.vue";
 
 Vue.use(VueRouter);
@@ -47,6 +49,16 @@ const routes = [
     path: "/auth",
     name: "auth",
     component: Auth
+  },
+  {
+    path: "/createParcela",
+    name: "createParcela",
+    component: CreateParcelas
+  },
+  {
+    path: "/listeParcela",
+    name: "listeParcela",
+    component: ListeParcelas
   }
 ];
 

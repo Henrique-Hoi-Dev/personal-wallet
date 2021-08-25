@@ -2,20 +2,28 @@
   <div class="profile">
     <div class="registre">
       <div class="user">
-        <div
-          class="imagePreviewWrapper"
-          :style="{ 'background-image': `url(${avatar})` }"
-          @click="selectImage"
-        ></div>
-        <input
-          class="avatar"
-          accept="image/*"
-          ref="file"
-          type="file"
-          @input="pickFile"
-          @change="onSelect"
-        />
+        <div class="userAvatar">
+          <div
+            class="imagePreviewWrapper"
+            :style="{ 'background-image': `url(${avatar})` }"
+            @click="selectImage"
+          ></div>
+          <input
+            class="avatar"
+            accept="image/*"
+            ref="file"
+            type="file"
+            @input="pickFile"
+            @change="onSelect"
+          />
 
+          <b-button variant="success" @click="salvarUsers()">Enviar</b-button>
+        </div>
+
+        <label class="input">
+          <input class="input__field" type="text" placeholder=" " v-model="user.name" />
+          <span class="input__label">Nome</span>
+        </label>
         <label class="input">
           <input class="input__field" type="password" placeholder=" " v-model="user.oldPassword" />
           <span class="input__label">Senha</span>
@@ -27,10 +35,6 @@
       </div>
 
       <div class="inputs">
-        <label class="input">
-          <input class="input__field" type="text" placeholder=" " v-model="user.name" />
-          <span class="input__label">Nome</span>
-        </label>
         <label class="input">
           <input class="input__field" type="email" placeholder=" " v-model="user.email" />
           <span class="input__label">Email</span>
@@ -50,41 +54,37 @@
           <input class="input__field" type="date" placeholder=" " v-model="user.data_nascimento" />
           <span class="input__label">Data de Nascimento</span>
         </label>
+        <label class="input">
+          <input class="input__field" type="email" placeholder=" " v-model="user.cep" />
+          <span class="input__label">CEP</span>
+        </label>
+        <label class="input">
+          <input class="input__field" type="text" placeholder=" " v-model="user.logradouro" />
+          <span class="input__label">Logradouro</span>
+        </label>
       </div>
 
       <div class="endereco">
         <label class="input">
-          <input class="input__field" type="email" placeholder=" " />
-          <span class="input__label">CEP</span>
-        </label>
-        <label class="input">
-          <input class="input__field" type="text" placeholder=" " />
-          <span class="input__label">Logradouro</span>
-        </label>
-        <label class="input">
-          <input class="input__field" type="text" placeholder=" " />
+          <input class="input__field" type="text" placeholder=" " v-model="user.complemento" />
           <span class="input__label">Complemento</span>
         </label>
         <label class="input">
-          <input class="input__field" type="text" placeholder=" " />
+          <input class="input__field" type="text" placeholder=" " v-model="user.numero" />
           <span class="input__label">Número</span>
         </label>
         <label class="input">
-          <input class="input__field" type="text" placeholder=" " />
+          <input class="input__field" type="text" placeholder=" " v-model="user.bairro" />
           <span class="input__label">Bairro</span>
         </label>
         <label class="input">
-          <input class="input__field" type="text" placeholder=" " />
+          <input class="input__field" type="text" placeholder=" " v-model="user.cidade" />
           <span class="input__label">Cidade</span>
         </label>
         <label class="input">
-          <input class="input__field" type="text" placeholder=" " />
+          <input class="input__field" type="text" placeholder=" " v-model="user.uf" />
           <span class="input__label">UF</span>
         </label>
-      </div>
-
-      <div class="button">
-        <b-button variant="success" @click="salvarUsers()">Enviar</b-button>
       </div>
     </div>
   </div>
@@ -104,7 +104,14 @@ export default {
         password: "",
         oldPassword: "",
         avatar_id: "",
-        cpf: ""
+        cpf: "",
+        cep: "",
+        logradouro: "",
+        cidade: "",
+        bairro: "",
+        uf: "",
+        numero: "",
+        complemento: ""
       }
     };
   },
@@ -149,12 +156,7 @@ export default {
       axios
         .put(`${baseApiUrl}/user/${id}`, this.user)
         .then(() => {
-          this.user.name,
-            this.user.email,
-            this.user.oldPassword,
-            this.user.password,
-            this.$toasted.global.defaultSuccess(),
-            this.$router.go();
+          this.$toasted.global.defaultSuccess(), this.$router.go();
           this.limparUser();
         })
         .catch(showError);
@@ -180,30 +182,36 @@ export default {
 .registre {
   width: 1050px;
   justify-content: center;
-  padding: 5rem;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas:
     "user inputs endereco"
-    "user inputs endereco"
-    "button button button";
-  .avatar {
-    grid-area: avatar;
+    "user inputs endereco";
+  .user {
+    grid-area: user;
     padding: 1rem;
   }
-  .edereco {
-    grid-area: edereco;
+  .endereco {
+    grid-area: endereco;
     padding: 1rem;
   }
   .inputs {
-    padding: 1rem;
     grid-area: inputs;
-  }
-  .button {
     padding: 1rem;
-    grid-area: button;
+  }
+  .userAvatar {
+    display: flex;
+    flex-direction: row;
+    margin-top: -10px;
+
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+      width: 120px;
+    }
   }
 
   color: #d2d2d2;
@@ -222,7 +230,7 @@ export default {
 .input {
   position: relative;
   width: auto;
-  margin-top: 15px;
+  margin-top: 12px;
 
   &__label {
     position: absolute;
@@ -272,8 +280,8 @@ export default {
   background-position: center center;
 
   img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
 }
 .avatar {
