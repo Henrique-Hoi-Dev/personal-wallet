@@ -6,6 +6,7 @@ import SessionController from './app/controller/SessionController';
 import UserController from './app/controller/UserController';
 
 import AccountController from './app/controller/AccountController';
+import PortionController from './app/controller/PortionController';
 import FileController from './app/controller/FileController';
 
 import authMiddleware from './app/middlewares/auth';
@@ -30,18 +31,23 @@ routes.get('/user/:id', UserController.getUserId);
 routes.post('/account/new', AccountController.store);
 routes.put('/account/:id', AccountController.updateAccount);
 
-// rotas de chamada dos cards
-routes.get('/infoCardOverdue', AccountController.getCardInfoOverdue);
-routes.get('/infoCardOwing', AccountController.getCardInfoOwing);
-routes.get('/infoCardPaid', AccountController.getCardInfoPaid);
-routes.get('/infoCardTotal', AccountController.getCardInfoTotal);
+// rotas de registro de parcelas
+routes.post('/account/:accounts_id/portion', PortionController.store);
+routes.put('/portion/:id', PortionController.updatePortion);
+routes.delete('/portion/:id', PortionController.deletePortion);
 
-// rotas de chamada das contas
+// rotas de chamada listas de contas
 routes.get('/account/:id', AccountController.getById);
 routes.get('/account', AccountController.getAll);
 routes.get('/vencido', AccountController.getOverdueAccount);
 
 // rota de deletar conta
 routes.delete('/account/:id', AccountController.deleteAccount);
+
+// rotas de chamada dos cards
+routes.get('/infoCardOverdue', AccountController.getCardInfoOverdue);
+routes.get('/infoCardOwing', AccountController.getCardInfoOwing);
+routes.get('/infoCardPaid', AccountController.getCardInfoPaid);
+routes.get('/infoCardTotal', AccountController.getCardInfoTotal);
 
 export default routes;

@@ -11,21 +11,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      valor: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      parcelas_id: {
-        type: Sequelize.INTEGER,
-      },
       data_vencimento: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      pago: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
+      status: {
+        type: Sequelize.ENUM,
+        values: ['pendente', 'cancelado', 'pago'],
+        defaultValue: 'pendente',
       },
       created_at: {
         type: Sequelize.DATE,

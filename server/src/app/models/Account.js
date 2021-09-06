@@ -5,10 +5,8 @@ class Account extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        valor: Sequelize.NUMBER,
-        parcelas_id: Sequelize.INTEGER,
         data_vencimento: Sequelize.DATE,
-        pago: Sequelize.BOOLEAN,
+        status: Sequelize.ENUM('pendente', 'cancelado', 'pago'),
       },
       {
         sequelize,
@@ -18,7 +16,10 @@ class Account extends Model {
     return this;
   }
   static associate(models) {
-    this.hasMany(models.Portion, { foreignKey: 'parcelas_id', as: 'parcela' });
+    this.hasMany(models.Portion, {
+      foreignKey: 'accounts_id',
+      as: 'parcela',
+    });
   }
 }
 
