@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import Account from '../models/Account';
+import Portion from '../models/Portion';
 
 class AccountController {
   async store(req, res) {
@@ -25,28 +26,55 @@ class AccountController {
 
     return res.json(accounts);
   }
-
   async getAll(req, res) {
     try {
-      const account = await Account.findAll();
+      const account = await Account.findAll({
+        include: [
+          {
+            model: Portion,
+            as: 'parcela',
+            attributes: [
+              'id',
+              'accounts_id',
+              'valor',
+              'numero_parcela',
+              'data_vencimento',
+              'pago',
+            ],
+          },
+        ],
+      });
       return res.status(200).json(account);
     } catch (error) {
       return res.status(400).json(error);
     }
   }
-
   async getById(req, res) {
     try {
       let { id } = req.params;
 
-      let account = await Account.findByPk(id);
+      let account = await Account.findByPk(id, {
+        include: [
+          {
+            model: Portion,
+            as: 'parcela',
+            attributes: [
+              'id',
+              'accounts_id',
+              'valor',
+              'numero_parcela',
+              'data_vencimento',
+              'pago',
+            ],
+          },
+        ],
+      });
 
       return res.status(200).json(account);
     } catch (error) {
       return res.status(400).json(error);
     }
   }
-
   async getCardInfoOverdue(req, res) {
     try {
       const accounts = await Account.findAll();
@@ -73,7 +101,6 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
-
   async getCardInfoTotal(req, res) {
     try {
       const accounts = await Account.findAll();
@@ -97,7 +124,6 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
-
   async getCardInfoPaid(req, res) {
     try {
       const accounts = await Account.findAll();
@@ -123,7 +149,6 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
-
   async getCardInfoOwing(req, res) {
     try {
       const accounts = await Account.findAll();
@@ -149,7 +174,6 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
-
   async getOverdueAccount(req, res) {
     try {
       const accounts = await Account.findAll();
@@ -167,7 +191,19 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  async updateAccount(req, res) {
+    try {
+      const { id } = req.params;
 
+      const account = await Account.findByPk(id);
+
+      await account.update(req.body);
+
+      return res.json(account);
+    } catch (error) {
+      return res.status(400).json(error.message);
+    }
+  }
   async deleteAccount(req, res) {
     try {
       const { id } = req.params;
@@ -186,17 +222,6 @@ class AccountController {
       console.log(error);
       return res.status(400).json(error.message);
     }
-  }
-
-  async updateAccount(req, res) {
-    const { id } = req.params;
-
-    const account = await Account.findByPk(id);
-
-    let accountUpdated = await account.update(req.body);
-
-    console.log('Account com sucesso');
-    return res.json(accountUpdated);
   }
 }
 export default new AccountController();
