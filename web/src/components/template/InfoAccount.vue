@@ -18,16 +18,19 @@
         <tbody>
           <tr>
             <td>{{ cont.name }}</td>
-            <td>{{ cont.valor | currencyFormat }}</td>
+            <td>{{ "100" | currencyFormat }}</td>
             <td>{{ cont.data_vencimento | dateFormat }}</td>
-            <td>{{ cont.parcelas }}</td>
-            <td v-if="cont.pago == true" class="paid">Pago</td>
-            <td v-if="cont.pago == false" class="owing">Devendo</td>
+            <td>{{ "1" }}</td>
+            <td v-if="cont.status == 'pago'" class="paid">Pago</td>
+            <td v-if="cont.status == 'pendente'" class="owing">Pendente</td>
           </tr>
         </tbody>
         <div class="buttons">
           <router-link :to="`/edit/${cont.id}/${cont.name}`">
             <button>Editar</button>
+          </router-link>
+          <router-link :to="`/listeParcela/${cont.id}/${cont.name}`">
+            <button class="maisDetalhe">Mais detalhe</button>
           </router-link>
         </div>
       </table>
@@ -60,7 +63,8 @@ export default {
       axios.get(url).then(res => {
         this.account = res.data;
       });
-    }
+    },
+    total() {}
   }
 };
 </script>
@@ -75,6 +79,11 @@ export default {
 .buttons {
   display: flex;
   flex-direction: row;
+
+  .maisDetalhe {
+    width: 9em;
+    margin-left: 10px;
+  }
 
   button {
     width: 5rem;

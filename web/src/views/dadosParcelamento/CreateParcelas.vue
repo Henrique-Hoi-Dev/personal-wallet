@@ -57,7 +57,7 @@ export default {
       const id = this.$route.params.id;
 
       axios
-        .put(`${baseApiUrl}/account/${id}`, this.parcela)
+        .post(`${baseApiUrl}/account/${id}/portion`, this.parcela)
         .then(() => {
           this.$toasted.global.defaultSuccess();
           this.reset();

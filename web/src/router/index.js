@@ -8,6 +8,7 @@ import Paid from "../views/Paid.vue";
 import Profile from "../views/Profile.vue";
 import CreateParcelas from "../views/dadosParcelamento/CreateParcelas.vue";
 import ListeParcelas from "../views/dadosParcelamento/ListeParcelas.vue";
+import EditarParcela from "../views/dadosParcelamento/Editar.vue";
 import Auth from "@/auth/Auth.vue";
 
 Vue.use(VueRouter);
@@ -51,14 +52,20 @@ const routes = [
     component: Auth
   },
   {
-    path: "/createParcela",
+    path: "/createParcela/:id",
     name: "createParcela",
     component: CreateParcelas
   },
   {
-    path: "/listeParcela",
+    path: "/listeParcela/:id/:prop",
     name: "listeParcela",
+    props: true,
     component: ListeParcelas
+  },
+  {
+    path: "/editarParcela/:id",
+    name: "editarParcela",
+    component: EditarParcela
   }
 ];
 

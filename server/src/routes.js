@@ -34,12 +34,13 @@ routes.put('/account/:id', AccountController.updateAccount);
 // rotas de registro de parcelas
 routes.post('/account/:accounts_id/portion', PortionController.store);
 routes.put('/portion/:id', PortionController.updatePortion);
+routes.get('/portions/:id', PortionController.getPortionList);
 routes.delete('/portion/:id', PortionController.deletePortion);
 
 // rotas de chamada listas de contas
 routes.get('/account/:id', AccountController.getById);
 routes.get('/account', AccountController.getAll);
-routes.get('/vencido', AccountController.getOverdueAccount);
+routes.get('/vencidas', AccountController.getOverdueAccount);
 
 // rota de deletar conta
 routes.delete('/account/:id', AccountController.deleteAccount);

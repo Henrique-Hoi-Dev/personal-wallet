@@ -52,6 +52,35 @@ class PortionController {
       return res.status(400).json(error);
     }
   }
+  async getPortionList(req, res) {
+    try {
+      let { id } = req.params;
+
+      const portion = await Portion.findAndCountAll({
+        where: { accounts_id: id },
+        order: [['numero_parcela', 'ASC']],
+      });
+
+      const accounts = await Portion.findAll({ where: { accounts_id: id } });
+
+      const valid = accounts.filter(function (result) {
+        return result.dataValues;
+      });
+
+      const venci = valid.map(function (result) {
+        const valor = parseInt(result.dataValues.valor);
+
+        return valor;
+      });
+
+      const total = venci.reduce((acumulado, x) => {
+        return acumulado + x;
+      });
+      return res.status(200).json({ portion, total });
+    } catch (error) {
+      return res.status(400).json(error.message);
+    }
+  }
   async updatePortion(req, res) {
     try {
       const schema = Yup.object().shape({

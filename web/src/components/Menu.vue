@@ -7,7 +7,7 @@
       <button>Pagos</button>
     </router-link>
     <router-link to="/owing">
-      <button>Devedor</button>
+      <button>Pendente</button>
     </router-link>
     <router-link to="/vanquished">
       <button>Vencidas</button>

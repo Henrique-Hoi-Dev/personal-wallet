@@ -56,7 +56,7 @@ export default {
       this.getAccount();
     },
     getAccount() {
-      const url = `${baseApiUrl}/vencido`;
+      const url = `${baseApiUrl}/vencidas`;
       axios.get(url).then(res => {
         this.account = res.data;
       });
