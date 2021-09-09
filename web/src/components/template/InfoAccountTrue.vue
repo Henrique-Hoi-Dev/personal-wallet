@@ -5,7 +5,7 @@
     </div>
 
     <div v-for="cont in account" :key="cont.id">
-      <table class="table-conta" v-if="cont.pago == true">
+      <table class="table-conta" v-if="cont.status == 'pago'">
         <thead>
           <tr>
             <th>Nome</th>
@@ -21,7 +21,7 @@
             <td>{{ cont.valor | currencyFormat }}</td>
             <td>{{ cont.data_vencimento | dateFormat }}</td>
             <td>{{ cont.parcelas }}</td>
-            <td class="paid" v-if="cont.pago == true">Pago</td>
+            <td class="paid" v-if="cont.status == 'pago'">Pago</td>
           </tr>
         </tbody>
         <div class="buttons">

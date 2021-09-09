@@ -2,11 +2,11 @@
   <div class="edit">
     <div class="table-edit">
       <div class="primeiros">
-        <h2>Nome</h2>
-        <b-form-input type="text" v-model="account.name" />
-
         <h2>Valor</h2>
         <b-form-input type="text" v-model="account.valor" />
+
+        <h2>N parcela</h2>
+        <b-form-input type="text" v-model="account.numero_parcela" />
       </div>
       <div class="segundo">
         <h2>Data de vencimento</h2>
@@ -15,18 +15,6 @@
 
         <div class="infoParcelas">
           <b-form-input class="numeroParcela" type="number" />
-          <b-dropdown variant="info" text="Info Parcelas">
-            <b-dropdown-item>
-              <router-link :to="`/createParcela/${this.$route.params.id}`">
-                Criar nova parcela
-              </router-link>
-            </b-dropdown-item>
-            <b-dropdown-item>
-              <router-link to="#">
-                Todas as parcelas
-              </router-link>
-            </b-dropdown-item>
-          </b-dropdown>
         </div>
       </div>
       <div class="pago">
@@ -54,21 +42,7 @@ export default {
   data() {
     return {
       account: {},
-      options: [
-        { value: "0x", text: "0 Parcelas" },
-        { value: "1x", text: "1 Parcelas" },
-        { value: "2x", text: "2 Parcelas" },
-        { value: "3x", text: "3 Parcelas" },
-        { value: "4x", text: "4 Parcelas" },
-        { value: "5x", text: "5 Parcelas" },
-        { value: "6x", text: "6 Parcelas" },
-        { value: "7x", text: "7 Parcelas" },
-        { value: "8x", text: "8 Parcelas" },
-        { value: "9x", text: "9 Parcelas" },
-        { value: "10x", text: "10 Parcelas" },
-        { value: "11x", text: "11 Parcelas" },
-        { value: "12x", text: "12 Parcelas" }
-      ]
+      
     };
   },
   beforeMount() {
@@ -92,7 +66,7 @@ export default {
       const id = this.$route.params.id;
 
       axios
-        .put(`${baseApiUrl}/account/${id}`, this.account)
+        .put(`${baseApiUrl}/portion/${id}`, this.account)
         .then(() => {
           this.$toasted.global.defaultSuccess();
           this.reset();
@@ -103,7 +77,7 @@ export default {
     deleteAccount() {
       const id = this.$route.params.id;
       axios
-        .delete(`${baseApiUrl}/account/${id}`)
+        .delete(`${baseApiUrl}/portion/${id}`)
         .then(() => {
           this.$toasted.global.defaultSuccess();
           this.reset();
@@ -113,7 +87,7 @@ export default {
     getUrl() {
       const id = this.$route.params.id;
 
-      const url = `${baseApiUrl}/account/${id}`;
+      const url = `${baseApiUrl}/portion/${id}`;
       axios.get(url).then(res => {
         this.account = res.data;
       });

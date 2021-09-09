@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <div class="title">
-      <h1>Devedor</h1>
+      <h1>Pendente</h1>
     </div>
 
     <div v-for="cont in account" :key="cont.id">
-      <table class="table-conta" v-if="cont.pago == false">
+      <table class="table-conta" v-if="cont.status == 'pendente'">
         <thead>
           <tr>
             <th>Nome</th>
@@ -21,7 +21,7 @@
             <td>{{ cont.valor | currencyFormat }}</td>
             <td>{{ cont.data_vencimento | dateFormat }}</td>
             <td>{{ cont.parcelas }}</td>
-            <td class="owing" v-if="cont.pago == false">Devendo</td>
+            <td class="owing" v-if="cont.status == 'pendente'">Pendente</td>
           </tr>
         </tbody>
         <div class="buttons">
@@ -43,9 +43,7 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
-      account: {
-        pago: true
-      }
+      account: {}
     };
   },
   beforeMount() {

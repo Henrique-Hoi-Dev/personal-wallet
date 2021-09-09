@@ -29,10 +29,13 @@ class AccountController {
   async getAll(req, res) {
     try {
       const account = await Account.findAll({
+        order: [['id', 'ASC']],
         include: [
           {
             model: Portion,
             as: 'parcela',
+            order: [['numero_parcela', 'ASC']],
+            separate: true,
             attributes: [
               'id',
               'accounts_id',
@@ -58,6 +61,8 @@ class AccountController {
           {
             model: Portion,
             as: 'parcela',
+            order: [['numero_parcela', 'ASC']],
+            separate: true,
             attributes: [
               'id',
               'accounts_id',
@@ -75,9 +80,10 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  // card valor total das contas vencidas
   async getCardInfoOverdue(req, res) {
     try {
-      const accounts = await Account.findAll();
+      const accounts = await Portion.findAll();
       const dataAtual = new Date();
 
       const valid = accounts.filter(function (result) {
@@ -101,9 +107,10 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  // card valor total das contas
   async getCardInfoTotal(req, res) {
     try {
-      const accounts = await Account.findAll();
+      const accounts = await Portion.findAll();
 
       const valid = accounts.filter(function (result) {
         return result.dataValues;
@@ -124,9 +131,10 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  // card valor total das contas pagas
   async getCardInfoPaid(req, res) {
     try {
-      const accounts = await Account.findAll();
+      const accounts = await Portion.findAll();
 
       const valid = accounts.filter(function (result) {
         if (result.dataValues.pago == true) {
@@ -149,9 +157,10 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  // card valor total das contas devendo
   async getCardInfoOwing(req, res) {
     try {
-      const accounts = await Account.findAll();
+      const accounts = await Portion.findAll();
 
       const valid = accounts.filter(function (result) {
         if (result.dataValues.pago == false) {
@@ -174,6 +183,7 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  //contas vencidas
   async getOverdueAccount(req, res) {
     try {
       const accounts = await Account.findAll();
@@ -191,6 +201,7 @@ class AccountController {
       return res.status(400).json(error);
     }
   }
+  // atualização da contas
   async updateAccount(req, res) {
     try {
       const { id } = req.params;
@@ -204,6 +215,7 @@ class AccountController {
       return res.status(400).json(error.message);
     }
   }
+  // excluir contas
   async deleteAccount(req, res) {
     try {
       const { id } = req.params;
