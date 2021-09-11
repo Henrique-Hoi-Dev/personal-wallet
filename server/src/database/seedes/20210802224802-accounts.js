@@ -12,7 +12,7 @@ module.exports = {
         },
         {
           name: 'Account teste 2',
-          status: 'pendente',
+          status: 'pago',
           data_vencimento: new Date(),
           created_at: new Date(),
           updated_at: new Date(),
