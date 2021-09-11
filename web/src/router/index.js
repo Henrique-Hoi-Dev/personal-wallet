@@ -41,9 +41,8 @@ const routes = [
     component: Paid
   },
   {
-    path: "/edit/:id/:prop",
+    path: "/edit/:id",
     name: "edit",
-    props: true,
     component: Edit
   },
   {
@@ -57,9 +56,8 @@ const routes = [
     component: CreateParcelas
   },
   {
-    path: "/listeParcela/:id/:prop",
+    path: "/listeParcela/:id",
     name: "listeParcela",
-    props: true,
     component: ListeParcelas
   },
   {

@@ -52,7 +52,7 @@ class PortionController {
       return res.status(400).json(error);
     }
   }
-  async getPortionList(req, res) {
+  async getPortionListComIdConta(req, res) {
     try {
       let { id } = req.params;
 
@@ -79,6 +79,17 @@ class PortionController {
       return res.status(200).json({ portion, total });
     } catch (error) {
       return res.status(400).json(error.message);
+    }
+  }
+  async getById(req, res) {
+    try {
+      let { id } = req.params;
+
+      let parcela = await Portion.findByPk(id);
+
+      return res.status(200).json(parcela);
+    } catch (error) {
+      return res.status(400).json(error);
     }
   }
   async updatePortion(req, res) {

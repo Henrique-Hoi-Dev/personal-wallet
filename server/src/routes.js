@@ -34,7 +34,8 @@ routes.put('/account/:id', AccountController.updateAccount);
 // rotas de registro de parcelas
 routes.post('/account/:accounts_id/portion', PortionController.store);
 routes.put('/portion/:id', PortionController.updatePortion);
-routes.get('/portions/:id', PortionController.getPortionList);
+routes.get('/portions/:id', PortionController.getPortionListComIdConta);
+routes.get('/portion/:id', PortionController.getById);
 routes.delete('/portion/:id', PortionController.deletePortion);
 
 // rotas de chamada listas de contas

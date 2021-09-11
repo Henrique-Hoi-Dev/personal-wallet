@@ -11,13 +11,13 @@
       <div class="segundo">
         <h2>Data de vencimento</h2>
         <b-form-input type="date" v-model="parcela.data_vencimento" />
-        <h4>{{ parcela.data_vencimento | dateFormat }} Data de vencimento</h4>
+        <h2>Status</h2>
         <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="parcela.pago">
           Pago / Devedor
         </b-form-checkbox>
       </div>
       <div class="buttons">
-        <b-button variant="success" @click="save()">Salvar</b-button>
+        <b-button variant="success" @click="save(), $router.push(`/edit/${id}`)">Salvar</b-button>
         <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Apagar</b-button>
       </div>
     </div>
@@ -33,7 +33,8 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
-      parcela: {}
+      parcela: {},
+      id: this.$route.params.id
     };
   },
   beforeMount() {

@@ -9,24 +9,27 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Valor total</th>
-            <th>Data de Vencimento</th>
-            <th>Número de parcelas</th>
+            <!-- <th>Valor total</th> -->
+            <th>Data Venci...</th>
+            <th>N parcelas</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>{{ cont.name }}</td>
-            <td>{{ cont.valor | currencyFormat }}</td>
+            <!-- <td>{{ cont.valor | currencyFormat }}</td> -->
             <td>{{ cont.data_vencimento | dateFormat }}</td>
-            <td>{{ cont.parcelas }}</td>
+            <td>{{ cont.length }}</td>
             <td class="vanquished">Vencida</td>
           </tr>
         </tbody>
         <div class="buttons">
-          <router-link :to="`/edit/${cont.id}/${cont.name}`">
+          <router-link :to="`/edit/${cont.id}`">
             <button class="editar">To edit</button>
+          </router-link>
+          <router-link :to="`/listeParcela/${cont.id}`">
+            <button class="maisDetalhe">Mais detalhe</button>
           </router-link>
         </div>
       </table>
@@ -51,10 +54,6 @@ export default {
     this.getAccount();
   },
   methods: {
-    reset() {
-      this.account = {};
-      this.getAccount();
-    },
     getAccount() {
       const url = `${baseApiUrl}/vencidas`;
       axios.get(url).then(res => {
@@ -75,6 +74,11 @@ export default {
 .buttons {
   display: flex;
   flex-direction: row;
+
+  .maisDetalhe {
+    width: 9em;
+    margin-left: 10px;
+  }
 
   button {
     width: 5rem;
@@ -131,14 +135,15 @@ export default {
   box-shadow: -9px 12px 12px 5px #333;
 
   td {
-    min-width: 10rem;
+    min-width: 8rem;
     border: 0.2rem solid #4717f6;
-    border-radius: 0.5rem;
-    padding: 0.7rem;
-    text-align: center;
+    border-radius: 0.2rem;
+    padding: 0.3rem;
+    text-align: center;;
   }
   th {
-    padding: 0.8rem;
+    text-align: center;;
+    padding: 0.3rem;
   }
 }
 </style>

@@ -3,7 +3,24 @@
     <div class="title">
       <h1>Todas as Parcelas</h1>
     </div>
-    <div v-for="cont in account.portion.rows" :key="cont.id">
+
+    <div class="resul-total" >
+      <div class="totalValorParcela">
+        <h5>Valor total da divida</h5>
+         <span>
+          {{ total | currencyFormat }}
+        </span>
+      </div>
+      
+      <div class="totalNumeroParcela">
+        <h5>Quantidade de parcelas</h5>
+          <span>
+            N: {{ numeroParcela }}
+          </span>
+      </div>
+    </div>
+
+    <div v-for="cont in parcelas.rows" :key="cont.id">
       <table class="table-conta">
         <thead>
           <tr>
@@ -59,7 +76,9 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
-      account: {}
+      parcelas: {},
+      total: {},
+      numeroParcela: {}
     };
   },
   beforeMount() {
@@ -67,7 +86,7 @@ export default {
   },
   methods: {
     reset() {
-      this.account = {};
+      this.parcelas = {};
       this.getAccount();
     },
     getAccount() {
@@ -75,8 +94,9 @@ export default {
 
       const url = `${baseApiUrl}/portions/${id}`;
       axios.get(url).then(res => {
-        this.account = res.data;
-        console.log(this.account);
+        this.parcelas = res.data.portion;
+        this.total = res.data.total
+        this.numeroParcela = res.data.portion.count
       });
     },
     deleteAccount(id) {
@@ -98,6 +118,49 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.resul-total{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  color: #d2d2d2;
+  margin-top: 0.1rem;
+  /* width: 20rem; */
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  background: #161a1d;
+  margin-bottom: 1rem;
+  font: 1.1rem Itim;
+  border-collapse: inherit;
+  box-shadow: -9px 12px 12px 5px #333;
+
+  .totalValorParcela {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .totalNumeroParcela {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h5 {
+    margin: 10px;
+    padding: 5px;
+
+    /* border-bottom: 2px solid #4717f6;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem; */
+  }
+  span {
+    margin: 10px;
+    padding: 0.5rem;
+    text-align: center;
+
+    border: 0.2rem solid #4717f6;
+    border-radius: 0.9rem;
+  }
 }
 .owing {
   background: #bf0603;

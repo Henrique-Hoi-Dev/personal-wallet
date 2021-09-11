@@ -47,6 +47,29 @@ class AccountController {
           },
         ],
       });
+
+      // const total = await Account.findAll({
+      //   include: [
+      //     {
+      //       model: Portion,
+      //       as: 'parcela',
+      //       order: [['numero_parcela', 'ASC']],
+      //       separate: true,
+      //       attributes: ["id", 'valor','numero_parcela', 'accounts_id' ],
+      //     },
+      //   ],
+      // })
+
+      // const  valor = total.map(result => { 
+      // const valor1 = parseInt(result.parcela[0].valor);
+      //   return valor1
+      // })
+            
+      // const totals = valor.reduce((acumulado, x) => {
+      //   return acumulado + x;
+      // });
+      // console.log(totals)
+
       return res.status(200).json(account);
     } catch (error) {
       return res.status(400).json(error);

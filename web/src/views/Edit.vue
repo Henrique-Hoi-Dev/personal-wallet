@@ -5,8 +5,8 @@
         <h2>Nome</h2>
         <b-form-input type="text" v-model="account.name" />
 
-        <h2>Valor</h2>
-        <b-form-input type="text" v-model="account.valor" />
+        <h2>Status</h2>
+        <b-form-select v-model="account.status" :options="options" ></b-form-select>
       </div>
       <div class="segundo">
         <h2>Data de vencimento</h2>
@@ -14,7 +14,7 @@
         <h4>{{ account.data_vencimento | dateFormat }} Data de vencimento</h4>
 
         <div class="infoParcelas">
-          <b-form-input class="numeroParcela" type="number" />
+          <b-form-input class="numeroParcela" type="number" v-model="numeroParcela.length"/>
           <b-dropdown variant="info" text="Info Parcelas">
             <b-dropdown-item>
               <router-link :to="`/createParcela/${this.$route.params.id}`">
@@ -29,13 +29,6 @@
           </b-dropdown>
         </div>
       </div>
-      <div class="pago">
-        <h2>Pago ou Devedor</h2>
-        <b-form-checkbox :style="stylePago" id="checkbox-1" class="checkbox" v-model="account.pago">
-          Pago / Devedor
-        </b-form-checkbox>
-      </div>
-
       <div class="buttons">
         <b-button variant="success" @click="save()">Salvar</b-button>
         <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Apagar</b-button>
@@ -54,21 +47,12 @@ export default {
   data() {
     return {
       account: {},
-      options: [
-        { value: "0x", text: "0 Parcelas" },
-        { value: "1x", text: "1 Parcelas" },
-        { value: "2x", text: "2 Parcelas" },
-        { value: "3x", text: "3 Parcelas" },
-        { value: "4x", text: "4 Parcelas" },
-        { value: "5x", text: "5 Parcelas" },
-        { value: "6x", text: "6 Parcelas" },
-        { value: "7x", text: "7 Parcelas" },
-        { value: "8x", text: "8 Parcelas" },
-        { value: "9x", text: "9 Parcelas" },
-        { value: "10x", text: "10 Parcelas" },
-        { value: "11x", text: "11 Parcelas" },
-        { value: "12x", text: "12 Parcelas" }
-      ]
+      numeroParcela: {},
+        options: [
+          { value: 'pendente', text: 'Pendente' },
+          { value: 'pago', text: 'Pago' },
+          { value: 'cancelado', text: 'Cancelado' },
+        ]
     };
   },
   beforeMount() {
@@ -116,6 +100,7 @@ export default {
       const url = `${baseApiUrl}/account/${id}`;
       axios.get(url).then(res => {
         this.account = res.data;
+        this.numeroParcela = res.data.parcela;
       });
     }
   }
@@ -127,6 +112,11 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 15rem;
+}
+.btn-group  {
+  height: 38px!important;
+  width: 150px!important;
+  margin-top: 5px!important;
 }
 .table-edit {
   color: #d2d2d2;
@@ -152,7 +142,6 @@ export default {
       font: 1.1rem Itim;
     }
   }
-
   .segundo {
     grid-area: segundo;
     padding: 1rem;
@@ -176,27 +165,6 @@ export default {
     }
     h4 {
       font: 1rem Itim;
-    }
-  }
-  .pago {
-    grid-area: pago;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h2 {
-      font: 1.1rem Itim;
-    }
-    .checkbox {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      width: 100%;
-      height: 3rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
     }
   }
   .buttons {
