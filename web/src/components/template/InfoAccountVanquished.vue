@@ -20,7 +20,7 @@
             <td>{{ cont.name }}</td>
             <!-- <td>{{ cont.valor | currencyFormat }}</td> -->
             <td>{{ cont.data_vencimento | dateFormat }}</td>
-            <td>{{ cont.length }}</td>
+            <td>{{ cont.parcela.length }}</td>
             <td class="vanquished">Vencida</td>
           </tr>
         </tbody>

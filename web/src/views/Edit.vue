@@ -22,7 +22,7 @@
               </router-link>
             </b-dropdown-item>
             <b-dropdown-item>
-              <router-link to="#">
+              <router-link :to="`/listeParcela/${account.id}`">
                 Todas as parcelas
               </router-link>
             </b-dropdown-item>
@@ -41,6 +41,7 @@
 import axios from "axios";
 import { baseApiUrl, showError } from "@/global";
 import mixinFilter from "@/plugins/mixinFilter";
+// import moment from "moment";
 
 export default {
   mixins: [mixinFilter],
@@ -48,6 +49,7 @@ export default {
     return {
       account: {},
       numeroParcela: {},
+      dataVencimento: {},
         options: [
           { value: 'pendente', text: 'Pendente' },
           { value: 'pago', text: 'Pago' },
@@ -67,8 +69,10 @@ export default {
       }
     }
   },
-
   methods: {
+    // sumbit(){
+    //   this.account.data_vencimento = moment().format("YYYY-MM-DD");
+    // },
     reset() {
       this.account = {};
     },

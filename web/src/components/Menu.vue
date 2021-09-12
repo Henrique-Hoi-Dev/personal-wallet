@@ -16,32 +16,24 @@
     <div>
       <b-button class="new-account" v-b-modal.modal-prevent-closing>Nova dívida</b-button>
 
-      <b-modal id="modal-prevent-closing" ref="modal" title="New account registration">
+      <b-modal id="modal-prevent-closing" ref="modal" title="Registro de nova dívida">
         <form ref="form">
           <b-form-group label-for="name-input" invalid-feedback="Name is required">
-            <label>Name</label>
+            <label>Nome</label>
             <b-form-input
               id="name-input"
               v-model="account.name"
-              placeholder="Name account"
+              placeholder="Nome da dívida"
               required
               max="30"
             >
             </b-form-input>
-            <label>Value</label>
-            <b-form-input
-              id="valor-input"
-              v-model="account.valor"
-              placeholder="000.000,00"
-              required
-              v-money="money"
-            >
-            </b-form-input>
-            <label>Date vanquished</label>
+            <label>Status</label>
+            <b-form-select v-model="account.status" :options="options" ></b-form-select>
+
+            <label>Data vencimento</label>
             <b-form-input id="data-input" v-model="account.data_vencimento" type="date" required>
             </b-form-input>
-            <label>Number of installments</label>
-            <b-form-select v-model="account.parcelas" :options="options"> </b-form-select>
           </b-form-group>
         </form>
         <button @click="saves()">Save</button>
@@ -66,21 +58,6 @@ export default {
         data_vencimento: "",
         parcelas: null
       },
-      options: [
-        { value: null, text: "Select number of installments" },
-        { value: "1x", text: "1x Installments" },
-        { value: "2x", text: "2x Installments" },
-        { value: "3x", text: "3x Installments" },
-        { value: "4x", text: "4x Installments" },
-        { value: "5x", text: "5x Installments" },
-        { value: "6x", text: "6x Installments" },
-        { value: "7x", text: "7x Installments" },
-        { value: "8x", text: "8x Installments" },
-        { value: "9x", text: "9x Installments" },
-        { value: "10x", text: "10x Installments" },
-        { value: "11x", text: "11x Installments" },
-        { value: "12x", text: "12x Installments" }
-      ],
       money: {
         decimal: ",",
         thousands: ".",
@@ -88,7 +65,12 @@ export default {
         suffix: " ",
         precision: 2,
         masked: false
-      }
+      },
+      options: [
+          { value: 'pendente', text: 'Pendente' },
+          { value: 'pago', text: 'Pago' },
+          { value: 'cancelado', text: 'Cancelado' },
+        ]
     };
   },
   directives: { money: VMoney },

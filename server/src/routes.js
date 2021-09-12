@@ -28,8 +28,12 @@ routes.get('/user', UserController.getAllUser);
 routes.get('/user/:id', UserController.getUserId);
 
 // rotas de registro e edição de contas
+// rotas de chamada listas de contas
 routes.post('/account/new', AccountController.store);
 routes.put('/account/:id', AccountController.updateAccount);
+routes.get('/account/:id', AccountController.getById);
+routes.get('/account', AccountController.getAll);
+routes.get('/vencidas', AccountController.getOverdueAccount);
 
 // rotas de registro de parcelas
 routes.post('/account/:accounts_id/portion', PortionController.store);
@@ -37,11 +41,6 @@ routes.put('/portion/:id', PortionController.updatePortion);
 routes.get('/portions/:id', PortionController.getPortionListComIdConta);
 routes.get('/portion/:id', PortionController.getById);
 routes.delete('/portion/:id', PortionController.deletePortion);
-
-// rotas de chamada listas de contas
-routes.get('/account/:id', AccountController.getById);
-routes.get('/account', AccountController.getAll);
-routes.get('/vencidas', AccountController.getOverdueAccount);
 
 // rota de deletar conta
 routes.delete('/account/:id', AccountController.deleteAccount);

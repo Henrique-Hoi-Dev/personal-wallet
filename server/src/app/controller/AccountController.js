@@ -29,7 +29,7 @@ class AccountController {
   async getAll(req, res) {
     try {
       const account = await Account.findAll({
-        order: [['id', 'ASC']],
+        order: [['data_vencimento', 'ASC']],
         include: [
           {
             model: Portion,
@@ -209,7 +209,15 @@ class AccountController {
   //contas vencidas
   async getOverdueAccount(req, res) {
     try {
-      const accounts = await Account.findAll();
+      const accounts = await Account.findAll({
+        include: [
+          {
+            model: Portion,
+            as: 'parcela',
+            attributes: ['numero_parcela', 'id']
+          }
+        ]
+      });
 
       const dataAtual = new Date();
 
