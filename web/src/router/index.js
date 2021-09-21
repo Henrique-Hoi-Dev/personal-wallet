@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Total from "../views/Total.vue";
 import Owing from "../views/Owing.vue";
 import Vanquished from "../views/Vanquished.vue";
 import Edit from "../views/Edit.vue";
@@ -17,7 +18,12 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home, 
+  },
+  {
+    path: "/accountTotal",
+    name: "Total",
+    component: Total
   },
   {
     path: "/profile/:id/:prop",

@@ -32,7 +32,14 @@
           <router-link :to="`/listeParcela/${cont.id}`">
             <button class="maisDetalhe">Mais detalhe</button>
           </router-link>
+            <button class="maisDetalhe" v-b-toggle="['collapse-a']">Mais detalhe</button>
         </div>
+        <b-collapse id="collapse-a" class="mt-2">
+          <b-card>{{cont.name}}</b-card>
+        </b-collapse>
+        <b-collapse id="collapse-b" class="mt-2">
+          <b-card>I am collapsible content B!</b-card>
+        </b-collapse>
       </table>
     </div>
   </div>
@@ -66,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  margin: 18rem 0 0 3rem;
+  margin: 10rem 0 0 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;

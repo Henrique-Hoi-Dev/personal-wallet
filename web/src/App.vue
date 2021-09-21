@@ -4,7 +4,6 @@
     <div id="nav" v-else>
       <Menu />
       <main>
-        <InfoCard id="info" />
         <Header id="header" />
         <Loading v-if="validatingToken" />
         <router-view v-else />
@@ -17,14 +16,13 @@ import Auth from "@/auth/Auth.vue";
 import Header from "@/components/Header.vue";
 import Menu from "@/components/Menu.vue";
 import Loading from "@/components/template/Loading.vue";
-import InfoCard from "@/components/template/InfoCard.vue";
 
 import axios from "axios";
 import { baseApiUrl, userKey } from "@/global";
 import { mapState } from "vuex";
 
 export default {
-  components: { Header, Menu, Loading, Auth, InfoCard },
+  components: { Header, Menu, Loading, Auth },
   computed: mapState(["user"]),
   data: function() {
     return {
@@ -77,12 +75,6 @@ export default {
   main {
     flex: 1;
   }
-}
-#info {
-  position: fixed;
-  top: 0rem;
-  width: 100%;
-  z-index: 1;
 }
 
 /* Modal esta em modo global */

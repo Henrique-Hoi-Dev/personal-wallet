@@ -13,8 +13,4 @@ export default {
 </script>
 
 <style scoped >
-.owing {
-  margin-top: 14rem;
-  color: aliceblue;
-}
 </style>

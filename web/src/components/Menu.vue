@@ -1,6 +1,9 @@
 <template>
   <div class="menu">
     <router-link to="/">
+      <button>Home</button>
+    </router-link>
+    <router-link to="/accountTotal">
       <button>Todos</button>
     </router-link>
     <router-link to="/paid">

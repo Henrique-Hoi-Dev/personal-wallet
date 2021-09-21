@@ -4,7 +4,6 @@
       <div class="primeiros">
         <h2>Nome</h2>
         <b-form-input type="text" v-model="account.name" />
-
         <h2>Status</h2>
         <b-form-select v-model="account.status" :options="options" ></b-form-select>
       </div>
@@ -12,7 +11,6 @@
         <h2>Data de vencimento</h2>
         <b-form-input type="date" v-model="account.data_vencimento" />
         <h4>{{ account.data_vencimento | dateFormat }} Data de vencimento</h4>
-
         <div class="infoParcelas">
           <b-form-input class="numeroParcela" type="number" v-model="numeroParcela.length"/>
           <b-dropdown variant="info" text="Info Parcelas">

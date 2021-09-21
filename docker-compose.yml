@@ -18,7 +18,8 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile-local
-    command: sh -c "npm run migrate && npm run seed && npm start"
+    # command: sh -c "npm run migrate && npm run seed && npm start"
+    command: sh -c "npm start"
     volumes:
       - .:/home/node/app
       - /home/node/app/node_modules

@@ -13,7 +13,7 @@ export default {
 
 <style scodep>
 .vanquished {
-  margin-top: 14rem;
+  margin-top: 10rem;
   color: aliceblue;
 }
 </style>
