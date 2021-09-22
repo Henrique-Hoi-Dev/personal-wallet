@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <router-link to="/">
-      <button>Home</button>
+      <button>DashBoard</button>
     </router-link>
     <router-link to="/accountTotal">
       <button>Todos</button>

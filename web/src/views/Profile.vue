@@ -177,7 +177,7 @@ export default {
 .profile {
   display: flex;
   justify-content: center;
-  margin-top: 15rem;
+  margin-top: 13rem;
 }
 .registre {
   width: 1050px;

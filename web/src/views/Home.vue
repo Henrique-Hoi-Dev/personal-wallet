@@ -19,11 +19,9 @@ export default {
   position: fixed;
   top: 0rem;
   width: 100%;
-  z-index: 1;
 }
 #info2 {
   margin-top: 15rem;
-  width: 100%;
   z-index: 1;
 }
 </style>
