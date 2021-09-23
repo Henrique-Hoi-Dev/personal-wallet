@@ -26,6 +26,10 @@
               <router-link to="/vanquished">
                 <button>Vencidas</button>
               </router-link>
+
+              <div>
+                <b-button class="new-account" v-b-modal.modal-prevent-closing>Nova dívida</b-button>
+              </div>
             </b-nav>
           </nav>
         </div>
@@ -69,13 +73,6 @@
         </div>
       </b-navbar-nav>
     </div>
-      <!-- <div class="infoUser" v-for="use in user.user" :key="use.id">
-        <h2>{{ use.name }}</h2>
-        <h4>CPF: {{ use.cpf | vueBrazil("cpf") }}</h4>
-        <h4 v-for="data in user.data" :key="data.id">
-          Data de nascimento: {{ use.data_nascimento | dateFormat }} = Idade {{ data }}
-        </h4>
-      </div> -->
   </div>
 </template>
 
@@ -88,7 +85,7 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
-      user: {}
+      user: {},
     };
   },
   beforeMount() {
@@ -105,7 +102,7 @@ export default {
       axios.get(url).then(res => {
         this.user = res.data;
       });
-    }
+    },
   }
 };
 </script>
@@ -191,6 +188,20 @@ button {
       transition: all 0.5s;
       
    }
+}
+.new-account {
+  background: #33cc95 !important;
+  border: none !important;
+  color: #333 !important;
+  transition: 0.5s;
+}
+.form-control {
+  font-weight: 450 !important;
+}
+.custom-control-label::before,
+.custom-file-label,
+.custom-select {
+  font-weight: 450 !important;
 }
 @media screen and (max-width: 700px) {
   .header {
