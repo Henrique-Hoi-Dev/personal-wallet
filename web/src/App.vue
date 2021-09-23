@@ -95,5 +95,6 @@ export default {
 .b-sidebar {
   width: 180px!important;
   border-radius: 20px!important;
+  background: #4717f6!important;
 }
 </style>
