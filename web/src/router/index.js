@@ -6,6 +6,7 @@ import Owing from "../views/Owing.vue";
 import Vanquished from "../views/Vanquished.vue";
 import Edit from "../views/Edit.vue";
 import Paid from "../views/Paid.vue";
+import Cancelada from "../views/Cancela.vue";
 import Profile from "../views/Profile.vue";
 import CreateParcelas from "../views/dadosParcelamento/CreateParcelas.vue";
 import ListeParcelas from "../views/dadosParcelamento/ListeParcelas.vue";
@@ -45,6 +46,11 @@ const routes = [
     path: "/paid",
     name: "paid",
     component: Paid
+  },
+  {
+    path: "/canceladas",
+    name: "cancelada",
+    component: Cancelada
   },
   {
     path: "/edit/:id",

@@ -12,8 +12,5 @@ export default {
 </script>
 
 <style scodep>
-.vanquished {
-  margin-top: 10rem;
-  color: aliceblue;
-}
+
 </style>

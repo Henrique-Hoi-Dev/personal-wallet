@@ -9,7 +9,6 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <!-- <th>Valor total</th> -->
             <th>Data Venci...</th>
             <th>N parcelas</th>
             <th>Status</th>
@@ -18,7 +17,6 @@
         <tbody>
           <tr>
             <td>{{ cont.name }}</td>
-            <!-- <td>{{ cont.valor | currencyFormat }}</td> -->
             <td>{{ cont.data_vencimento | dateFormat }}</td>
             <td>{{ cont.parcela.length }}</td>
             <td class="vanquished">Vencida</td>
@@ -66,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  margin: 10rem 0 0 3rem;
+  margin: 7rem 0 0 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;

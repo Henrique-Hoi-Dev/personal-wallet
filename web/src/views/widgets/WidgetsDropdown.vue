@@ -2,7 +2,7 @@
   <CRow>
     <div class="table1">
       <CCol sm="6" lg="3">
-        <CWidgetDropdown color="primary" :header="cardOverdue | currencyFormat" text="Valor vencidas">
+        <CWidgetDropdown color="primary" :header="cardOverdue | currencyFormat" text="Vencidas">
           <template #footer>
             <CChartLineSimple
               pointed
@@ -17,7 +17,7 @@
         </CWidgetDropdown>
       </CCol>
       <CCol sm="6" lg="3">
-        <CWidgetDropdown color="info" :header="cardPaid | currencyFormat" text="Valor pagos">
+        <CWidgetDropdown color="info" :header="cardPaid | currencyFormat" text="Pagos">
           <template #footer>
             <CChartLineSimple
               pointed
@@ -38,7 +38,7 @@
         <CWidgetDropdown
           color="warning"
           :header="cardTotal | currencyFormat"
-          text="Valor dívidas"
+          text="Dívidas totais"
         >
           <template #footer>
             <CChartLineSimple
@@ -58,7 +58,7 @@
         <CWidgetDropdown
           color="danger"
           :header="cardOwing | currencyFormat"
-          text="Valor vencidas"
+          text="Devendo"
         >
           <template #footer>
             <CChartBarSimple

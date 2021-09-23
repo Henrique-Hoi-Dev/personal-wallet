@@ -39,7 +39,6 @@
 import axios from "axios";
 import { baseApiUrl, showError } from "@/global";
 import mixinFilter from "@/plugins/mixinFilter";
-// import moment from "moment";
 
 export default {
   mixins: [mixinFilter],
@@ -58,22 +57,7 @@ export default {
   beforeMount() {
     this.getUrl();
   },
-  computed: {
-    stylePago() {
-      if (!this.account.pago) {
-        return "background: " + (this.account.pago == true || "#bf0603");
-      } else {
-        return "background: " + (this.account.pago == false || "#80b918");
-      }
-    }
-  },
   methods: {
-    // sumbit(){
-    //   this.account.data_vencimento = moment().format("YYYY-MM-DD");
-    // },
-    reset() {
-      this.account = {};
-    },
     save() {
       const id = this.$route.params.id;
 
@@ -81,7 +65,6 @@ export default {
         .put(`${baseApiUrl}/account/${id}`, this.account)
         .then(() => {
           this.$toasted.global.defaultSuccess();
-          this.reset();
           this.$router.go();
         })
         .catch(showError);

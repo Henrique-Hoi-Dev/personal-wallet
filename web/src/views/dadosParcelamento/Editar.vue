@@ -26,7 +26,7 @@
         </b-form-checkbox>
       </div>
       <div class="buttons">
-        <b-button variant="success" @click="save()">Salvar</b-button>
+        <b-button variant="success" @click="save(), $router.push(`/listeParcela/${parcelaId}`)">Salvar</b-button>
         <b-button variant="danger" @click="deleteAccount(), $router.push('/')">Apagar</b-button>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
         .then(() => {
           this.$toasted.global.defaultSuccess();
           this.reset();
-          this.$router.go();
+          // this.$router.go();
         })
         .catch(showError);
     },

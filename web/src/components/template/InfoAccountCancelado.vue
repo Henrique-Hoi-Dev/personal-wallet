@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <div class="title" >
-      <h1>Todas as Dívidas</h1>
+    <div class="title">
+      <h1>Canceladas</h1>
     </div>
 
-    <div v-for="cont in account" :key="cont.id" >
+    <div v-for="cont in account" :key="cont.id">
       <table id="table-conta" v-if="cont.status == 'cancelado'" class="cancela">
         <thead>
           <tr>
@@ -19,70 +19,12 @@
             <td>{{ cont.name }}</td>
             <td>{{ cont.data_vencimento | dateFormat }}</td>
             <td>{{ cont.parcela.length }}</td>
-            <td v-if="cont.status == 'pago'" class="paid">Pago</td>
-            <td v-if="cont.status == 'pendente'" class="owing">Pendente</td>
             <td v-if="cont.status == 'cancelado'" class="cancela">Cancelado</td>
           </tr>
         </tbody>
         <div class="buttons">
           <router-link :to="`/edit/${cont.id}`">
-            <button>Editar</button>
-          </router-link>
-          <router-link :to="`/listeParcela/${cont.id}`">
-            <button class="maisDetalhe">Mais detalhe</button>
-          </router-link>
-        </div>
-      </table>
-      <table id="table-conta" v-if="cont.status == 'pendente'">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Data Venci...</th>
-            <th>N parcelas</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ cont.name }}</td>
-            <td>{{ cont.data_vencimento | dateFormat }}</td>
-            <td>{{ cont.parcela.length }}</td>
-            <td v-if="cont.status == 'pago'" class="paid">Pago</td>
-            <td v-if="cont.status == 'pendente'" class="owing">Pendente</td>
-            <td v-if="cont.status == 'cancelado'" class="cancela">Cancelado</td>
-          </tr>
-        </tbody>
-        <div class="buttons">
-          <router-link :to="`/edit/${cont.id}`">
-            <button>Editar</button>
-          </router-link>
-          <router-link :to="`/listeParcela/${cont.id}`">
-            <button class="maisDetalhe">Mais detalhe</button>
-          </router-link>
-        </div>
-      </table>
-      <table id="table-conta" v-if="cont.status == 'pago'">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Data Venci...</th>
-            <th>N parcelas</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ cont.name }}</td>
-            <td>{{ cont.data_vencimento | dateFormat }}</td>
-            <td>{{ cont.parcela.length }}</td>
-            <td v-if="cont.status == 'pago'" class="paid">Pago</td>
-            <td v-if="cont.status == 'pendente'" class="owing">Pendente</td>
-            <td v-if="cont.status == 'cancelado'" class="cancela">Cancelado</td>
-          </tr>
-        </tbody>
-        <div class="buttons">
-          <router-link :to="`/edit/${cont.id}`">
-            <button>Editar</button>
+            <button class="editar">Editar</button>
           </router-link>
           <router-link :to="`/listeParcela/${cont.id}`">
             <button class="maisDetalhe">Mais detalhe</button>
@@ -102,7 +44,7 @@ export default {
   mixins: [mixinFilter],
   data() {
     return {
-      account: {},
+      account: {}
     };
   },
   beforeMount() {
@@ -113,8 +55,8 @@ export default {
       const url = `${baseApiUrl}/account`;
       axios.get(url).then(res => {
         this.account = res.data;
-      })
-    },
+      });
+    }
   }
 };
 </script>
@@ -153,22 +95,16 @@ export default {
     }
   }
 }
-.owing {
-  background: #bf0603;
-}
-.paid {
-  background: #80b918;
-}
 .cancela {
   opacity: 50%;
   .buttons {
    pointer-events: none; 
    opacity: 0.6;
    cursor: not-allowed;
-  } 
+  }
 }
 .title {
-  width: 20rem;
+  width: 17rem;
   text-align: center;
 
   border-bottom: 5px solid #4717f6;

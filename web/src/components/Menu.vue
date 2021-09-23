@@ -10,7 +10,10 @@
       <button>Pagos</button>
     </router-link>
     <router-link to="/owing">
-      <button>Pendente</button>
+      <button>Pendentes</button>
+    </router-link>
+    <router-link to="/canceladas">
+      <button>Cancelados</button>
     </router-link>
     <router-link to="/vanquished">
       <button>Vencidas</button>
@@ -99,8 +102,10 @@ export default {
 
 <style lang="scss" scoped>
 .menu {
+  display: none;
   position: fixed;
-  top: 17rem;
+  z-index: 1;
+  top: 13rem;
   width: 8rem;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -149,5 +154,10 @@ button {
 .custom-file-label,
 .custom-select {
   font-weight: 450 !important;
+}
+@media screen and (max-width: 700px) {
+  .menu {
+    display: none!important;
+  }  
 }
 </style>

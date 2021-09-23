@@ -1,28 +1,81 @@
 <template>
   <div class="header">
+    <span v-b-toggle.sidebar-no-header>
+      <img src="../assets/sidebar.jpg" alt="sidebar">
+    </span>
+    <b-sidebar id="sidebar-no-header"  aria-labelledby="sidebar-no-header-title"  shadow>
+      <template #default="{}">
+        <div class="p-3">
+          <nav class="mb-3">
+            <b-nav vertical>
+              <router-link to="/">
+                <button>DashBoard</button>
+              </router-link>
+              <router-link to="/accountTotal">
+                <button>Todos</button>
+              </router-link>
+              <router-link to="/paid">
+                <button>Pagos</button>
+              </router-link>
+              <router-link to="/owing">
+                <button>Pendentes</button>
+              </router-link>
+              <router-link to="/canceladas">
+                <button>Cancelados</button>
+              </router-link>
+              <router-link to="/vanquished">
+                <button>Vencidas</button>
+              </router-link>
+            </b-nav>
+          </nav>
+        </div>
+      </template>
+    </b-sidebar>
+
     <div class="avatar" v-for="use in user.user" :key="use.id">
-      <b-avatar variant="light" rounded="sm" :src="use.avatar.url" size="6rem" v-if="use.avatar" />
-      <b-avatar variant="light" rounded="sm" size="6rem" v-else />
-      <div class="infoUser">
+      <b-navbar-nav>
+        <b-nav-item-dropdown right>
+          <template #button-content>
+              <b-avatar 
+                badge 
+                badge-offset="-0.3em" 
+                badge-variant="success" 
+                :src="use.avatar.url" 
+                size="3rem" 
+                v-if="use.avatar" />
+              <b-avatar  size="3rem" v-else />
+          </template >
+            <b-dropdown-item >
+              <div class="profile-b" v-for="user1 in user.user" :key="user1.id">
+                <router-link :to="`/profile/${user1.id}/${user1.name}`">
+                  Meu perfil
+                </router-link>
+              </div>
+            </b-dropdown-item>
+            <b-dropdown-item >
+              <div class="profile-b">
+                <a href @click.prevent="logout">
+                  Sair...
+                </a>
+              </div>
+            </b-dropdown-item>
+        </b-nav-item-dropdown>
+        <div class="infoUser" >
+          <h2>{{ use.name }}</h2>
+          <h4>CPF: {{ use.cpf | vueBrazil("cpf") }}</h4>
+          <h4 v-for="data in user.data" :key="data.id">
+            Data de nascimento: {{ use.data_nascimento | dateFormat }} = Idade {{ data }}
+          </h4>
+        </div>
+      </b-navbar-nav>
+    </div>
+      <!-- <div class="infoUser" v-for="use in user.user" :key="use.id">
         <h2>{{ use.name }}</h2>
         <h4>CPF: {{ use.cpf | vueBrazil("cpf") }}</h4>
         <h4 v-for="data in user.data" :key="data.id">
           Data de nascimento: {{ use.data_nascimento | dateFormat }} = Idade {{ data }}
         </h4>
-      </div>
-    </div>
-    <div class="button-info">
-      <button type="button">
-        <a href @click.prevent="logout">
-          Sair...
-        </a>
-      </button>
-      <div v-for="user1 in user.user" :key="user1.id">
-        <router-link :to="`/profile/${user1.id}/${user1.name}`">
-          <button class="profile-b">Perfil</button>
-        </router-link>
-      </div>
-    </div>
+      </div> -->
   </div>
 </template>
 
@@ -62,7 +115,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-height: 8rem;
+  max-height: 5rem;
 
   padding: 1rem;
   color: #d2d2d2;
@@ -74,61 +127,78 @@ export default {
   z-index: 1;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-}
-.avatar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .infoUser {
-    h2 {
-      margin-left: 1rem;
-    }
-    h4 {
-      margin-left: 1rem;
-      font-size: 17px;
-    }
-  }
-
-  .b-avatar {
-    border: 5px solid #a1ff0a !important;
+  span img{
+    width: 40px;
+    height: 40px;
+    display: none;
   }
 }
+button {
+  width: 7rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  font-size: 15px;
 
-.button-info {
-  display: flex;
-  flex-direction: column;
+  color: #d2d2d2;
+  background-color: #49274a;
 
-  button {
-    width: 7rem;
-    height: 2.5rem;
-
-    color: #d2d2d2;
-    font: 1.1rem Itim;
-
-    margin-top: 5px;
-    border-radius: 0.5rem;
-
-    background: brown;
-
-    &:hover {
-      transform: scale(1.1);
-      transition: all 0.5s;
-    }
-
-    a {
-      font: 1.1rem Itim;
-      color: #d2d2d2;
-      text-decoration: none;
-    }
-  }
-}
-.profile-b {
-  background: #49274a !important;
+  transition: 0.5s;
 
   &:hover {
     transform: scale(1.1);
     transition: all 0.5s;
   }
+}
+  .navbar-nav {
+    flex-direction: row-reverse;
+    margin-top: -13px;
+  }
+  .infoUser {
+    h2 {
+      margin-left: 1rem;
+      font-size: 20px;
+    }
+    h4 {
+      margin-left: 1rem;
+      font-size: 13px;
+    }
+  }
+.avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .b-avatar {
+    border: 2px solid #a1ff0a !important;
+  }
+}
+.buttons {
+  background-color: transparent!important;
+}
+.profile-b {
+  font: 1.1rem Itim;
+  text-decoration: none;
+  background: transparent!important;
+    
+    a {
+      font: 1.1rem Itim;
+      text-decoration: none;
+    }
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.5s;
+      
+   }
+}
+@media screen and (max-width: 700px) {
+  .header {
+    span img {
+      width: 40px;
+      height: 40px;
+      display: flex;
+    }
+  }    
 }
 </style>

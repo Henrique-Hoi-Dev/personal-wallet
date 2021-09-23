@@ -83,7 +83,7 @@ export default {
   justify-content: center;
   background: #404040;
 
-  margin-top: 7.5rem;
+  margin-top: 6rem;
   margin-right: 0px !important;
   margin-left: 0px !important;
 }

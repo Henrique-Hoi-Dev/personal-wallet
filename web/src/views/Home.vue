@@ -21,7 +21,7 @@ export default {
   width: 100%;
 }
 #info2 {
-  margin-top: 15rem;
+  margin-top: 14rem;
   z-index: 1;
 }
 </style>

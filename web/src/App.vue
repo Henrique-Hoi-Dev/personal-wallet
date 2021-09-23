@@ -92,4 +92,8 @@ export default {
 .modal-header .close {
   color: #d2d2d2;
 }
+.b-sidebar {
+  width: 180px!important;
+  border-radius: 20px!important;
+}
 </style>
