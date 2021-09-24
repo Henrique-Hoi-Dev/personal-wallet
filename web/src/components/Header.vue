@@ -15,7 +15,7 @@
                 <button>Todos</button>
               </router-link>
               <router-link to="/paid">
-                <button>Pagos</button>
+                <button>Pagos</button>c
               </router-link>
               <router-link to="/owing">
                 <button>Pendentes</button>
@@ -209,6 +209,11 @@ button {
       width: 40px;
       height: 40px;
       display: flex;
+    }
+  }
+  .infoUser {
+    h4 {
+      font-size: 10px;
     }
   }    
 }

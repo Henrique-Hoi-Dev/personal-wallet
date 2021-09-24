@@ -9,6 +9,3 @@ export default {
   components: { InfoAccount }
 }
 </script>
-
-<style>
-</style>

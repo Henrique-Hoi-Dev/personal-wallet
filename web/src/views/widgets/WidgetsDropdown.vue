@@ -129,8 +129,11 @@ export default {
 </script>
 <style scoped lang="scss">
   #info2 {
-    display: grid;
+    margin-top: 14rem;
+    z-index: 1;
     justify-content: center;
+
+    display: grid;   
     grid-template-columns: 400px 400px;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
@@ -149,4 +152,18 @@ export default {
       margin: 10px;
     }
   }
+@media screen and (max-width: 700px) {
+  #info2 {
+    display: flex;
+    flex-direction: column;
+
+      .table1 {
+        width: 370px;
+        margin-top: 18rem;
+      }
+      .table2 {
+        width: 370px;
+      } 
+  }
+}
 </style>

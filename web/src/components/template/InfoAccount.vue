@@ -5,34 +5,35 @@
     </div>
 
     <div v-for="cont in account" :key="cont.id" >
-      <table id="table-conta" v-if="cont.status == 'cancelado'" class="cancela">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Data Venci...</th>
-            <th>N parcelas</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ cont.name }}</td>
-            <td>{{ cont.data_vencimento | dateFormat }}</td>
-            <td>{{ cont.parcela.length }}</td>
-            <td v-if="cont.status == 'pago'" class="paid">Pago</td>
-            <td v-if="cont.status == 'pendente'" class="owing">Pendente</td>
-            <td v-if="cont.status == 'cancelado'" class="cancela">Cancelado</td>
-          </tr>
-        </tbody>
-        <div class="buttons">
-          <router-link :to="`/edit/${cont.id}`">
-            <button>Editar</button>
-          </router-link>
-          <router-link :to="`/listeParcela/${cont.id}`">
-            <button class="maisDetalhe">Mais detalhe</button>
-          </router-link>
-        </div>
-      </table>
+        <table id="table-conta" v-if="cont.status == 'cancelado'" class="cancela">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data Venci...</th>
+              <th>N parcelas</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ cont.name }}</td>
+              <td>{{ cont.data_vencimento | dateFormat }}</td>
+              <td>{{ cont.parcela.length }}</td>
+              <td v-if="cont.status == 'pago'" class="paid">Pago</td>
+              <td v-if="cont.status == 'pendente'" class="owing">Pendente</td>
+              <td v-if="cont.status == 'cancelado'" class="cancela">Cancelado</td>
+            </tr>
+          </tbody>
+          <div class="buttons">
+            <router-link :to="`/edit/${cont.id}`">
+              <button>Editar</button>
+            </router-link>
+            <router-link :to="`/listeParcela/${cont.id}`">
+              <button class="maisDetalhe">Mais detalhe</button>
+            </router-link>
+          </div>
+        </table>
+  
       <table id="table-conta" v-if="cont.status == 'pendente'">
         <thead>
           <tr>
@@ -126,6 +127,10 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.tables {
+  display: flex;
+  flex-direction: column;
+}
 .buttons {
   display: flex;
   flex-direction: row;
@@ -208,6 +213,39 @@ export default {
   th {
     text-align: center;;
     padding: 0.3rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home {
+    margin: 7rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #table-conta {
+    display: flex;
+    width: auto;
+    
+    th {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+    }
+    td {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    button {
+      margin-left: 10px;
+    }
+    .maisDetalhe {
+      max-width: 5rem;
+      height: 3rem;
+    }
   }
 }
 </style>
