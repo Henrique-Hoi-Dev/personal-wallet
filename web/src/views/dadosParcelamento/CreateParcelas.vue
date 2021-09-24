@@ -1,6 +1,6 @@
 <template>
-  <div class="edit">
-    <div class="table-edit">
+  <div class="create">
+    <div class="table-create">
       <div class="primeiros">
         <h2>Valor</h2>
         <b-form-input type="text" v-model="parcela.valor" />
@@ -89,12 +89,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.edit {
+.create {
   display: flex;
   justify-content: center;
   margin-top: 15rem;
 }
-.table-edit {
+.table-create {
   color: #d2d2d2;
 
   padding: 1.2rem;
@@ -131,6 +131,7 @@ export default {
       align-items: center;
       display: flex;
       justify-content: center;
+      z-index: auto;
     }
 
     .custom-control-label {
@@ -184,6 +185,15 @@ export default {
     h2 {
       font: 1.1rem Itim;
     }
+  }
+}
+@media screen and (max-width: 700px) {
+  .create {
+    margin-top: 9rem;
+  }
+  .table-create {
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

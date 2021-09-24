@@ -156,10 +156,11 @@ export default {
   #info2 {
     display: flex;
     flex-direction: column;
+    align-content: center;
 
       .table1 {
         width: 370px;
-        margin-top: 18rem;
+        margin-top: -12rem;
       }
       .table2 {
         width: 370px;
