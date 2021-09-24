@@ -144,4 +144,37 @@ export default {
     padding: 0.3rem;
   }
 }
+@media screen and (max-width: 700px) {
+  .home {
+    margin: 7rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .table-conta {
+    display: flex;
+    width: auto;
+    
+    th {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+    }
+    td {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    button {
+      margin-left: 10px;
+    }
+    .maisDetalhe {
+      max-width: 5rem;
+      height: 3rem;
+    }
+  }
+}
 </style>

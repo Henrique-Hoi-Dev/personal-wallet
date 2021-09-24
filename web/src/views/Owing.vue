@@ -11,6 +11,3 @@ export default {
   components: { InfoAccountFalse }
 }
 </script>
-
-<style scoped >
-</style>
