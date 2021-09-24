@@ -20,8 +20,12 @@ export default {
   top: 0rem;
   width: 100%;
 }
-#info2 {
-  margin-top: 14rem;
-  z-index: 1;
+@media screen and (max-width: 700px) {
+  #info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

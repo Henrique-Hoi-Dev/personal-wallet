@@ -241,4 +241,44 @@ export default {
     }
   }
 }
+@media screen and (max-width: 700px) {
+  .home {
+    margin: 7rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .resul-total {
+      max-width: 25rem;
+    }
+  .table-conta {
+    display: flex;
+    max-width: 22rem;
+    justify-content: center;
+
+    th {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2px;
+    }
+    td {
+      display: flex;
+      flex-direction: column;
+    }
+    .editar-button {
+      margin-top: 10px;
+      button {
+        background-color: #007bff;
+        width: 10rem;
+      }
+    }
+    .apagar-button {
+        button {
+          background-color: #007bff;
+          width: 10rem;
+        }
+      }
+  
+  }
+}
 </style>

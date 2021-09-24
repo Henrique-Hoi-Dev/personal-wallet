@@ -180,4 +180,19 @@ export default {
     }
   }
 }
+@media screen and (max-width: 700px) {
+  .edit {
+    margin-top: 9rem;
+  }
+  .table-edit {
+    display: flex;
+    flex-direction: column;  
+  }
+  .btn-group {
+    width: 245px !important;    
+  }
+  .table-edit .buttons button {
+    width: 7rem;
+  }
+}
 </style>

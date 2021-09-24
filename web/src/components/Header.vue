@@ -153,6 +153,7 @@ button {
     margin-top: -13px;
   }
   .infoUser {
+    margin-right: 40px;
     h2 {
       margin-left: 1rem;
       font-size: 20px;
@@ -212,6 +213,7 @@ button {
     }
   }
   .infoUser {
+    margin-right: 25px;
     h4 {
       font-size: 10px;
     }

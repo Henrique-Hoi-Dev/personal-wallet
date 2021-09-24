@@ -178,6 +178,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 13rem;
+  margin-left: 7rem;
 }
 .registre {
   width: 1050px;
@@ -286,5 +287,34 @@ export default {
 }
 .avatar {
   display: none;
+}
+@media screen and (max-width: 700px) {
+  .registre {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+
+    margin-top: -7rem;
+    margin-left: -7rem;
+  }
+  .user {
+    display: flex;
+    flex-direction: column;
+  }
+  .userAvatar {
+    justify-content: flex-start!important;
+    button {
+      width: 187px!important;
+      margin-left: 10px;
+    }
+  }
+  .inputs {
+    display: flex;
+    flex-direction: column;
+  }
+  .endereco {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

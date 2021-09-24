@@ -201,4 +201,17 @@ export default {
     }
   }
 }
+@media screen and (max-width: 700px) {
+  .edit {
+    margin-top: 9rem;
+  }
+  .table-edit {
+    display: flex;
+    flex-direction: column;
+
+    .segundo {
+      margin-top: 0;
+    }
+  }
+}
 </style>
