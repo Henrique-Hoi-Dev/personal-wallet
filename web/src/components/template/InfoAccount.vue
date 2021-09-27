@@ -224,7 +224,7 @@ export default {
   }
   #table-conta {
     display: flex;
-    width: auto;
+    max-width: 22rem;
     
     th {
       display: flex;

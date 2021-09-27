@@ -197,4 +197,26 @@ export default {
     rgba(120, 120, 120, 0)
   );
 }
+@media screen and (max-width: 700px) {
+  .auth-content {
+    width: 100%;
+    height: 800px;
+    background-image: url("../assets/backgroundMobile.jpg");
+  }
+  .auth-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 550px;
+    width: 350px;
+
+    .nome  {
+      display: none;
+    }
+    .logo {
+      display: none;
+    }
+  }
+}
 </style>
