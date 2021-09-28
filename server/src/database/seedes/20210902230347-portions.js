@@ -15,7 +15,7 @@ module.exports = {
         {
           accounts_id: 1,
           valor: '300',
-          pago: true,
+          pago: false,
           numero_parcela: '2',
           data_vencimento: new Date(),
           created_at: new Date(),
@@ -33,7 +33,7 @@ module.exports = {
         {
           accounts_id: 2,
           valor: '200',
-          pago: false,
+          pago: true,
           numero_parcela: '1',
           data_vencimento: new Date(),
           created_at: new Date(),
@@ -51,7 +51,7 @@ module.exports = {
         {
           accounts_id: 2,
           valor: '200',
-          pago: false,
+          pago: true,
           numero_parcela: '3',
           data_vencimento: '2021-08-01 15:36:56',
           created_at: new Date(),
@@ -78,8 +78,17 @@ module.exports = {
         {
           accounts_id: 3,
           valor: '100',
-          pago: true,
+          pago: false,
           numero_parcela: '3',
+          data_vencimento: new Date(),
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+        {
+          accounts_id: 4,
+          valor: '100',
+          pago: false,
+          numero_parcela: '1',
           data_vencimento: new Date(),
           created_at: new Date(),
           updated_at: new Date(),
