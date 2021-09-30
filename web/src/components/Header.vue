@@ -68,7 +68,7 @@
           <h2>{{ use.name }}</h2>
           <h4>CPF: {{ use.cpf | vueBrazil("cpf") }}</h4>
           <h4 v-for="data in user.data" :key="data.id">
-            Data de nascimento: {{ use.data_nascimento | dateFormat }} = Idade {{ data }}
+             Idade {{ data }}
           </h4>
         </div>
       </b-navbar-nav>

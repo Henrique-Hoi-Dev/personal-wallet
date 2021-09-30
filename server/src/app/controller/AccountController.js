@@ -106,26 +106,43 @@ class AccountController {
   // card valor total das contas vencidas
   async getCardInfoOverdue(req, res) {
     try {
-      const accounts = await Portion.findAll();
+      const accounts = await Account.findAll({
+        include: [
+          {
+            model: Portion,
+            as: 'parcela',
+            attributes: [
+              'accounts_id',
+              'valor',
+              'data_vencimento',
+            ],
+          },
+        ],
+      });
       const dataAtual = new Date();
-
+    
       const valid = accounts.filter(function (result) {
         if (result.dataValues.data_vencimento <= dataAtual) {
           return result.dataValues;
         }
       });
 
-      const venci = valid.map(function (result) {
-        const valor = parseInt(result.dataValues.valor);
-
-        return valor;
+      const contasVencidas = valid.map(function (result) {
+        const parValor = result.parcela.map(function (par) {
+          const valor = parseInt(par.dataValues.valor);
+          return valor
+        })
+        const total = parValor.reduce((acumulado, x) => {
+          return acumulado + x;
+        });
+        return total   
       });
 
-      const total = venci.reduce((acumulado, x) => {
+      const totalgeral = contasVencidas.reduce((acumulado, x) => {
         return acumulado + x;
       });
 
-      return res.status(200).json(total);
+      return res.status(200).json(totalgeral);
     } catch (error) {
       return res.status(400).json(error);
     }
@@ -214,7 +231,7 @@ class AccountController {
           {
             model: Portion,
             as: 'parcela',
-            attributes: ['numero_parcela', 'id']
+            attributes: ['numero_parcela', 'id', 'valor', 'pago']
           }
         ]
       });

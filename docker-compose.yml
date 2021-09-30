@@ -18,7 +18,8 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile-local
-    command: sh -c "npm run migrate && npm run seed && npm start"
+    # command: sh -c "npm run migrate && npm run seed && npm start"
+    command: sh -c "npm run migrate && npm start"
     volumes:
       - .:/home/node/app
       - /home/node/app/node_modules
@@ -45,7 +46,7 @@ services:
 
   mongo-wallet:
     container_name: mongo-wallet
-    image: 'mongo'
+    image: mongo:5.0.3
     restart: unless-stopped
     command: mongod
     volumes:

@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
       },
       numero_parcela: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       data_vencimento: {
