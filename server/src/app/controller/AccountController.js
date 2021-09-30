@@ -1,26 +1,26 @@
-import * as Yup from 'yup';
 import Account from '../models/Account';
 import Portion from '../models/Portion';
+// import * as Yup from 'yup';
 
 class AccountController {
   async store(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-    });
+    // const schema = Yup.object().shape({
+    //   name: Yup.string().required(),
+    // });
 
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Name is required' });
-    }
+    // if (!(await schema.isValid(req.body))) {
+    //   return res.status(400).json({ error: 'Name is required' });
+    // }
 
-    const AccountExist = await Account.findOne({
-      where: { name: req.body.name },
-    });
+    // const AccountExist = await Account.findOne({
+    //   where: { name: req.body.name },
+    // });
 
-    if (AccountExist) {
-      return res
-        .status(400)
-        .json({ error: 'That account name already exists.' });
-    }
+    // if (AccountExist) {
+    //   return res
+    //     .status(400)
+    //     .json({ error: 'That account name already exists.' });
+    // }
 
     const accounts = await Account.create(req.body);
 
@@ -123,6 +123,7 @@ class AccountController {
     
       const valid = accounts.filter(function (result) {
         if (result.dataValues.data_vencimento <= dataAtual) {
+          if (result.dataValues.status === 'pendente')
           return result.dataValues;
         }
       });
@@ -240,6 +241,7 @@ class AccountController {
 
       const valid = accounts.filter(function (result) {
         if (result.dataValues.data_vencimento <= dataAtual) {
+          if (result.dataValues.status === 'pendente')
           return result.dataValues;
         }
       });

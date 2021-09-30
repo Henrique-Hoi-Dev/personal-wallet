@@ -5,7 +5,7 @@
     </div>
 
     <div v-for="cont in account" :key="cont.id">
-      <table class="table-conta"  v-if="cont.status == 'pendente'">
+      <table class="table-conta">
         <thead>
           <tr>
             <th>Nome</th>
