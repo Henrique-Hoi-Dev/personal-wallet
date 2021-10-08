@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-const File = new mongoose.Schema(
+const FileSchema = new mongoose.Schema(
   {
     name: {
       type: Sequelize.STRING,
@@ -11,10 +11,15 @@ const File = new mongoose.Schema(
       allowNull: false,
       unique: true,
     },
+    created_at: {
+      type: Sequelize.DATE,
+      allowNull: false,
+    },
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true, getters: true },
+    toObject: { virtuals: true, getters: true },
   }
 );
-
-module.exports = mongoose.model('File', File);
+export const FileModel = mongoose.model('File', FileSchema)

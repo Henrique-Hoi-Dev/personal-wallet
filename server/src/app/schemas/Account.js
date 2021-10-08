@@ -1,16 +1,8 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-const Account = new mongoose.Schema(
+const AccountSchema = new mongoose.Schema(
   {
     name: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    valor: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    parcelas: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -18,15 +10,20 @@ const Account = new mongoose.Schema(
       type: Sequelize.DATE,
       allowNull: false,
     },
-    pago: {
-      type: Sequelize.BOOLEAN,
+    status: {
+      type: Sequelize.ENUM,
+      values: ['pendente', 'cancelado', 'pago'],
+      defaultValue: 'pendente',
+    },
+    created_at: {
+      type: Sequelize.DATE,
       allowNull: false,
-      defaultValue: false,
     },
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true, getters: true },
+    toObject: { virtuals: true, getters: true },
   }
 );
-
-module.exports = mongoose.model('Account', Account);
+export const AccounModel = mongoose.model('Account', AccountSchema)

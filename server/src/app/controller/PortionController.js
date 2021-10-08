@@ -47,7 +47,7 @@ class PortionController {
         accounts_id,
       });
 
-      return res.json(portion);
+      return res.status(200).json(portion);
     } catch (error) {
       return res.status(400).json(error);
     }

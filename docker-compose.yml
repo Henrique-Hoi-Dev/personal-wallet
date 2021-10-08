@@ -47,7 +47,7 @@ services:
   mongo-wallet:
     container_name: mongo-wallet
     image: mongo:5.0.3
-    restart: unless-stopped
+    restart: always
     command: mongod
     volumes:
       - mongo-wallet-data:/data
