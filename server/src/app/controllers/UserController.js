@@ -108,6 +108,7 @@ class UserController {
       });
 
       const data = valid.map(function (result) {
+        
         const dataNascimento = result.dataValues.data_nascimento;
         var hoje = new Date();
 
@@ -127,6 +128,7 @@ class UserController {
       return res.status(400).json(error);
     }
   }
+
   async getUserId(req, res) {
     try {
       let { id } = req.params;
